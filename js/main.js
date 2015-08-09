@@ -225,7 +225,7 @@ function afterPjax() {
             '"><i  class=" fa share-icon fa-weibo fa-2x"></i></a>' +
             '<a target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=' +
             postHref + "&title=" + postTitle +
-            '"><i class="fa share-icon fa-renren fa-2x"></i></a>' +
+            '"><i class="fa share-icon fa-weixin fa-2x"></i></a>' +
             '<a target="_blank" href="http://twitter.com/share?url=' +
             postHref +
             '"><i class="fa share-icon fa-twitter fa-2x"></i></a>' +

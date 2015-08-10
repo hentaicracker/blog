@@ -220,21 +220,15 @@ function afterPjax() {
 
     $('.share-button').popover({
         placement: 'bottom',
-        content: '<a target="_blank" href="http://service.weibo.com/share/share.php?url=' +
-            postHref + "&title=" + postTitle +
-            '"><i  class=" fa share-icon fa-weibo fa-2x"></i></a>' +
-            '<a target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=' +
-            postHref + "&title=" + postTitle +
-            '"><i class="fa share-icon fa-weixin fa-2x"></i></a>' +
-            '<a target="_blank" href="http://twitter.com/share?url=' +
-            postHref +
-            '"><i class="fa share-icon fa-twitter fa-2x"></i></a>' +
-            '<a target="_blank" href="https://plus.google.com/share?url=' +
-            postHref + "&title=" + postTitle +
-            '"><i class="fa share-icon fa-google-plus fa-2x"></i></a>' +
-            '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' +
-            postHref + "&title=" + postTitle +
-            '"><i class="fa fa-facebook-square fa-2x"></i></a>',
+        content: '<div class="jiathis_style_32x32">' +
+                    '<a class="jiathis_button_qzone"></a>' +
+                    '<a class="jiathis_button_tsina"></a>' +
+                    '<a class="jiathis_button_tqq"></a>' +
+                    '<a class="jiathis_button_weixin"></a>' +
+                    '<a class="jiathis_button_renren"></a>' +
+                    '<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>' +
+                    '<a class="jiathis_counter_style"></a>' +
+                 '</div>',
         html: true
     });
 

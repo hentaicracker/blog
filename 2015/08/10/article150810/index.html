@@ -9,7 +9,7 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="/blog-icon.ico" />
+  <link rel="shortcut icon" type="image/x-ico" href="/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" />
   <meta name="generator" content="hentaicracker">
@@ -193,7 +193,19 @@
     </span>
 
         <section class="post-content">
-            
+            <p>最近的一段时间，特别是进工大物联网实验室软件组的这一段时间以来。虽然自己在各种情感和思想的烦扰中度过，不过也算是挺了过来，对前端开发有了一个新的认识和体验。现在基本上算是入门了。在没来这之前，我对前端的理解也仅仅局限在静态网页的html、css以及一些简单的js交互。在这一个月的实践中，跟着学长们做了一个实实在在的项目，逐渐明白了很多东西。比如前后台数据交互的流程，这个是最重要的东西。接下来便逐一说一下各个方面的进步以及感受。</p>
+<hr>
+<h3 id="实验室">实验室</h3><p>工大物联网实验室，分软件组和硬件组，软件组基本上就做一些移动互联网的东西，app和web。实验室网站：<a href="http://112.124.123.169/hfutWlwLab" target="_blank" rel="external">戳我</a>（暂时没有域名，运行在阿里云上）。硬件组研究智能硬件、飞行器等。他们搞了个刷脸系统，每天刷脸打卡上班，也是666得不行。软件组日常出勤率能达到90%以上，所以在软件组的办公室中从来不缺人。我们基本上分为三块，web前端、java后台、以及Android移动端。很幸运能来到这里和一堆猿猿共事，每个人都很认真，每个人都非常厉害，当然需要排除我这个前端小菜鸟。在这里，除了学到前端的知识，更多的是与别人团队合作的经验和精神，在分工明确的实验室里，每个人都有自己负责的项目的一部分，然而我们又是紧密结合在一起的，通过对项目需求的交流、数据交互的沟通以及猿类们对代码的基♂情。<br> <img src="/logo.png" alt="帅帅的logo"></p>
+<h3 id="项目">项目</h3><p>进实验室做了两个项目，一个小的，一个不大不小的。便在这里记录一下在这两个项目中学到的一些东西。</p>
+<h4 id="小的">小的</h4><p>主要是做一个分享校园优惠信息的平台，算是一个练手的项目。我主要负责主页和登录注册页面。做的是弹窗式的登录和注册。（然而并不是写的组件这么高大上的玩意儿，只是隐藏显示而已~）如下图：<br><img src="/login.png" alt="渣渣的登录界面"><br>登录注册这里我同实验室的小武同志进行了我人生中第一次数据交互（泪流满面，第一次就这么没了/(ㄒoㄒ)/~~）。想想也是挺赤鸡的。这里的登录验证的逻辑并不难，主要还是在交互数据这块花了大部分时间。你能想象，一个前端小白遇到人生中第一次的时候他是有多兴奋和喜悦，特别是当你登录成功的时候。然而就是这简单的一小步，让我后面前后台数据交互向前迈进了一大步。<br>其次是在这个页面学到的一些东西。</p>
+<blockquote>
+<p>将页面滚动条去除，固定页面。</p>
+<pre><code>$<span class="params">(<span class="string">"body"</span>)</span>.css<span class="params">(<span class="string">"overflow"</span>,<span class="string">"hidden"</span>)</span>;
+</code></pre><p>取消</p>
+<pre><code>$<span class="params">(<span class="string">"body"</span>)</span>.css<span class="params">(<span class="string">"overflow"</span>,<span class="string">"scroll"</span>)</span>;
+</code></pre></blockquote>
+<p>这个小项目也过去了一个多月了，好多当时耳目一新的东西现在也已经烂熟于胸。</p>
+<h4 id="大的">大的</h4>
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">

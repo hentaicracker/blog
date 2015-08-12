@@ -96,6 +96,11 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/工作/">&nbsp;&nbsp;&nbsp;工作</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/生活/">&nbsp;&nbsp;&nbsp;生活</a>
                                     <small>1</small>
                                 </li>
@@ -114,7 +119,6 @@
                     <li><a class="fa fa-github" href="https://github.com/hentaicracker" target="_blank">&nbsp;&nbsp;&nbsp;Github</a></li>
                     <li><a class="fa fa-twitter" href="http://weibo.com/shenggegege" target="_blank">&nbsp;&nbsp;&nbsp;twitter</a></li>
                     <li><a class="fa fa-facebook" href="http://weibo.com/shenggegege" target="_blank">&nbsp;&nbsp;&nbsp;facebook</a></li>
-                    <li><a class="fa fa-google-plus" href="http://weibo.com/shenggegege" target="_blank">&nbsp;&nbsp;&nbsp;Google+</a></li>
                     <li><a class="fa fa-weibo" href="http://weibo.com/shenggegege" target="_blank">&nbsp;&nbsp;&nbsp;微博</a></li>
 
                 </ul>
@@ -133,6 +137,8 @@
                 
                     <a data-pjax href="/categories/日常/">&nbsp;&nbsp;日常</a>
                 
+                
+                    <a data-pjax href="/tags/工作/">&nbsp;&nbsp;工作</a>
                 
                     <a data-pjax href="/tags/生活/">&nbsp;&nbsp;生活</a>
                 
@@ -177,6 +183,8 @@
                   <div class="tag-tile">
                       
                       
+                      <a data-pjax href='/tags/工作/' style='color:#D5D5D5'>工作</a>
+                      
                       <a data-pjax href='/tags/生活/' style='color:#D5D5D5'>生活</a>
                       
                       <a data-pjax href='/tags/随笔/' style='color:#D5D5D5'>随笔</a>
@@ -205,7 +213,30 @@
 <pre><code>$<span class="params">(<span class="string">"body"</span>)</span>.css<span class="params">(<span class="string">"overflow"</span>,<span class="string">"scroll"</span>)</span>;
 </code></pre></blockquote>
 <p>这个小项目也过去了一个多月了，好多当时耳目一新的东西现在也已经烂熟于胸。</p>
-<h4 id="大的">大的</h4>
+<h4 id="不大不小的">不大不小的</h4><p>这个就是实实在在真刀真枪的项目了。能参加这个项目我真是觉得很幸运。因为在其中所学到的东西比之前多太多。这是一个类似电商网站的项目。我在其中主要负责了购物车、订单结算、帮助中心以及安全中心和商品详情等部分页面。其中熟练了jquery中dom操作、ajax等前端技能。最主要的是锻炼了自己的逻辑思考能力和google、baidu的能力。现在用多了google之后越来越觉得baidu真的就是个娱乐搜索引擎~~</p>
+<blockquote>
+<p>jquery给动态添加的dom绑定事件</p>
+<pre><code><span class="comment">//这里绑定事件只能用on</span>
+$(<span class="string">"element_parent"</span>).on(<span class="string">"event"</span>,<span class="string">"element"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="comment">//这里添加代码</span>
+});
+</code></pre><p>对ajax返回的动态数据进行解析:</p>
+<pre><code>success : <span class="function"><span class="keyword">function</span><span class="params">(data)</span>{</span>
+            var getData;
+            <span class="keyword">if</span><span class="params">(<span class="params">(typeof data)</span> == <span class="string">"string"</span>)</span>{
+                getData = JSON.parse<span class="params">(data)</span>;
+            }<span class="keyword">else</span> <span class="keyword">if</span><span class="params">(<span class="params">(typeof data)</span> == <span class="string">"object"</span>)</span>{
+                getData = eval<span class="params">(data)</span>;
+            }
+},
+</code></pre><p>当属性的值为布尔值时，jquery获取/设置属性值的方法只能用prop(),不能用attr()</p>
+<pre><code>$<span class="params">(<span class="string">"element"</span>)</span>.prop<span class="params">(<span class="string">"attribute"</span>)</span>;
+</code></pre></blockquote>
+<p>这里就只举了一些例子，在开发的过程中还遇到了很多问题，通过不断的查找资料阅读大牛博客，完成了各个页面的开发。</p>
+<h3 id="关于博客">关于博客</h3><p>这个博客是基于hexo框架搭建出来的。搭建hexo博客的方法网上有很多教程，基本上只要懂一点点git，懂一点点前端的知识，懂一点点计算机网络的知识就可以搭建起来。然后用的是<a href="https://github.com/yuche/hexo-theme-kael" target="_blank" rel="external">keal</a>的主题。这个主题真心棒，用到的一些技术也比较新（pjax）。如果有些地方觉得不好看，那就直接改代码吧！这个主题十分简洁（主页唯一有图片的地方就是网页图标了0.0），而且性能优越，能适配移动端的浏览，真心棒棒哒！</p>
+<hr>
+<p>最后想说的是，前端真的很有趣！</p>
+
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">

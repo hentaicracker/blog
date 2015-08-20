@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Archives: 2015 | hentaicracker</title>
+  <title>悲伤值计算 | hentaicracker</title>
   <meta name="description" content="这其实是一个娱乐博客" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -160,7 +160,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">悲伤值计算</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -179,138 +179,63 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/生活/' style='color:#D5D5D5'>生活</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">悲伤值计算</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-08-20T12:13:01.000Z"
+                              itemprop="datePublished">2015-08-20</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/生活/'>生活</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/08/20/悲伤值计算/">悲伤值计算</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-08-20T12:13:01.000Z"
-                      itemprop="datePublished">2015-08-20</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                接下来的一两个月就是找工作的时间了。虽然自己还是前端小白一枚，不过终归在自己的努力下做出了一些东西，积累了一些项目经验。在做了一两个项目之后，发现自己很多东西学得不是很扎实，比如js继承、js的一些数据处理方法，于是又回去恶补了一下基础。在这个过程中，确实发现了很多问题，也明白了自己的不足之处。现在也还在改进当中。
-选择在这个虐狗的节日写东西确实也很蛋疼。因为别人都出去玩了，而单身汪还在实验室码代码。并不羡慕，因为当你到了一定的年龄，经
-                
-            </p>
-            
+        <section class="post-content">
+            <p>接下来的一两个月就是找工作的时间了。虽然自己还是前端小白一枚，不过终归在自己的努力下做出了一些东西，积累了一些项目经验。在做了一两个项目之后，发现自己很多东西学得不是很扎实，比如js继承、js的一些数据处理方法，于是又回去恶补了一下基础。在这个过程中，确实发现了很多问题，也明白了自己的不足之处。现在也还在改进当中。</p>
+<h2 id="选择在这个虐狗的节日写东西确实也很蛋疼。因为别人都出去玩了，而单身汪还在实验室码代码。并不羡慕，因为当你到了一定的年龄，经历过一些事之后，逐渐就看淡了一些东西。码代码获得的成就感比有一个女朋友要多得多。你要问我为什么，因为昨天我都还不是单身狗啊。。。一股淡淡的忧伤袭来。。。">选择在这个虐狗的节日写东西确实也很蛋疼。因为别人都出去玩了，而单身汪还在实验室码代码。并不羡慕，因为当你到了一定的年龄，经历过一些事之后，逐渐就看淡了一些东西。码代码获得的成就感比有一个女朋友要多得多。你要问我为什么，因为昨天我都还不是单身狗啊。。。一股淡淡的忧伤袭来。。。</h2><p>设起初悲伤值为0：<br>    var sadness = 0;</p>
+<pre><code><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();
+<span class="keyword">var</span> now_date = now.getDate();
+<span class="keyword">var</span> now_month = now.getMonth();
+<span class="keyword">var</span> now_seconds = now.getSeconds();
+<span class="keyword">var</span> today_begin = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2015</span>,<span class="number">7</span>,<span class="number">21</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">123</span>);
+<span class="keyword">if</span>(now_month === <span class="number">7</span> &amp;&amp; now_date === <span class="number">20</span>) {
+    <span class="built_in">console</span>.log(setInterval(<span class="string">"sadness_calculate(sadness)"</span>,<span class="number">1000</span>));
+}
+<span class="function"><span class="keyword">function</span> <span class="title">sadness_calculate</span>(<span class="params">c</span>)</span>{
+    <span class="keyword">return</span> c++;
+}
+</code></pre>
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/工作/'>工作</a>
-                
-                <a data-pjax href='/tags/生活/'>生活</a>
-                
-                <a data-pjax href='/tags/随笔/'>随笔</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/08/10/article150810/">最近的感想</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-08-10T09:17:38.000Z"
-                      itemprop="datePublished">2015-08-10</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                最近的一段时间，特别是进工大物联网实验室软件组的这一段时间以来。虽然自己在各种情感和思想的烦扰中度过，不过也算是挺了过来，对前端开发有了一个新的认识和体验。现在基本上算是入门了。在没来这之前，我对前端的理解也仅仅局限在静态网页的html、css以及一些简单的js交互。在这一个月的实践中，跟着学长们做了一个实实在在的项目，逐渐明白了很多东西。比如前后台数据交互的流程，这个是最重要的东西。接下来便逐一说一下各个方面的进步以及感受。
-
-实验室
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/07/05/测试/">只是小测试一下</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-07-05T06:06:20.936Z"
-                      itemprop="datePublished">2015-07-05</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                博客刚上线，主题有点难看，哪天先找个好看的。等到技术成熟一点再自己做一个主题出来~~~
-
-                
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/07/05/hello-world/">博客一血就这么没了</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-07-05T05:46:53.645Z"
-                      itemprop="datePublished">2015-07-05</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                现在有点忙，先放这，下次再来写…
-
-                
-            </p>
+            <a class="share-button" data-original-title title>Share this Post</a>
             
+            <a data-pjax class="older-posts" href="/2015/08/10/article150810/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
 </main>
 
 

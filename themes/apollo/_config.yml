@@ -1,0 +1,20 @@
+menu:
+    Blog: /
+    Archive: /archives/
+    Weibo: http://weibo.com/shenggegege
+    GitHub: https://github.com/hentaicracker
+    Rss: /atom.xml
+
+favicon: /favicon.png
+logo: /favicon.png
+
+# Comment
+# e.g disqus: seansun
+duoshuo: Jason Chen
+
+# Analytics
+# google-analytics:
+ga: UA-65933410-1
+
+# Copyright Infomation
+startyear: 2016

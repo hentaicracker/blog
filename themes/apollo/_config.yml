@@ -5,8 +5,8 @@ menu:
     GitHub: https://github.com/hentaicracker
     Rss: /atom.xml
 
-favicon: /favicon.png
-logo: /favicon.png
+favicon: /favicon.ico
+logo: /blog.png
 
 # Comment
 # e.g disqus: seansun

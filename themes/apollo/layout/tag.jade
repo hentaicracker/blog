@@ -1,0 +1,15 @@
+extends partial/layout
+
+block site_title
+    != page.tag + " · " + config.title
+
+block container
+    include mixins/post
+    +tag()
+
+//- block pagination
+//-     include mixins/paginator
+//-     +home()
+
+block copyright
+    include partial/copyright

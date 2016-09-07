@@ -20,7 +20,7 @@ permalink_defaults:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
+tag_dir: tag
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
@@ -45,8 +45,8 @@ highlight:
 
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+category_map: category
+tag_map: tags
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -65,6 +65,15 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: apollo
 
+node_sass:
+    outputStyle: compressed
+    sourceComments: false
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 10
+
 # 在归档页面显示所有文章
 # 需要上面安装的 hexo-generator-archive 插件支持
 archive_generator:
@@ -72,6 +81,8 @@ archive_generator:
     yearly: false
     monthly: false
     daily: false
+tag_generator:
+    per_page: 0
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

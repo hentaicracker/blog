@@ -45,3 +45,23 @@ mixin post(item)
             +postInfo(item)
             .post-content
                 != item.content
+
+//- Tag Page
+mixin tag()
+    .archive
+        h3!= page.tag
+        - page.posts.each(function (item) {
+            .post-item
+                span
+                    != full_date(item.date, 'YYYY-MM-DD')
+                a.post-title-link(href= url_for(item.path), title=item.title)
+                    != (item.from ? '[译] ' : '[文] ') + item.title
+        - })
+
+//- Tags Index
+mixin tags()
+    #tagList.tag-list
+        - site.tags.each(function (tag) {
+            a.tag-link(href= url_for(tag.path), title=tag.name)
+                != tag.name + '  (' + tag.length + ')'
+        - })

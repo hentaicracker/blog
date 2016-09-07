@@ -1,6 +1,7 @@
 menu:
     Blog: /
     Archive: /archives/
+    Tags: /tag/
     Weibo: http://weibo.com/shenggegege
     GitHub: https://github.com/hentaicracker
     Rss: /atom.xml

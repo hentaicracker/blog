@@ -257,3 +257,24 @@ pre {
         opacity: 0.5;
     }
 }
+
+// tag
+.tag-list {
+    margin: 0 auto 20px;
+    max-width: 500px;
+    overflow: hidden;
+    
+    .tag-link {
+        float: left;
+        padding: 3px 10px;
+        margin: 10px;
+        border: 1px solid #42b983;
+        border-radius: 3px;
+        color: #666;
+        font-size: 14px;
+
+        &:hover {
+            color: #42b983;
+        }
+    }
+}

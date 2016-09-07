@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hentaicracker.com/"/>
-  <updated>2016-09-05T07:37:17.413Z</updated>
+  <updated>2016-09-07T13:02:36.722Z</updated>
   <id>http://hentaicracker.com/</id>
   
   <author>
@@ -16,29 +16,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://hentaicracker.com/2016/09/05/hello-world/"/>
-    <id>http://hentaicracker.com/2016/09/05/hello-world/</id>
-    <published>2016-09-05T07:37:17.413Z</published>
-    <updated>2016-09-05T07:37:17.413Z</updated>
+    <title>《乔布斯传》读后感</title>
+    <link href="http://hentaicracker.com/2016/09/07/hello-world/"/>
+    <id>http://hentaicracker.com/2016/09/07/hello-world/</id>
+    <published>2016-09-07T13:02:36.722Z</published>
+    <updated>2016-09-07T13:02:36.722Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>前不久，大概是一个月前。开始看《乔布斯传》。初从kindle上下载这本书的时候，并没有感觉它有多厚，然而等我看完后才发现我特么用了一个月的时间才把它看完。不过看完后的感受就是一个字，屌。</p>
+<p>首先先说几个大家都误会了的事情。</p>
+<ul>
+<li>乔布斯喜欢图灵，图灵因为性倾向问题被迫害于是咬了一口带剧毒的苹果自杀，乔布斯为了纪念他而设计了苹果logo被咬了一口。这个说法有理有据，我差点都信了。真实的情况是，乔布斯请了个搞设计的老司机给他设计公司的logo，老司机给了两种方案，一种是没被咬过的，还有种就是现在这样的，后来乔布斯觉得没被咬过的看起来像樱桃，于是就选了被咬过的。而且一开始苹果的logo是多种颜色拼在一起的。</li>
+<li>加州的法令规定，只要是全新的车子，在六个月内是不用挂牌照的，所以他每隔半年就换一辆新的奔驰。至于为什么不挂牌照，一种说法是他以前去办牌照的时候，给他办理牌照的工作人员办事太慢，导致他不满，于是从此不挂牌照。其实没这么复杂，就是有钱任性。他还有一个怪癖是总把车停在残障人士专用停车位。嗯，I服了You。</li>
+</ul>
+<p>嗯，先写到这。。。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;前不久，大概是一个月前。开始看《乔布斯传》。初从kindle上下载这本书的时候，并没有感觉它有多厚，然而等我看完后才发现我特么用了一个月的时间才把它看完。不过看完后的感受就是一个字，屌。&lt;/p&gt;
+&lt;p&gt;首先先说几个大家都误会了的事情。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;乔布斯喜欢图
     
     </summary>
     
+    
+      <category term="读书" scheme="http://hentaicracker.com/tag/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   

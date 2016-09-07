@@ -1,38 +1,13 @@
 ---
-title: Hello World
+title: '《乔布斯传》读后感'
+tags: 
+  - 读书
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
-## Quick Start
+前不久，大概是一个月前。开始看《乔布斯传》。初从kindle上下载这本书的时候，并没有感觉它有多厚，然而等我看完后才发现我特么用了一个月的时间才把它看完。不过看完后的感受就是一个字，屌。
 
-### Create a new post
+首先先说几个大家都误会了的事情。
+ - 乔布斯喜欢图灵，图灵因为性倾向问题被迫害于是咬了一口带剧毒的苹果自杀，乔布斯为了纪念他而设计了苹果logo被咬了一口。这个说法有理有据，我差点都信了。真实的情况是，乔布斯请了个搞设计的老司机给他设计公司的logo，老司机给了两种方案，一种是没被咬过的，还有种就是现在这样的，后来乔布斯觉得没被咬过的看起来像樱桃，于是就选了被咬过的。而且一开始苹果的logo是多种颜色拼在一起的。
+ - 加州的法令规定，只要是全新的车子，在六个月内是不用挂牌照的，所以他每隔半年就换一辆新的奔驰。至于为什么不挂牌照，一种说法是他以前去办牌照的时候，给他办理牌照的工作人员办事太慢，导致他不满，于是从此不挂牌照。其实没这么复杂，就是有钱任性。他还有一个怪癖是总把车停在残障人士专用停车位。嗯，I服了You。
 
-``` bash
-$ hexo new "My New Post"
-```
-
-More info: [Writing](https://hexo.io/docs/writing.html)
-
-### Run server
-
-``` bash
-$ hexo server
-```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
+嗯，先写到这。。。

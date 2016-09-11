@@ -5,6 +5,9 @@
   "hexo": {
     "version": "3.2.2"
   },
+  "scripts": {
+    "update": "git add --all && git commit -m 'update' && git pull origin master && git push origin master"
+  },
   "dependencies": {
     "hexo": "^3.2.0",
     "hexo-browsersync": "^0.2.0",

@@ -47,7 +47,7 @@ tags:
 
 - `chrome`，前端开发必备浏览器。
 
-- `iTerm3`，`MacOS`上第三方终端，加上`oh-my-zsh`，开发体验一级棒。
+- `iTerm2`，`MacOS`上第三方终端，加上`oh-my-zsh`，开发体验一级棒。
 
 - `Zeal`，API DOCS，linux上良心文档软件，完全免费，相比`MacOS`上的`Dash`就好多啦。不过`Dash`的logo要好看点。
 

@@ -21,8 +21,6 @@ tags:
 
 `Kindle paperwhite 3`，睡前阅读。
 
-`Apple watch series 2`，除了装逼外拿来记录骑行数据以及健康数据，防水简直不要太爽。
-
 啊，苹果装逼全家桶就只差一个`iPad pro`了。 （逃
 
 ## 软件呢
@@ -43,7 +41,7 @@ tags:
 
 - `Sublime text 3`，副编辑器，拿来看开发文档，看接口用。之前用的`Atom`，虽然很好用，缺点是太慢了。
 
-- `vim`，终端里修改文件时用。偶尔玩一玩，有买HHBK键盘的冲动。附上我的[vim配置](https://github.com/hentaicracker/.vimrc/blob/master/.vimrc)。
+- `vim`，终端里修改文件时用。偶尔玩一玩，有买HHKB键盘的冲动。附上我的[vim配置](https://github.com/hentaicracker/.vimrc/blob/master/.vimrc)。
 
 - `chrome`，前端开发必备浏览器。
 
@@ -77,7 +75,7 @@ tags:
 
 - `feedly`，rss订阅软件，免费的，很不错。
 
-- `Acfun`，基佬聚集地。
+- `Acfun`，AC基佬聚集地。
 
 ## 你最理想的工作环境是什么
 

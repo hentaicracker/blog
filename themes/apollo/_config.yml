@@ -1,11 +1,11 @@
 menu:
-    Blog: /
-    Archive: /archives/
-    Tags: /tag/
-    Weibo: http://weibo.com/shenggegege
+    博客: /
+    归档: /archives/
+    分类: /tag/
+    微博: http://weibo.com/shenggegege
     GitHub: https://github.com/hentaicracker
-    Rss: /atom.xml
-    ME: http://hentaicracker.github.io/share/aboutme.html
+    RSS订阅: /atom.xml
+    关于我: http://hentaicracker.github.io/share/aboutme.html
 
 favicon: /favicon.ico
 logo: /blog.png

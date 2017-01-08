@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>荒野大键客</title>
+  <title>陈俊生的正经博客</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hentaicracker.com/"/>
-  <updated>2016-12-31T09:23:25.000Z</updated>
+  <updated>2017-01-08T08:37:50.000Z</updated>
   <id>http://hentaicracker.com/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《You don&#39;t know JavaScirpt》</title>
+    <link href="http://hentaicracker.com/2017/01/08/ydkjs-1/"/>
+    <id>http://hentaicracker.com/2017/01/08/ydkjs-1/</id>
+    <published>2017-01-08T05:18:16.000Z</published>
+    <updated>2017-01-08T08:37:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Up-amp-Going"><a href="#Up-amp-Going" class="headerlink" title="Up &amp; Going"></a>Up &amp; Going</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你最近学的一个新东西是什么？</p>
+<p>也许是一门像意大利语或德语这样的外语，也许是一款图形编辑器，比如 Photoshop ，或者是一项烹饪技巧、木工以及日常训练。我想要你记住学习时刻的那种愉快的感觉。当事情从模糊变得清晰的时候，当你掌握了锯子或你明白了法语中男性的名词与女性的差别。感觉咋样？很爽是吧？</p>
+<p>现在我需要你重新回忆一下你学习新技能之前的那种感觉。可能有点略微胆怯或有点迷惑，对吧？在一开始的时候，我们都不知道那些我们现在知道的东西，这些都OK，我们总是从某一点开始。学习新的技能是一个激动人心的挑战，特别是你渴望快速学习一项主题的时候。</p>
+<p>我给很多初学者教了一些编码课程，那些上我课的学生经常通过阅读博客或复制粘贴代码来自学一些像是 HTML 或 JavaScript 的这样的语言，但是他们还没有真正的掌握那些能让他们写出想要的效果的学习资料。因为他们没有真正的抓住那些正确的输入输出，当他们不知道发生了什么的时候，他们就无法写出强大的代码或 debug 他们的代码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Up-amp-Going&quot;&gt;&lt;a href=&quot;#Up-amp-Going&quot; class=&quot;headerlink&quot; title=&quot;Up &amp;amp; Going&quot;&gt;&lt;/a&gt;Up &amp;amp; Going&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; cla
+    
+    </summary>
+    
+    
+      <category term="翻译" scheme="http://hentaicracker.com/tag/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2016 &amp; 2017</title>
     <link href="http://hentaicracker.com/2016/12/31/2016-12-31/"/>
     <id>http://hentaicracker.com/2016/12/31/2016-12-31/</id>
     <published>2016-12-31T09:18:54.000Z</published>
-    <updated>2016-12-31T09:23:25.000Z</updated>
+    <updated>2016-12-31T09:48:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>（语无伦次，慎重欣赏好文。）</p>
 <a id="more"></a>
@@ -38,7 +62,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;（语无伦次，慎重欣赏好文。）&lt;/p&gt;
+      2016总结 &amp; 2017展望
     
     </summary>
     

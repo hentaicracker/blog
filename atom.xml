@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hentaicracker.com/"/>
-  <updated>2017-01-08T08:37:50.000Z</updated>
+  <updated>2017-03-17T03:38:41.331Z</updated>
   <id>http://hentaicracker.com/</id>
   
   <author>
@@ -16,11 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript Tips</title>
+    <link href="http://hentaicracker.com/2017/03/17/jsTips/"/>
+    <id>http://hentaicracker.com/2017/03/17/jsTips/</id>
+    <published>2017-03-17T03:14:39.000Z</published>
+    <updated>2017-03-17T03:38:41.331Z</updated>
+    
+    <content type="html"><![CDATA[<p>总结一下在工作中经常遇到的一些js处理方法。</p>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deduped = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>,<span class="string">'a'</span> ].filter(<span class="function"><span class="keyword">function</span> (<span class="params">el, i, arr</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> arr.indexOf(el) === i;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(deduped); <span class="comment">// [ 1, 'a']</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deduped = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>,<span class="string">'a'</span> ].filter( (el, i, arr) =&gt; arr.indexOf(el) ===i );</div></pre></td></tr></table></figure>
+<h4 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h4><p>当元素为对象(Object)时，我们就不能用这种办法了， 因为对象存储的是引用而原始变量存储的是值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; a: <span class="number">1</span> &#125; === &#123; a: <span class="number">1</span> &#125; <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dedup</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span> hashTable = &#123;&#125;;</div><div class="line">     <span class="keyword">return</span> arr. filter(<span class="function"><span class="keyword">function</span>(<span class="params">el</span>) </span>&#123;</div><div class="line">          <span class="keyword">var</span> key = <span class="built_in">JSON</span>.stringify(el);</div><div class="line">          <span class="keyword">var</span> match = <span class="built_in">Boolean</span>(hashTable[key]);</div><div class="line">          <span class="keyword">return</span> (match ? <span class="literal">false</span> : hashTable[key] = <span class="literal">true</span>);</div><div class="line">     &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> deduped = dedup([</div><div class="line">        &#123; a: <span class="number">1</span> &#125;,</div><div class="line">        &#123; a: <span class="number">1</span> &#125;,</div><div class="line">        [ <span class="number">1</span>, <span class="number">2</span> ],</div><div class="line">        [ <span class="number">1</span>, <span class="number">2</span> ]</div><div class="line">]);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(deduped); <span class="comment">// [ &#123;a: 1&#125;, [1, 2] ]</span></div></pre></td></tr></table></figure>
+<h3 id="多维数组扁平化"><a href="#多维数组扁平化" class="headerlink" title="多维数组扁平化"></a>多维数组扁平化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myArray = [[<span class="number">1</span>, <span class="number">2</span>],[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]];</div><div class="line"><span class="comment">// 期望值[1, 2, 3, 4, 5, 6, 7, 8, 9]</span></div></pre></td></tr></table></figure>
+<h4 id="使用concat-和apply"><a href="#使用concat-和apply" class="headerlink" title="使用concat()和apply()"></a>使用concat()和apply()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArray = [].concat.apply([], myArray);</div></pre></td></tr></table></figure>
+<h4 id="使用reduce"><a href="#使用reduce" class="headerlink" title="使用reduce()"></a>使用reduce()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArray = myArray.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev, curr</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> prev.concat(curr);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArray = [];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; myArray.length; ++i) &#123;</div><div class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; myArray.length; ++j) &#123;</div><div class="line">          newArray.push(myArray[i][j]);</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="ES6展开符"><a href="#ES6展开符" class="headerlink" title="ES6展开符"></a>ES6展开符</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArray = [].concat(...myArray);</div></pre></td></tr></table></figure>
+<h3 id="数组平均值-amp-amp-中位数"><a href="#数组平均值-amp-amp-中位数" class="headerlink" title="数组平均值&amp;&amp;中位数"></a>数组平均值&amp;&amp;中位数</h3><h4 id="平均值"><a href="#平均值" class="headerlink" title="平均值"></a>平均值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> values = [<span class="number">2</span>, <span class="number">56</span>, <span class="number">3</span>, <span class="number">41</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">100</span>, <span class="number">23</span>];</div><div class="line"><span class="keyword">let</span> sum = values.reduce((prev, curr) =&gt; curr += prev);</div><div class="line"><span class="keyword">let</span> avg = sum / values.length;</div><div class="line"><span class="comment">// avg = 28</span></div></pre></td></tr></table></figure>
+<h4 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> values = [<span class="number">2</span>, <span class="number">56</span>, <span class="number">3</span>, <span class="number">41</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">100</span>, <span class="number">23</span>];</div><div class="line">values.sort((a, b) =&gt; a - b);</div><div class="line"><span class="keyword">let</span> lowMiddle = <span class="built_in">Math</span>.floor((values.length - <span class="number">1</span>) / <span class="number">2</span>);</div><div class="line"><span class="keyword">let</span> highMiddle = <span class="built_in">Math</span>.ceil((values.length - <span class="number">1</span>) / <span class="number">2</span>);</div><div class="line"><span class="keyword">let</span> median = (values[lowMiddle] + values[highMiddle]) / <span class="number">2</span>;</div><div class="line"><span class="comment">// median = 13.5</span></div></pre></td></tr></table></figure>
+<p>如果是对象的话，JavaScript将引用按值传递。</p>
+<h3 id="JS监听document是否加载完成"><a href="#JS监听document是否加载完成" class="headerlink" title="JS监听document是否加载完成"></a>JS监听document是否加载完成</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.readyState === <span class="string">'complete'</span>) &#123;</div><div class="line">     <span class="comment">// 页面已完全加载</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用document.readyState === ‘interactive’监听DOM是否加载完成。</p>
+<h3 id="判断数据元素是否重复"><a href="#判断数据元素是否重复" class="headerlink" title="判断数据元素是否重复"></a>判断数据元素是否重复</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isRepeat = <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">     <span class="keyword">var</span> hash = &#123;&#125;;</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</div><div class="line">          <span class="keyword">if</span>(hash[arr[i]]) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">          hash[arr[i]] = <span class="literal">true</span>;</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="生成随机数"><a href="#生成随机数" class="headerlink" title="生成随机数"></a>生成随机数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">randombetween</span>(<span class="params">min, max</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> min + (<span class="built_in">Math</span>.random() * (max - min + <span class="number">1</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="javascript对象浅拷贝-amp-深拷贝"><a href="#javascript对象浅拷贝-amp-深拷贝" class="headerlink" title="javascript对象浅拷贝&amp;深拷贝"></a>javascript对象浅拷贝&amp;深拷贝</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> obj = &#123; a: <span class="number">1</span>, b: &#123; c: <span class="number">2</span>&#125; &#125;;</div><div class="line">    <span class="keyword">var</span> copy = <span class="built_in">Object</span>.assign(&#123;&#125;, obj);  <span class="comment">// 拷贝源对象自身的并且可枚举的属性</span></div><div class="line">    <span class="built_in">console</span>.log(copy);      <span class="comment">// &#123; a: 1, b: &#123; c: 2&#125; &#125;</span></div><div class="line">    <span class="keyword">var</span> deepCopy = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</div><div class="line">    copy.a = <span class="number">2</span>;</div><div class="line">    copy.b.c = <span class="number">3</span>;</div><div class="line">    <span class="built_in">console</span>.log(obj);       <span class="comment">// &#123; a: 1, b: &#123; c: 3&#125; &#125;</span></div><div class="line">    <span class="built_in">console</span>.log(copy);      <span class="comment">// &#123; a: 2, b: &#123; c: 3&#125; &#125;</span></div><div class="line">    <span class="built_in">console</span>.log(deepCopy);  <span class="comment">// &#123; a: 1, b: &#123; c: 2&#125; &#125;</span></div><div class="line">    deepCopy.a = <span class="number">4</span>;</div><div class="line">    deepCopy.b.c = <span class="number">5</span>;</div><div class="line">    <span class="built_in">console</span>.log(obj);       <span class="comment">// &#123; a: 1, b: &#123; c: 3&#125; &#125;</span></div><div class="line">    <span class="built_in">console</span>.log(copy);      <span class="comment">// &#123; a: 2, b: &#123; c: 3&#125; &#125;</span></div><div class="line">    <span class="built_in">console</span>.log(deepCopy);  <span class="comment">// &#123; a: 4, b: &#123; c: 5&#125; &#125;</span></div><div class="line">&#125;());</div></pre></td></tr></table></figure>
+<h3 id="判断变量是否为数组"><a href="#判断变量是否为数组" class="headerlink" title="判断变量是否为数组"></a>判断变量是否为数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// es5方法 Array.prototype.isArray();</span></div><div class="line"></div><div class="line"><span class="comment">// 通用判断类型方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(arr) === <span class="string">'[object Array]'</span>;</div><div class="line">     <span class="comment">// [[NativeBrand]]内部属性的值一共有十几种.分别是:"Array", "Boolean", "Date", "Error", "Function", "Math", "Number", "Object", "RegExp", "String","JSON","Arguments". // es6: "Map","Set","Symbol"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="生成随机数-1"><a href="#生成随机数-1" class="headerlink" title="生成随机数"></a>生成随机数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(a) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rank</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(!isArray(arr)) <span class="keyword">return</span>;</div><div class="line">  <span class="keyword">return</span> arr.sort(() =&gt; <span class="number">0.5</span> - <span class="built_in">Math</span>.random());</div><div class="line">&#125;</div><div class="line">rank([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;总结一下在工作中经常遇到的一些js处理方法。&lt;/p&gt;
+&lt;h3 id=&quot;数组去重&quot;&gt;&lt;a href=&quot;#数组去重&quot; class=&quot;headerlink&quot; title=&quot;数组去重&quot;&gt;&lt;/a&gt;数组去重&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; deduped = [ &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt; ].filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;el, i, arr&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; arr.indexOf(el) === i;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(deduped); &lt;span class=&quot;comment&quot;&gt;// [ 1, &#39;a&#39;]&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://hentaicracker.com/tag/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《You don&#39;t know JavaScirpt》</title>
     <link href="http://hentaicracker.com/2017/01/08/ydkjs-1/"/>
     <id>http://hentaicracker.com/2017/01/08/ydkjs-1/</id>
     <published>2017-01-08T05:18:16.000Z</published>
-    <updated>2017-01-08T08:37:50.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Up-amp-Going"><a href="#Up-amp-Going" class="headerlink" title="Up &amp; Going"></a>Up &amp; Going</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你最近学的一个新东西是什么？</p>
 <p>也许是一门像意大利语或德语这样的外语，也许是一款图形编辑器，比如 Photoshop ，或者是一项烹饪技巧、木工以及日常训练。我想要你记住学习时刻的那种愉快的感觉。当事情从模糊变得清晰的时候，当你掌握了锯子或你明白了法语中男性的名词与女性的差别。感觉咋样？很爽是吧？</p>
@@ -44,7 +86,7 @@
     <link href="http://hentaicracker.com/2016/12/31/2016-12-31/"/>
     <id>http://hentaicracker.com/2016/12/31/2016-12-31/</id>
     <published>2016-12-31T09:18:54.000Z</published>
-    <updated>2016-12-31T09:48:45.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<p>（语无伦次，慎重欣赏好文。）</p>
 <a id="more"></a>
@@ -76,7 +118,7 @@
     <link href="http://hentaicracker.com/2016/11/16/2016-11-16/"/>
     <id>http://hentaicracker.com/2016/11/16/2016-11-16/</id>
     <published>2016-11-16T12:13:30.000Z</published>
-    <updated>2016-12-05T12:28:31.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><p>有几个教师皱着眉头，那记录的女生涨红脸停笔不写，仿佛听了渐鸿最后的一句，处女的耳朵已经当众丧失贞操。</p>
@@ -144,7 +186,7 @@
     <link href="http://hentaicracker.com/2016/10/29/2016-10-29/"/>
     <id>http://hentaicracker.com/2016/10/29/2016-10-29/</id>
     <published>2016-10-29T02:19:21.000Z</published>
-    <updated>2016-11-16T12:51:59.000Z</updated>
+    <updated>2017-01-09T11:11:09.044Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><p>谁的裤裆开了，露出这么个东西来？</p>
@@ -204,7 +246,7 @@
     <link href="http://hentaicracker.com/2016/10/13/liqi/"/>
     <id>http://hentaicracker.com/2016/10/13/liqi/</id>
     <published>2016-10-13T01:34:13.000Z</published>
-    <updated>2016-11-16T12:59:11.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<h2 id="介绍一下你自己和所做的工作"><a href="#介绍一下你自己和所做的工作" class="headerlink" title="介绍一下你自己和所做的工作"></a>介绍一下你自己和所做的工作</h2><p>我是<strong>陈俊生</strong>，是一名刚刚毕业努力为祖国社会主义而奋斗的前端工程师，坐标深圳。</p>
 <a id="more"></a>
@@ -291,7 +333,7 @@
     <link href="http://hentaicracker.com/2016/09/21/2016-09-21/"/>
     <id>http://hentaicracker.com/2016/09/21/2016-09-21/</id>
     <published>2016-09-21T12:16:55.000Z</published>
-    <updated>2016-09-25T12:19:12.000Z</updated>
+    <updated>2016-09-22T13:03:09.097Z</updated>
     
     <content type="html"><![CDATA[<p>工作快三个月了，今天进行了转正答辩。不出意外我应该会留在<code>爱吃吧</code>继续工作。这段时间最大的收获就是学到了很多技术上的东西。特别是理解了<code>NodeJS</code>做为一个中间层服务器的作用…</p>
 <p>今天不聊技术Orz。</p>
@@ -322,7 +364,7 @@
     <link href="http://hentaicracker.com/2016/09/07/hello-world/"/>
     <id>http://hentaicracker.com/2016/09/07/hello-world/</id>
     <published>2016-09-07T12:47:36.000Z</published>
-    <updated>2016-09-11T06:32:43.000Z</updated>
+    <updated>2016-09-19T12:27:12.822Z</updated>
     
     <content type="html"><![CDATA[<p>前不久，大概是一个月前。开始看《乔布斯传》。初从<code>kindle</code>上下载这本书的时候，并没有感觉它有多厚，然而等我看完后才发现我特么用了一个月的时间才把它看完。不过看完后的感受就是一个字，屌。</p>
 <p><img src="/img/steve-jobs.jpg" alt="Steve Jobs"></p>
@@ -369,7 +411,7 @@
     <link href="http://hentaicracker.com/2016/04/23/2016-04-23/"/>
     <id>http://hentaicracker.com/2016/04/23/2016-04-23/</id>
     <published>2016-04-23T07:47:36.000Z</published>
-    <updated>2016-09-08T14:25:28.000Z</updated>
+    <updated>2016-09-07T07:48:03.190Z</updated>
     
     <content type="html"><![CDATA[<p>从滴答清单实习回学校后就一直呆在实验室里。实验室的氛围真是相当不错。感觉已经爱上这里2333。每天朝九晚十一，回去了一群程序猿还组队跑步。</p>
 <a id="more"></a>

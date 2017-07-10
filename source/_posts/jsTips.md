@@ -7,6 +7,8 @@ tags:
 
 总结一下在工作中经常遇到的一些js处理方法。
 
+<!-- more -->
+
 ### 数组去重
 
 ```javascript
@@ -16,7 +18,7 @@ var deduped = [ 1, 1, 'a','a' ].filter(function (el, i, arr) {
 
 console.log(deduped); // [ 1, 'a']
 ```
-<!-- more -->
+
 #### es6
 ```javascript
 var deduped = [ 1, 1, 'a','a' ].filter( (el, i, arr) => arr.indexOf(el) ===i );

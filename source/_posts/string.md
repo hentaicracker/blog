@@ -11,7 +11,7 @@ tags:
 
 ### ES5
 
-#### toString(): string;
+- #### toString(): string;
 
 String 对象覆盖了 Object 对象的 toString 方法,该方法返回该对象的字符串形式,和 String.prototype.valueOf() 方法返回值一样.
 
@@ -20,7 +20,7 @@ var str = new String('something');
 str.toString(); // 'something'
 ```
 
-#### charAt(pos: number): string;
+- #### charAt(pos: number): string;
 
 charAt 方法返回一个字符串中指定的字符.
 
@@ -29,7 +29,7 @@ var str = new String('something');
 str.charAt(0); // 's'
 ```
 
-#### charCodeAt(index: number): number;
+- #### charCodeAt(index: number): number;
 
 charCodeAt 方法返回给定索引处字符的 UTF-16 代码单元值的数字；如果索引超出范围,则返回 NaN.
 
@@ -39,7 +39,7 @@ str.charCodeAt(0); // 115, 's'的 unicode 值.
 str.charCodeAt(9); // NaN
 ```
 
-#### concat(...strings: string[]): string;
+- #### concat(...strings: string[]): string;
 
 concat 方法将一个或多个字符串与原字符串连接合并，并返回一个新的字符串。concat 方法并不影响原字符串。
 
@@ -50,7 +50,7 @@ str; // 'something'
 ```
 尽量使用 + 赋值操作符代替 concat 方法以提高性能.
 
-#### indexOf(searchString: string, position?: number): number;
+- #### indexOf(searchString: string, position?: number): number;
 
 indexOf 方法返回调用 String 对象中第一次出现的指定值的索引，从 position 开始**从左向右**进行搜索。
 
@@ -67,11 +67,11 @@ str.indexOf('', 8); // 8
 str.indexOf('', 9); // 9, 如果 position >= str.length,且被查找的字符串是一个空字符串，此时返回 str.length
 str.indexOf('', 10); // 9
 ```
-#### lastIndexOf(searchString: string, position?: number): number;
+- #### lastIndexOf(searchString: string, position?: number): number;
 
 lastIndexOf 方法返回调用 String 对象中最后一次出现的指定值的索引，从 position 开始**从右向左**进行搜索。行为和 indexOf 方法一致.
 
-#### localeCompare(that: string): number;
+- #### localeCompare(that: string): number;
 
 localeCompare 方法返回一个数字表示是否 引用字符串 在排序中位于 比较字符串 的前面，后面，或者二者相同。
 
@@ -88,7 +88,7 @@ str.localeCompare('yes'); // -2 or -1
 str.localeCompare('something'); // 0
 ```
 
-#### match(regexp: string | RegExp): RegExpMatchArray | null;
+- #### match(regexp: string | RegExp): RegExpMatchArray | null;
 
 match 方法检索匹配 regexp 的项,如果 regexp 是一个非正则表达式对象,则会隐式地使用 new RegExp(regexp) 将其转换为一个 RegExp .如果没有匹配项,返回 null .
 
@@ -101,8 +101,8 @@ str.match(/oo/); // null
 str.match(); // [""]
 ```
 
-#### replace(searchValue: string | RegExp, replaceValue: string): string;
-#### replace(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string;
+- #### replace(searchValue: string | RegExp, replaceValue: string): string;
+- #### replace(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string;
 
 replace 方法返回一个由 replaceValue 替换匹配 searchValue 的一些值后的新字符串.
 
@@ -149,7 +149,7 @@ str.replace(/(lo)|(ld)/g, function(match, p1, p2) {
 // "hel1 wor2", 全局匹配, replacer 被调用了两次.
 ```
 
-#### split(separator: string | RegExp, limit?: number): string[];
+- #### split(separator: string | RegExp, limit?: number): string[];
 
 split 方法将一个String对象分割成字符串数组，将字符串分成子串.
 
@@ -165,7 +165,7 @@ str.split(/(o)/); // ["hell", "o", " w", "o", "rld"], 存在捕获括号时,匹�
 str; // 'hello world'
 ```
 
-#### slice(start?: number, end?: number): string;
+- #### slice(start?: number, end?: number): string;
 
 slice 方法从一个字符串中**从左向右**提取字符串并返回新的字符串,不会改变原字符串.
 
@@ -183,7 +183,7 @@ str.slice('a'); // "hello world", start 会强制转换为数字, 这里等同�
 str.slice('5'); // " world"
 ```
 
-#### substring(start: number, end?: number): string;
+- #### substring(start: number, end?: number): string;
 
 substring 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集.类似 slice 方法,略有不同.
 
@@ -199,7 +199,7 @@ str.substring(-1, -4); // "", 如果任一参数小于 0 或为 NaN，则被当�
 str; // "hello world"
 ```
 
-#### substr(from: number, length?: number): string;
+- #### substr(from: number, length?: number): string;
 
 substr 方法和 slice 方法类似,区别是 substr 第二个参数是指截取的长度.此方法不兼容上古 IE .
 
@@ -215,18 +215,18 @@ str.substr(-20, -1); // "", length 为 0 或 -1 则返回一个空字符串.
 str; // "hello world"
 ```
 
-#### toLowerCase(): string;
-#### toUpperCase(): string;
+- #### toLowerCase(): string;
+- #### toUpperCase(): string;
 
 toLowerCase 方法转小写, toUpperCase 转大写.
 
-#### trim(): string;
+- #### trim(): string;
 
 trim 方法删除一个字符串的两端空白符,返回一个新的字符串,不会影响原字符串.
 
 ### ES6
 
-#### includes(searchString: string, position?: number): boolean;
+- #### includes(searchString: string, position?: number): boolean;
 
 includes 方法判断 searchString 是否存在于原字符串中.区分大小写.
 
@@ -237,7 +237,7 @@ str.includes('he')；// true
 str.includes('he', 1); // false, 从第二个位置开始找
 ```
 
-#### startsWith(searchString: string, position?: number): boolean;
+- #### startsWith(searchString: string, position?: number): boolean;
 
 startsWith 方法判断 searchString 是否是给定字符串为开头的.
 
@@ -248,7 +248,7 @@ str.startsWith('hello')；// true
 str.startsWith('world', 6); // true
 ```
 
-#### repeat(count: number): string;
+- #### repeat(count: number): string;
 
 repeat 方法返回一个被连接在一起的指定数量(count)的字符串的副本.
 

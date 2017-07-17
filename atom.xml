@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hentaicracker.com/"/>
-  <updated>2017-03-17T03:38:41.331Z</updated>
+  <updated>2017-07-11T08:28:23.421Z</updated>
   <id>http://hentaicracker.com/</id>
   
   <author>
@@ -16,15 +16,143 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>String 踩坑</title>
+    <link href="http://hentaicracker.com/2017/07/10/string/"/>
+    <id>http://hentaicracker.com/2017/07/10/string/</id>
+    <published>2017-07-10T02:30:15.000Z</published>
+    <updated>2017-07-11T08:28:23.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>整理 String 实例方法以及一些需要注意的点.</p>
+<a id="more"></a>
+<h3 id="ES5"><a href="#ES5" class="headerlink" title="ES5"></a>ES5</h3><ul>
+<li><h4 id="toString-string"><a href="#toString-string" class="headerlink" title="toString(): string;"></a>toString(): string;</h4></li>
+</ul>
+<p>String 对象覆盖了 Object 对象的 toString 方法,该方法返回该对象的字符串形式,和 String.prototype.valueOf() 方法返回值一样.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.toString(); <span class="comment">// 'something'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="charAt-pos-number-string"><a href="#charAt-pos-number-string" class="headerlink" title="charAt(pos: number): string;"></a>charAt(pos: number): string;</h4></li>
+</ul>
+<p>charAt 方法返回一个字符串中指定的字符.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.charAt(<span class="number">0</span>); <span class="comment">// 's'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="charCodeAt-index-number-number"><a href="#charCodeAt-index-number-number" class="headerlink" title="charCodeAt(index: number): number;"></a>charCodeAt(index: number): number;</h4></li>
+</ul>
+<p>charCodeAt 方法返回给定索引处字符的 UTF-16 代码单元值的数字；如果索引超出范围,则返回 NaN.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.charCodeAt(<span class="number">0</span>); <span class="comment">// 115, 's'的 unicode 值.</span></div><div class="line">str.charCodeAt(<span class="number">9</span>); <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="concat-…strings-string-string"><a href="#concat-…strings-string-string" class="headerlink" title="concat(…strings: string[]): string;"></a>concat(…strings: string[]): string;</h4></li>
+</ul>
+<p>concat 方法将一个或多个字符串与原字符串连接合并，并返回一个新的字符串。concat 方法并不影响原字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.concat(<span class="string">' is'</span>, <span class="string">' wrong'</span>); <span class="comment">// 'something is wrong'.</span></div><div class="line">str; <span class="comment">// 'something'</span></div></pre></td></tr></table></figure>
+<p>尽量使用 + 赋值操作符代替 concat 方法以提高性能.</p>
+<ul>
+<li><h4 id="indexOf-searchString-string-position-number-number"><a href="#indexOf-searchString-string-position-number-number" class="headerlink" title="indexOf(searchString: string, position?: number): number;"></a>indexOf(searchString: string, position?: number): number;</h4></li>
+</ul>
+<p>indexOf 方法返回调用 String 对象中第一次出现的指定值的索引，从 position 开始<strong>从左向右</strong>进行搜索。</p>
+<p>如果未找到该值，则返回-1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.indexOf(<span class="string">'some'</span>); <span class="comment">// 0</span></div><div class="line">str.indexOf(<span class="string">'Some'</span>); <span class="comment">// -1, 区分大小写</span></div><div class="line">str.indexOf(<span class="string">'me'</span>, <span class="number">0</span>); <span class="comment">// 2</span></div><div class="line">str.indexOf(<span class="string">'me'</span>, <span class="number">5</span>); <span class="comment">// -1</span></div><div class="line">str.indexOf(<span class="string">'me'</span>, <span class="number">-1</span>); <span class="comment">// 2, 如果 position &lt; 0 则查找整个字符串（如同传进了 0）</span></div><div class="line">str.indexOf(<span class="string">''</span>, <span class="number">8</span>); <span class="comment">// 8</span></div><div class="line">str.indexOf(<span class="string">''</span>, <span class="number">9</span>); <span class="comment">// 9, 如果 position &gt;= str.length,且被查找的字符串是一个空字符串，此时返回 str.length</span></div><div class="line">str.indexOf(<span class="string">''</span>, <span class="number">10</span>); <span class="comment">// 9</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="lastIndexOf-searchString-string-position-number-number"><a href="#lastIndexOf-searchString-string-position-number-number" class="headerlink" title="lastIndexOf(searchString: string, position?: number): number;"></a>lastIndexOf(searchString: string, position?: number): number;</h4></li>
+</ul>
+<p>lastIndexOf 方法返回调用 String 对象中最后一次出现的指定值的索引，从 position 开始<strong>从右向左</strong>进行搜索。行为和 indexOf 方法一致.</p>
+<ul>
+<li><h4 id="localeCompare-that-string-number"><a href="#localeCompare-that-string-number" class="headerlink" title="localeCompare(that: string): number;"></a>localeCompare(that: string): number;</h4></li>
+</ul>
+<p>localeCompare 方法返回一个数字表示是否 引用字符串 在排序中位于 比较字符串 的前面，后面，或者二者相同。</p>
+<ul>
+<li><p>当 引用字符串 在 比较字符串 前面时返回 -1</p>
+</li>
+<li><p>当 引用字符串 在 比较字符串 后面时返回 1</p>
+</li>
+<li><p>相同位置时返回 0</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'something'</span>);</div><div class="line">str.localeCompare(<span class="string">'a'</span>); <span class="comment">// 2 or 1, 不同浏览器可能返回不同的值.</span></div><div class="line">str.localeCompare(<span class="string">'yes'</span>); <span class="comment">// -2 or -1</span></div><div class="line">str.localeCompare(<span class="string">'something'</span>); <span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="match-regexp-string-RegExp-RegExpMatchArray-null"><a href="#match-regexp-string-RegExp-RegExpMatchArray-null" class="headerlink" title="match(regexp: string | RegExp): RegExpMatchArray | null;"></a>match(regexp: string | RegExp): RegExpMatchArray | null;</h4></li>
+</ul>
+<p>match 方法检索匹配 regexp 的项,如果 regexp 是一个非正则表达式对象,则会隐式地使用 new RegExp(regexp) 将其转换为一个 RegExp .如果没有匹配项,返回 null .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.match(<span class="regexp">/o/</span>); <span class="comment">// ["o", index: 4, input: "hello world"], 没有 g 标志,返回和 RegExp.exec() 相同的结果</span></div><div class="line">str.match(<span class="string">'o'</span>); <span class="comment">// ["o", index: 4, input: "hello world"]</span></div><div class="line">str.match(<span class="regexp">/o/g</span>); <span class="comment">// ["o", "o"], 有 g 标志,返回一个 Array.</span></div><div class="line">str.match(<span class="regexp">/oo/</span>); <span class="comment">// null</span></div><div class="line">str.match(); <span class="comment">// [""]</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="replace-searchValue-string-RegExp-replaceValue-string-string"><a href="#replace-searchValue-string-RegExp-replaceValue-string-string" class="headerlink" title="replace(searchValue: string | RegExp, replaceValue: string): string;"></a>replace(searchValue: string | RegExp, replaceValue: string): string;</h4></li>
+<li><h4 id="replace-searchValue-string-RegExp-replacer-substring-string-…args-any-gt-string-string"><a href="#replace-searchValue-string-RegExp-replacer-substring-string-…args-any-gt-string-string" class="headerlink" title="replace(searchValue: string | RegExp, replacer: (substring: string, …args: any[]) =&gt; string): string;"></a>replace(searchValue: string | RegExp, replacer: (substring: string, …args: any[]) =&gt; string): string;</h4></li>
+</ul>
+<p>replace 方法返回一个由 replaceValue 替换匹配 searchValue 的一些值后的新字符串.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Hello World'</span>);</div><div class="line">str.replace(<span class="regexp">/world/i</span>, <span class="string">'Chen'</span>); <span class="comment">// 'Hello Chen', i标志,不区分大小写</span></div><div class="line">str; <span class="comment">// 'Hello World'</span></div><div class="line">str.replace(); <span class="comment">// 'Hello World'</span></div><div class="line">str.replace(<span class="regexp">/world/</span>,<span class="string">'$$'</span>); <span class="comment">// "hello $", $$,特殊变量,插入一个'$'.</span></div><div class="line">str.replace(<span class="regexp">/world/</span>,<span class="string">'$&amp;'</span>); <span class="comment">// "hello world", $&amp;,特殊变量,插入匹配的子串</span></div><div class="line">str.replace(<span class="regexp">/world/</span>,<span class="string">'$`'</span>); <span class="comment">// "hello hello ", $`,特殊变量,插入当前匹配的子串左边的内容</span></div><div class="line">str.replace(<span class="regexp">/world/</span>,<span class="string">"$'"</span>); <span class="comment">// "hello ", $',特殊变量,插入当前匹配的子串右边的内容</span></div><div class="line">str.replace(<span class="regexp">/(\w+)\s(\w+)/</span>,<span class="string">"$2 $1"</span>); <span class="comment">// "world hello", $n,特殊变量,假如第一个参数是 RegExp对象，并且 n 是个小于100的非负整数，那么插入第 n 个括号匹配的字符串</span></div></pre></td></tr></table></figure>
+<p>replace 方法还可以指定一个函数作为第二个参数.当匹配执行后,该函数就会执行.(特殊变量不能在函数里使用),如果第一个参数是正则表达式,且为全局匹配(g)模式,那这个方法将多次被调用,每次匹配都会被调用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.replace(<span class="regexp">/(l)(o)/</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, p1,p2,offset,string</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(match); <span class="comment">// 'lo', 匹配项</span></div><div class="line">	<span class="built_in">console</span>.log(p1); <span class="comment">// 'l',正则表达式第一个括号匹配的内容</span></div><div class="line">	<span class="built_in">console</span>.log(p2); <span class="comment">// 'o',正则表达式第二个括号匹配的内容</span></div><div class="line">	<span class="built_in">console</span>.log(offset); <span class="comment">// 3,匹配项在原字符串的偏移量</span></div><div class="line">	<span class="built_in">console</span>.log(string); <span class="comment">// 'hello world',原字符串</span></div><div class="line">&#125;); <span class="comment">// 'helundefined world', 函数没有返回值,所以返回 undefined 插入到匹配项.</span></div><div class="line"></div><div class="line">str.replace(<span class="regexp">/(l)(o)/</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, p1,p2</span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> [p1, p2].join(<span class="string">'-'</span>);</div><div class="line">&#125;); <span class="comment">// "hell-o world"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line">str.replace(<span class="regexp">/(lo)|(ld)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, p1, p2</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(match); </div><div class="line">	<span class="keyword">if</span>(p1) <span class="built_in">console</span>.log(p1); </div><div class="line">	<span class="keyword">if</span>(p2) <span class="built_in">console</span>.log(p2);</div><div class="line">    count++;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;count&#125;</span>`</span>;</div><div class="line">&#125;); </div><div class="line"><span class="comment">// "lo", match</span></div><div class="line"><span class="comment">// "lo", p1</span></div><div class="line"><span class="comment">// "ld", match</span></div><div class="line"><span class="comment">// "ld", p2</span></div><div class="line"><span class="comment">// "hel1 wor2", 全局匹配, replacer 被调用了两次.</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="split-separator-string-RegExp-limit-number-string"><a href="#split-separator-string-RegExp-limit-number-string" class="headerlink" title="split(separator: string | RegExp, limit?: number): string[];"></a>split(separator: string | RegExp, limit?: number): string[];</h4></li>
+</ul>
+<p>split 方法将一个String对象分割成字符串数组，将字符串分成子串.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.split(); <span class="comment">// ["hello world"]</span></div><div class="line">str.split(<span class="string">''</span>); <span class="comment">// ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]</span></div><div class="line">str.split(<span class="string">''</span>, <span class="number">5</span>); <span class="comment">// ["h", "e", "l", "l", "o"]</span></div><div class="line">str.split(<span class="string">' '</span>); <span class="comment">// ["hello", "world"]</span></div><div class="line">str.split(<span class="string">'l'</span>); <span class="comment">// ["he", "", "o wor", "d"], 如果满足分割规则的两个部分紧邻着（即中间没有其他字符），则返回数组之中会有一个空字符串.</span></div><div class="line">str.split(<span class="regexp">/o/</span>); <span class="comment">// ["hell", " w", "rld"]</span></div><div class="line">str.split(<span class="regexp">/(o)/</span>); <span class="comment">// ["hell", "o", " w", "o", "rld"], 存在捕获括号时,匹配结果会包含在返回的数组中.</span></div><div class="line">str; <span class="comment">// 'hello world'</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="slice-start-number-end-number-string"><a href="#slice-start-number-end-number-string" class="headerlink" title="slice(start?: number, end?: number): string;"></a>slice(start?: number, end?: number): string;</h4></li>
+</ul>
+<p>slice 方法从一个字符串中<strong>从左向右</strong>提取字符串并返回新的字符串,不会改变原字符串.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.slice(); <span class="comment">// "hello world"</span></div><div class="line">str.slice(<span class="number">1</span>); <span class="comment">// "ello world"</span></div><div class="line">str.slice(<span class="number">-1</span>); <span class="comment">// "d"</span></div><div class="line">str.slice(<span class="number">1</span>,<span class="number">4</span>); <span class="comment">// "ell"</span></div><div class="line">str.slice(<span class="number">1</span>,<span class="number">-4</span>); <span class="comment">// "ello w", 从第二个字符到倒数第五个</span></div><div class="line">str.slice(<span class="number">-6</span>,<span class="number">-4</span>); <span class="comment">// " w", 从倒数第七个字符开始到倒数第五个</span></div><div class="line">str.slice(<span class="number">-1</span>,<span class="number">4</span>); <span class="comment">// ""</span></div><div class="line">str; <span class="comment">// "hello world"</span></div><div class="line">str.slice(<span class="string">'a'</span>); <span class="comment">// "hello world", start 会强制转换为数字, 这里等同于 str.slice(NaN)</span></div><div class="line">str.slice(<span class="string">'5'</span>); <span class="comment">// " world"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="substring-start-number-end-number-string"><a href="#substring-start-number-end-number-string" class="headerlink" title="substring(start: number, end?: number): string;"></a>substring(start: number, end?: number): string;</h4></li>
+</ul>
+<p>substring 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集.类似 slice 方法,略有不同.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.substring(); <span class="comment">// "hello world"</span></div><div class="line">str.substring(<span class="number">1</span>); <span class="comment">// "ello world"</span></div><div class="line">str.substring(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">// "", 如果 start 等于 end, 返回一个空字符串</span></div><div class="line">str.substring(<span class="number">-1</span>); <span class="comment">// "hello world"</span></div><div class="line">str.substring(<span class="number">1</span>,<span class="number">4</span>); <span class="comment">// "ell"</span></div><div class="line">str.substring(<span class="number">4</span>,<span class="number">1</span>); <span class="comment">// "ell", == str.substring(1, 4)</span></div><div class="line">str.substring(<span class="number">-1</span>, <span class="number">-4</span>); <span class="comment">// "", 如果任一参数小于 0 或为 NaN，则被当作 0</span></div><div class="line">str; <span class="comment">// "hello world"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="substr-from-number-length-number-string"><a href="#substr-from-number-length-number-string" class="headerlink" title="substr(from: number, length?: number): string;"></a>substr(from: number, length?: number): string;</h4></li>
+</ul>
+<p>substr 方法和 slice 方法类似,区别是 substr 第二个参数是指截取的长度.此方法不兼容上古 IE .</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.substr(); <span class="comment">// "hello world"</span></div><div class="line">str.substr(<span class="number">1</span>); <span class="comment">// "ello world"</span></div><div class="line">str.substr(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">// "e"</span></div><div class="line">str.substr(<span class="number">0</span>, <span class="number">6</span>); <span class="comment">// "hello "</span></div><div class="line">str.substr(<span class="number">-1</span>, <span class="number">1</span>); <span class="comment">// "d", 从倒数第一个开始,截取长度为1的字符串返回</span></div><div class="line">str.substr(<span class="number">-20</span>, <span class="number">1</span>); <span class="comment">// "h", 如果 from 为负值且 abs(from) 大于字符串的长度，则 substr 使用 0 作为开始提取的索引</span></div><div class="line">str.substr(<span class="number">-20</span>, <span class="number">-1</span>); <span class="comment">// "", length 为 0 或 -1 则返回一个空字符串.</span></div><div class="line">str; <span class="comment">// "hello world"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="toLowerCase-string"><a href="#toLowerCase-string" class="headerlink" title="toLowerCase(): string;"></a>toLowerCase(): string;</h4></li>
+<li><h4 id="toUpperCase-string"><a href="#toUpperCase-string" class="headerlink" title="toUpperCase(): string;"></a>toUpperCase(): string;</h4></li>
+</ul>
+<p>toLowerCase 方法转小写, toUpperCase 转大写.</p>
+<ul>
+<li><h4 id="trim-string"><a href="#trim-string" class="headerlink" title="trim(): string;"></a>trim(): string;</h4></li>
+</ul>
+<p>trim 方法删除一个字符串的两端空白符,返回一个新的字符串,不会影响原字符串.</p>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><ul>
+<li><h4 id="includes-searchString-string-position-number-boolean"><a href="#includes-searchString-string-position-number-boolean" class="headerlink" title="includes(searchString: string, position?: number): boolean;"></a>includes(searchString: string, position?: number): boolean;</h4></li>
+</ul>
+<p>includes 方法判断 searchString 是否存在于原字符串中.区分大小写.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.includes(<span class="string">'Hello'</span>); <span class="comment">// false, 区分大小写</span></div><div class="line">str.includes(<span class="string">'he'</span>)；<span class="comment">// true</span></div><div class="line">str.includes(<span class="string">'he'</span>, <span class="number">1</span>); <span class="comment">// false, 从第二个位置开始找</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="startsWith-searchString-string-position-number-boolean"><a href="#startsWith-searchString-string-position-number-boolean" class="headerlink" title="startsWith(searchString: string, position?: number): boolean;"></a>startsWith(searchString: string, position?: number): boolean;</h4></li>
+</ul>
+<p>startsWith 方法判断 searchString 是否是给定字符串为开头的.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.startsWith(<span class="string">'Hello'</span>); <span class="comment">// false, 区分大小写</span></div><div class="line">str.startsWith(<span class="string">'hello'</span>)；<span class="comment">// true</span></div><div class="line">str.startsWith(<span class="string">'world'</span>, <span class="number">6</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="repeat-count-number-string"><a href="#repeat-count-number-string" class="headerlink" title="repeat(count: number): string;"></a>repeat(count: number): string;</h4></li>
+</ul>
+<p>repeat 方法返回一个被连接在一起的指定数量(count)的字符串的副本.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'hello world'</span>);</div><div class="line">str.repeat(<span class="number">0</span>); <span class="comment">// false, 区分大小写</span></div><div class="line">str.repeat(<span class="number">2</span>); <span class="comment">// "hello worldhello world"</span></div><div class="line">str.repeat(<span class="number">-1</span>); <span class="comment">// RangeError: Invalid count value, count 不能为负数,且必须小于 Infinity,且长度不会大于最长的字符串</span></div><div class="line">str.repeat(<span class="number">3.6</span>); <span class="comment">// "hello worldhello worldhello world", count 自动转换成整数</span></div></pre></td></tr></table></figure>
+<p>参考资料:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="external">MDN</a></li>
+<li><a href="https://github.com/Microsoft/TypeScript/blob/master/lib/lib.es5.d.ts" target="_blank" rel="external">TypeScript Github</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;整理 String 实例方法以及一些需要注意的点.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://hentaicracker.com/tag/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript Tips</title>
     <link href="http://hentaicracker.com/2017/03/17/jsTips/"/>
     <id>http://hentaicracker.com/2017/03/17/jsTips/</id>
     <published>2017-03-17T03:14:39.000Z</published>
-    <updated>2017-03-17T03:38:41.331Z</updated>
+    <updated>2017-07-04T03:57:57.492Z</updated>
     
     <content type="html"><![CDATA[<p>总结一下在工作中经常遇到的一些js处理方法。</p>
-<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deduped = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>,<span class="string">'a'</span> ].filter(<span class="function"><span class="keyword">function</span> (<span class="params">el, i, arr</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> arr.indexOf(el) === i;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(deduped); <span class="comment">// [ 1, 'a']</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deduped = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>,<span class="string">'a'</span> ].filter(<span class="function"><span class="keyword">function</span> (<span class="params">el, i, arr</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> arr.indexOf(el) === i;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(deduped); <span class="comment">// [ 1, 'a']</span></div></pre></td></tr></table></figure>
 <h4 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> deduped = [ <span class="number">1</span>, <span class="number">1</span>, <span class="string">'a'</span>,<span class="string">'a'</span> ].filter( (el, i, arr) =&gt; arr.indexOf(el) ===i );</div></pre></td></tr></table></figure>
 <h4 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h4><p>当元素为对象(Object)时，我们就不能用这种办法了， 因为对象存储的是引用而原始变量存储的是值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; a: <span class="number">1</span> &#125; === &#123; a: <span class="number">1</span> &#125; <span class="comment">// false</span></div></pre></td></tr></table></figure>
@@ -48,7 +176,6 @@
     <summary type="html">
     
       &lt;p&gt;总结一下在工作中经常遇到的一些js处理方法。&lt;/p&gt;
-&lt;h3 id=&quot;数组去重&quot;&gt;&lt;a href=&quot;#数组去重&quot; class=&quot;headerlink&quot; title=&quot;数组去重&quot;&gt;&lt;/a&gt;数组去重&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; deduped = [ &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt; ].filter(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;el, i, arr&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; arr.indexOf(el) === i;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(deduped); &lt;span class=&quot;comment&quot;&gt;// [ 1, &#39;a&#39;]&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -58,16 +185,106 @@
   </entry>
   
   <entry>
+    <title>《人类简史》读书笔记</title>
+    <link href="http://hentaicracker.com/2017/03/12/2017-03-12/"/>
+    <id>http://hentaicracker.com/2017/03/12/2017-03-12/</id>
+    <published>2017-03-12T07:31:59.000Z</published>
+    <updated>2017-07-17T07:23:09.422Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li><p>对智人来说，大脑只占身体总重约 2% ~ 3% ，但在身体休息而不活动时，大脑的能量消耗却占了25%。</p>
+</li>
+<li><p>人类另一项独有的特点，在于我们用两条腿直立行走。能够站起来，就更容易扫视整片草原，看看哪里有猎物或敌人，而且既然手不需负责移动身体，就能发挥其他用途，像是丢石块或是做信号。手能做的事情越来越多，可以说人就变得越厉害；于是人的演化也就越来越着重神经发展，也不断地对手掌和手指的肌肉做修正。于是人类的手开始能够处理非常精细的任务，特别是能够生产、使用复杂的工具。</p>
+</li>
+<li><p>除了存在于人类共同的想象之外，这个宇宙中根本没有神、没有国家、没有钱、没有人权、没有法律，也没有正义。</p>
+</li>
+<li><p>随着时间过去，想象现实也日益强大；时至今日，河流、树木和狮子想要生存，有时候还得依赖神、国家和企业这些想象现实行行好，放它们一马。</p>
+</li>
+<li><p>农业革命让人类的食物总量增加，但量的增加并不代表吃得更好、过得更悠闲，反而只是造成人口爆炸，而且产生一群养尊处优、娇生惯养的精英份子。普遍来说，农民的工作要比采集者更辛苦，而且到头来的饮食还要更糟。农业革命可以说是史上最大的一桩骗局。</p>
+<a id="more"></a>
+</li>
+<li><p>谁该负责？这背后的主谋，既不是国王，不是牧师，也不是商人。真正的主要嫌疑人，就是那极少数的植物物种，其中包括小麦、稻米和马铃薯。人类以为自己驯化了植物，但其实是植物驯化了智人。</p>
+</li>
+<li><p>我们认为下面这些真理是不言而喻的：人人生而平等，造物者赋予他们若干不可剥夺的权利，其中包括生命和追求快感。</p>
+</li>
+<li><p>想象所构建出来的秩序总是有一夕崩溃的风险，因为这些秩序背后靠的都是虚构的故事，只要人们不再相信，一切就风云变色。</p>
+</li>
+<li><p>而满足基本需求之后，多余的钱就可以用来盖金字塔、到世界各地度假、资助竞选活动、提供资金给你最爱的恐怖组织或是投入股市再赚更多的钱，但对真正的犬儒主义者来说，这一切贪婪的事都毫无意义。</p>
+</li>
+<li><p>身为人类，我们不可能脱离想象所建构出的秩序。每一次我们以为自己打破了监狱的高墙、迈向自由的前方，其实只是到了另一间更大的监狱，把活动范围稍稍加以扩大。</p>
+</li>
+<li><p>文字本来应该是人类意识的仆人，但现在正在反扑为主。计算机并无法理解智人如何说话、感觉和编织梦想，所以我们现在反而是一种计算机能够理解的数字语言来教智人如何说话、感觉和编织梦想。</p>
+</li>
+<li><p>然而历史的铁则告诉我们，每一则由想象建构出来的秩序，都绝不会承认自己出于想象和虚构，而会大谈自己是自然、必然的结果。</p>
+</li>
+<li><p>一次又一次，人类要让社会有秩序的方法，就是会将成员分成各种想象出来的阶级，像是上等人、平民和奴隶；白人和黑人；贵族和平民；婆罗门和首陀罗；又或是富人和穷人。所有这些阶段，就是要让某些人在法律上、政治上或社会上高人一等，从而规范了数百万人的关系。</p>
+</li>
+<li><p>大多数社会政治阶级制度其实都没有逻辑或生物学的基础，不过就是由历史的偶然事件引起，再用虚构的故事延续壮大。</p>
+</li>
+<li><p>文化总会说，它只是禁止“不自然的事”。但从生物学的角度来看，这世界上根本没有什么是不自然的。只要有可能发生的事，就是自然。真正完全“不自然”的事，是指违背了自然规律，但这种事情根本就不会存在，所以也没有禁止的必要。</p>
+</li>
+<li><p>事实上，许多人认知的“自然”和“不自然”并不是生物学的概念，而是基督神学的概念。神学上所谓的“自然”，指的是“符合创造自然的神的旨意”。</p>
+</li>
+<li><p>自从法国大革命之后，全球人民逐渐同意“自由”和“平等”都是基本的价值观。然而这两者根本就互相抵触！想要确保“平等”，就得限制住那些比较突出的人；而要人人都能“自由”，也就必然影响所有人的平等。</p>
+</li>
+<li><p>就像两个不谐和音可以让音乐往前进，人类不同的想法、概念和价值观也能逼着我们思考、批评、重新评价。一切要求一致，反而让心灵呆滞。</p>
+</li>
+<li><p>不管是贝壳还是美元，它们的价值都存在于我们的共同想象当中。光是它们的化学结构、颜色或是形状，并无法带来哪些价值。换句话说，金钱并不是物质上的现实，而只是心理上的想象。所以，金钱的运作就是要把前者转变为后者。</p>
+</li>
+<li><p>金钱正是有史以来最普遍也最有效的互信系统。</p>
+</li>
+<li><p>在中国的统治阶级眼中，各个邻国及四方诸侯都是生活水深火热的蛮夷之邦，天朝中国应该泽被四方、广传华夏文化。所谓的天命为的不是剥削掠夺整个世界，而是要教化万民。同样，古罗马人也声称自己的统治理所当然，因为他们让野蛮人开始有了和平、正义，生命也更为高雅。像是他们说日耳曼民族生性野蛮，高卢人会画各种战妆，生活肮脏，为人无知，一直要到古罗马人到来，才用法律驯化了他们，用公共浴室让他们身体洁净，也用哲学让他们思想进步。公元前3世纪的孔雀王朝，也认为自己必须负起责任，将佛法传播到无知的世界。穆斯林哈里发也肩负着神圣的使命，要传播先知的启示，虽然最好是以和平的方式，但必要的时候也不惜一战。至于西班牙和葡萄牙帝国，他们也声称自己到印度和美洲不是为了财富，而是要让人改信真正的信仰。号称日不落的大英帝国，也是号称传播着自由主义和自由贸易的两大福音。苏联人更是觉得责无旁贷，必须协助推动这个历史的必然，从资本主义走向无产阶级的乌托邦。至于现代的许多美国人，他们也认为美国必须负起道义责任，让第三世界国家同样享有民主和人权，就算这得靠巡航导弹和F-16战机，也是在所不惜。</p>
+</li>
+<li><p>释迦牟尼认为，人遇到事情通常就会产生欲念，而欲念总是会造成不满。遇到不喜欢的事，就想躲开；遇到喜欢的事，就想维持并增加这份愉快。但正因为如此，人心就永远不满、永远不安。这点在碰上不悦的时候格外明显，像是感觉疼痛的时候，只要疼痛继续，我们就一直感到不满，用尽办法想要解决。然而，就算是遇上欢乐的事，我们也从不会真正满足，而是一直担心这种快乐终将结束或是无法再持续或增强。有些人多年来一直在寻找爱情，但等到真的找着了爱情，却还是不满足。有的开始整天担心对方可能会离开；有的又觉得自己太过屈就，应该再找更好的人。</p>
+</li>
+<li><p>究竟为什么要学历史？历史不像是物理学或经济学，目的不在于做出准确预测。我们之所以研究历史，不是为了要知道未来，而是要拓展视野，要了解现在的种种绝非“自然”，也并非无可避免。未来的可能性远超过我们的想象。举例来说，研究欧洲人究竟是如何控制了非洲人，我们就知道种族歧视绝非自然或无可避免，而且知道世界大有可能是完全不同的样貌。</p>
+</li>
+<li><p>发现美洲，对于科学革命是一大奠基事件。这不但让欧洲人知道实际的观察比过去的传统更重要，而且像征服美洲的欲望也让欧洲人开始求知若渴。</p>
+</li>
+<li><p>人类发展出“信用”这种金钱概念，代表着目前还不存在、只存在于想象中的货品。正是“信用”的概念，让我们能够预支未来、打造现在。</p>
+</li>
+<li><p>整个世界就像是一块大饼，切法各有不同，但总之就只有一个饼，不可能变得更大。</p>
+</li>
+<li><p>所谓的“资本主义”（Capitalism），认为“资本”（capital）与“财富”（wealth）有所不同。资本指的是投入生产的各种金钱、物品和资源。而财富指的则是那些埋在地下或是浪费在非生产性活动的金钱、物品和资源。</p>
+</li>
+<li><p>能抓到精髓的就是著名的新世纪（New Age）口号：“快乐来自内心。”金钱、社会地位、整形手术、豪宅、握有大权的职位，这些都不会给你带来快乐。想要有长期的快乐，只能靠血清素、多巴胺和催产素。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对智人来说，大脑只占身体总重约 2% ~ 3% ，但在身体休息而不活动时，大脑的能量消耗却占了25%。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;人类另一项独有的特点，在于我们用两条腿直立行走。能够站起来，就更容易扫视整片草原，看看哪里有猎物或敌人，而且既然手不需负责移动身体，就能发挥其他用途，像是丢石块或是做信号。手能做的事情越来越多，可以说人就变得越厉害；于是人的演化也就越来越着重神经发展，也不断地对手掌和手指的肌肉做修正。于是人类的手开始能够处理非常精细的任务，特别是能够生产、使用复杂的工具。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;除了存在于人类共同的想象之外，这个宇宙中根本没有神、没有国家、没有钱、没有人权、没有法律，也没有正义。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;随着时间过去，想象现实也日益强大；时至今日，河流、树木和狮子想要生存，有时候还得依赖神、国家和企业这些想象现实行行好，放它们一马。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;农业革命让人类的食物总量增加，但量的增加并不代表吃得更好、过得更悠闲，反而只是造成人口爆炸，而且产生一群养尊处优、娇生惯养的精英份子。普遍来说，农民的工作要比采集者更辛苦，而且到头来的饮食还要更糟。农业革命可以说是史上最大的一桩骗局。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="读书" scheme="http://hentaicracker.com/tag/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《You don&#39;t know JavaScirpt》</title>
     <link href="http://hentaicracker.com/2017/01/08/ydkjs-1/"/>
     <id>http://hentaicracker.com/2017/01/08/ydkjs-1/</id>
     <published>2017-01-08T05:18:16.000Z</published>
-    <updated>2017-01-09T11:11:09.048Z</updated>
+    <updated>2017-07-17T07:23:09.422Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Up-amp-Going"><a href="#Up-amp-Going" class="headerlink" title="Up &amp; Going"></a>Up &amp; Going</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你最近学的一个新东西是什么？</p>
-<p>也许是一门像意大利语或德语这样的外语，也许是一款图形编辑器，比如 Photoshop ，或者是一项烹饪技巧、木工以及日常训练。我想要你记住学习时刻的那种愉快的感觉。当事情从模糊变得清晰的时候，当你掌握了锯子或你明白了法语中男性的名词与女性的差别。感觉咋样？很爽是吧？</p>
+<p>也许是一门像意大利语或德语这样的外语，也许是一款图形编辑器，比如 Photoshop ，或者是一项烹饪技巧、木工以及日常训练。我想要你记住学习时刻的那种愉快的感觉。当事情从模糊变得清晰的时候，当你掌握了锯子或你明白了法语中男性的名词与女性的差别。那感觉咋样？很爽是吧？</p>
 <p>现在我需要你重新回忆一下你学习新技能之前的那种感觉。可能有点略微胆怯或有点迷惑，对吧？在一开始的时候，我们都不知道那些我们现在知道的东西，这些都OK，我们总是从某一点开始。学习新的技能是一个激动人心的挑战，特别是你渴望快速学习一项主题的时候。</p>
 <p>我给很多初学者教了一些编码课程，那些上我课的学生经常通过阅读博客或复制粘贴代码来自学一些像是 HTML 或 JavaScript 的这样的语言，但是他们还没有真正的掌握那些能让他们写出想要的效果的学习资料。因为他们没有真正的抓住那些正确的输入输出，当他们不知道发生了什么的时候，他们就无法写出强大的代码或 debug 他们的代码。</p>
+<p>我总是以在以一种合适的方式来上课，web 标准，语义化标签，友好的代码，和其他最好的练习。每个课题我会通透地解释怎么做以及为什么，而不仅仅是把代码丢出去复制粘贴。当你努力去理解你写的代码时，你的工作会变得越来越好。编码不仅仅是你的工作，它是你的一门手艺。这就是为什么我喜欢天天向上。</p>
+<p>我为什么要翻译这些无聊的东西啊~~~</p>
 ]]></content>
     
     <summary type="html">
@@ -333,7 +550,7 @@
     <link href="http://hentaicracker.com/2016/09/21/2016-09-21/"/>
     <id>http://hentaicracker.com/2016/09/21/2016-09-21/</id>
     <published>2016-09-21T12:16:55.000Z</published>
-    <updated>2016-09-22T13:03:09.097Z</updated>
+    <updated>2016-09-22T13:03:09.098Z</updated>
     
     <content type="html"><![CDATA[<p>工作快三个月了，今天进行了转正答辩。不出意外我应该会留在<code>爱吃吧</code>继续工作。这段时间最大的收获就是学到了很多技术上的东西。特别是理解了<code>NodeJS</code>做为一个中间层服务器的作用…</p>
 <p>今天不聊技术Orz。</p>
@@ -364,7 +581,7 @@
     <link href="http://hentaicracker.com/2016/09/07/hello-world/"/>
     <id>http://hentaicracker.com/2016/09/07/hello-world/</id>
     <published>2016-09-07T12:47:36.000Z</published>
-    <updated>2016-09-19T12:27:12.822Z</updated>
+    <updated>2017-07-04T03:54:39.423Z</updated>
     
     <content type="html"><![CDATA[<p>前不久，大概是一个月前。开始看《乔布斯传》。初从<code>kindle</code>上下载这本书的时候，并没有感觉它有多厚，然而等我看完后才发现我特么用了一个月的时间才把它看完。不过看完后的感受就是一个字，屌。</p>
 <p><img src="/img/steve-jobs.jpg" alt="Steve Jobs"></p>
@@ -377,7 +594,7 @@
 </ul>
 <h3 id="非同凡想"><a href="#非同凡想" class="headerlink" title="非同凡想"></a>非同凡想</h3><p>乔布斯的一生，都离不开<strong>创造</strong>两个字。他是个完美主义者，做的产品都追求极致和完美。同时他还是个超级控制狂，无论是在苹果公司还是产品方面，他想要把电脑从硬件到软件都由自己来控制，只有自己做好端对端的控制才能保护好用户体验，不让它在某一个环节失控。</p>
 <p>从最开始的<code>Apple I</code>，开创了个人电脑的时代。要知道那个时候（大概1980年左右）的电脑都是只有大企业以及政府研究机构啥的才有的奢侈高科技。乔布斯和沃兹俩就设计了这台电脑（大部分电脑设计工作是沃兹，乔布斯基本负责外观功能方面的设计以及推销）使得个人电脑开始流行起来。那个时候还没有<code>windows</code>。</p>
-<p>后来又开创性地推出<code>mac</code>电脑，世界上第一台图形界面交互的电脑。虽然是跑到施乐公司去偷了创意和灵感，不过<code>mac</code>做出的图形界面开创性地发明了窗口重叠这样的设计，是在施乐的灵感上更深层次的创造。在面对偷别人电脑设计的质疑时，乔布斯霸气回应：“在窃取伟大的灵感这方面，我们一直都是厚颜无耻的。”就抄你了，咋的？</p>
+<p>后来又开创性地推出<code>mac</code>电脑，世界上第一台图形界面交互的电脑。虽然是跑到施乐公司去偷了创意和灵感，不过<code>mac</code>做出的图形界面开创性地发明了窗口重叠这样的设计，是在施乐的灵感上更深层次的创造。在面对偷别人电脑设计的质疑时，乔布斯霸气回应：“<strong>在窃取伟大的灵感这方面，我们一直都是厚颜无耻的。</strong>”就抄你了，咋的？</p>
 <p>mac还没推出的时候，那时候微软还是个小型软件公司，给mac开发<code>excel</code>和<code>word</code>等软件，后来俩公司因为合约的一些问题闹翻了。微软搞出了同样是图形界面的<code>windows</code>。乔布斯这时候不能忍了，我看别人的东西拿过来用叫创新，你看了我的东西回去跟我搞一样的东西就叫偷！于是后来和微软闹翻。乔布斯评判一个人或者一个产品都靠“天才愚蠢二分法”，你要么是个天才，要么就是个煞笔。于是<code>windows</code>就成了他口中的垃圾和狗屎。</p>
 <p>在乔布斯离开苹果公司后，苹果公司就没有出过多少出彩的产品，而且股价一直走低。乔布斯重新回到苹果公司后创造性地推出了<code>iMac</code>电脑，后来把电脑产品细分成各个小的产品线，<code>macbook</code>、<code>mac pro</code>等等。后来开创性推出了<code>iPod</code>音乐播放器以及<code>iTunes</code>服务，改变了音乐产业。2007年推出<code>iPhone</code>，重新定义了手机。后来又推出iPad，开创了平板电脑产业。推出<code>iPhone</code>的时候，乔布斯已经52岁了。很难想象一个人在岁数这么大了还保持着如此创新的视野和想法。</p>
 <blockquote>
@@ -388,7 +605,7 @@
 <p><strong>我记得高中快毕业的时候正值这本书上市，当时买了一本送给了同桌当毕业礼物。自己却一直没有机会去读这本书，去了解乔布斯。现在我明白了为什么苹果是世界上最赚钱的公司，因为人家的目的根本不是赚钱。</strong></p>
 <p>“<a href="http://v.youku.com/v_show/id_XMzIyNTM3MzQ0.html?beta&amp;" target="_blank" rel="external">非同凡想</a>”是mac推出时的广告。</p>
 <p>祭出广告词。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Think different                                       非同凡想</div><div class="line">Here&apos;s to the crazy ones.                             向那些疯狂的家伙们致敬。</div><div class="line">The misfits.                                          他们特立独行。</div><div class="line">The rebels.                                           他们桀骜不驯。</div><div class="line">The troublemakers.                                    他们惹是生非</div><div class="line">The round pegs in the square holes.                   他们格格不入</div><div class="line">The ones who see things differently.                  他们用与众不同的眼光看待事物</div><div class="line">They&apos;re not fond of rules.                            他们不喜欢墨守成规</div><div class="line">And they have no respect for the status quo.          他们也不愿安于现状</div><div class="line">You can praise them, quote them, disagree with them   你可以赞美他们，引用他们，反对他们</div><div class="line">disbelieve them, glorify or vilify them.              质疑他们，颂扬或是诋毁他们。</div><div class="line">About the only thing that you can&apos;t do is ignore them.但唯独不能漠视他们。</div><div class="line">Because they change things.                           因为他们改变了事物。</div><div class="line">They invent.                                          他们发明</div><div class="line">They imagine.                                         他们想象   </div><div class="line">They heal.                                            他们治愈</div><div class="line">They explore.                                         他们探索   </div><div class="line">They create.                                          他们创造       </div><div class="line">They inspire.                                         他们启迪</div><div class="line">They push the human race forward.                     他们推动人类向前发展</div><div class="line">Maybe they have to be crazy.                          也许，他们必需要疯狂</div><div class="line">How else can you stare at an empty canvas and see a work of art? 你能盯着白纸，就看到美妙的画作么</div><div class="line">Or sit in silence and hear a song that&apos;s never been written? 你能静静坐着，就听见美妙的歌曲么</div><div class="line">Or gaze at a red planet and see a laboratory on wheels? 你能凝视火星，就想到神奇的太空轮么？</div><div class="line">We make tools for these kinds of people.              我们为这些家伙制造良机。</div><div class="line">While some may see them as the crazy ones, we see genius. 或许他们是别人眼里的疯子，</div><div class="line">Because the people who are crazy enough to think that they can 但他们却是我们眼中的天才。</div><div class="line">change the world，are the ones who do.                 因为只有那些疯狂到以为自己能够改变世界的人，才能真正地改变世界。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">Think different                                       </div><div class="line">非同凡想</div><div class="line">Here&apos;s to the crazy ones.                             </div><div class="line">向那些疯狂的家伙们致敬</div><div class="line">The misfits.                                          </div><div class="line">他们特立独行</div><div class="line">The rebels.                                           </div><div class="line">他们桀骜不驯</div><div class="line">The troublemakers.                                    </div><div class="line">他们惹是生非</div><div class="line">The round pegs in the square holes.                   </div><div class="line">他们格格不入</div><div class="line">The ones who see things differently.                  </div><div class="line">他们用与众不同的眼光看待事物</div><div class="line">They&apos;re not fond of rules.                            </div><div class="line">他们不喜欢墨守成规</div><div class="line">And they have no respect for the status quo.          </div><div class="line">他们也不愿安于现状</div><div class="line">You can praise them, quote them, disagree with them   </div><div class="line">你可以赞美他们，引用他们，反对他们</div><div class="line">disbelieve them, glorify or vilify them.              </div><div class="line">质疑他们，颂扬或是诋毁他们。</div><div class="line">About the only thing that you can&apos;t do is ignore them.</div><div class="line">但唯独不能漠视他们。</div><div class="line">Because they change things.                           </div><div class="line">因为他们改变了事物。</div><div class="line">They invent.                                          </div><div class="line">他们发明</div><div class="line">They imagine.                                         </div><div class="line">他们想象   </div><div class="line">They heal.                                            </div><div class="line">他们治愈</div><div class="line">They explore.                                         </div><div class="line">他们探索   </div><div class="line">They create.                                          </div><div class="line">他们创造       </div><div class="line">They inspire.                                         </div><div class="line">他们启迪</div><div class="line">They push the human race forward.                     </div><div class="line">他们推动人类向前发展</div><div class="line">Maybe they have to be crazy.                          </div><div class="line">也许，他们必需要疯狂</div><div class="line">How else can you stare at an empty canvas and see a work of art? </div><div class="line">你能盯着白纸，就看到美妙的画作么</div><div class="line">Or sit in silence and hear a song that&apos;s never been written? </div><div class="line">你能静静坐着，就听见美妙的歌曲么</div><div class="line">Or gaze at a red planet and see a laboratory on wheels? </div><div class="line">你能凝视火星，就想到神奇的太空轮么</div><div class="line">We make tools for these kinds of people.              </div><div class="line">我们为这些家伙制造良机。</div><div class="line">While some may see them as the crazy ones, we see genius. </div><div class="line">或许他们是别人眼里的疯子，但他们却是我们眼中的天才</div><div class="line">Because the people who are crazy enough to think that they can </div><div class="line">change the world，are the ones who do.                 </div><div class="line">因为只有那些疯狂到以为自己能够改变世界的人，才能真正地改变世界。</div></pre></td></tr></table></figure>
 <p>共勉。</p>
 <p>完了，这下彻底成果粉了。还跑分吗？:)</p>
 ]]></content>
@@ -403,38 +620,6 @@
     
     
       <category term="读书" scheme="http://hentaicracker.com/tag/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习日常</title>
-    <link href="http://hentaicracker.com/2016/04/23/2016-04-23/"/>
-    <id>http://hentaicracker.com/2016/04/23/2016-04-23/</id>
-    <published>2016-04-23T07:47:36.000Z</published>
-    <updated>2016-09-07T07:48:03.190Z</updated>
-    
-    <content type="html"><![CDATA[<p>从滴答清单实习回学校后就一直呆在实验室里。实验室的氛围真是相当不错。感觉已经爱上这里2333。每天朝九晚十一，回去了一群程序猿还组队跑步。</p>
-<a id="more"></a>
-<h4 id="物联网实验室"><a href="#物联网实验室" class="headerlink" title="物联网实验室"></a>物联网实验室</h4><p>回来这段时间一直在学习，各种工具和框架，对前端工程化的理解也加深了。在写毕设的同时，负责了实验室的一个小项目，给大三的学弟学妹们搭建了前端开发的大体架构。使用了gulp等构建工具，同时让每个人都熟悉了一下git分支管理操作。每个人都在远程仓库建立了一个自己的分支，同时每个人都在本地的对应分支&gt;进行开发工作。当一个功能模块完成，将代码push到remote repo中自己的分支，然后发起一个merge request，指派给我，我进行统一合并操作。在这个过程中，我通过看他们写的代码，如果发现有错误或者需改进的地方，就可以直接反馈去，这样比以前实验室每个人都将代码push到master分支，降低了代码冲突的可能性，增加了团队合作的科学性。</p>
-<h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>工欲善其事必先利其器。</p>
-<p>在滴答清单实习的过程中熟悉了OS X开发环境，熟悉了命令行操作，惊叹OS X各种工具好用到爆。比如Quicksilver，iterm等等。回到学校再用windows，想要自杀（好吧，电脑的原因= =||）。与此同时，从之前的sublime text换了Atom，虽然俩编辑器不差上下，不过还是有很大区别。Atom是Github为开发者量身打造的一款编辑器，它是用js开发的。它本身就是一个浏览器，这样就很好地解释了它上面的工具相当繁荣的原因。同时它有一个类似npm的包管理工具apm，可以直接在命令行中运行。现在写的markdown也是在Atom上写的，爱不释手。</p>
-<p>命令行工具用的是iterm2，真是相当不错的一个终端工具。在体验了几天的bash过程中，发现cd的时候好慢，于是发现了zsh，一个字，爽。同时装上wd等插件，敲起命令行简直棒棒哒。</p>
-<h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><p>在滴答清单实习的时候熟悉了backbone.js这个轻量的MVC框架，在体验过程中，给我的感觉就是，将model和view分离，实现了前端模块化开发，不过缺点是，监听数据的改变和dom操作需要我自己实现。在回到学校后，开发写毕设，目光转向了vue.js这个轻量的MVVM框架。在一周的体验过程中，了解了webpack这个模块解决方案，同时发现vue.js真是相当好用，最大的特点就是数据双向绑定。同时它只着眼于view层，这使得它特别轻量。这也是它和angular.js最大的区别。angular.js算是一个完整的框架，从路由到数据请求到VM完全都封装到了一起。之前在学习angular的时候确实遇到了一些问题和坎，通过学习vue.js让我对angular中一些概念也理解更深。</p>
-<p>不过通过一些vue的扩展模块，也实现了angular中的功能，vue-resource数据请求，vue-router控制路由，同时使用webpack进行模块管理，使得项目开发变得极其高效和简便。</p>
-<p>接下来一段时间会对这段时间所接触到的一些工具和技术做一些个人总结。</p>
-<h4 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h4><p>毕设自选题目真是自己给自己挖坑跳啊T_T</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从滴答清单实习回学校后就一直呆在实验室里。实验室的氛围真是相当不错。感觉已经爱上这里2333。每天朝九晚十一，回去了一群程序猿还组队跑步。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="日常" scheme="http://hentaicracker.com/tag/%E6%97%A5%E5%B8%B8/"/>
-    
-      <category term="学习" scheme="http://hentaicracker.com/tag/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

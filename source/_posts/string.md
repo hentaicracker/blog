@@ -5,7 +5,7 @@ tags:
     - JavaScript
 ---
 
-整理 String 实例方法以及一些需要注意的点.
+整理 `String` 实例方法以及一些需要注意的点.
 
 <!-- more -->
 
@@ -13,7 +13,7 @@ tags:
 
 - #### toString(): string;
 
-String 对象覆盖了 Object 对象的 toString 方法,该方法返回该对象的字符串形式,和 String.prototype.valueOf() 方法返回值一样.
+`String` 对象覆盖了 Object 对象的 toString 方法,该方法返回该对象的字符串形式,和 String.prototype.valueOf() 方法返回值一样.
 
 ```javascript
 var str = new String('something');
@@ -22,7 +22,7 @@ str.toString(); // 'something'
 
 - #### charAt(pos: number): string;
 
-charAt 方法返回一个字符串中指定的字符.
+`charAt` 方法返回一个字符串中指定的字符.
 
 ```javascript
 var str = new String('something');
@@ -31,7 +31,7 @@ str.charAt(0); // 's'
 
 - #### charCodeAt(index: number): number;
 
-charCodeAt 方法返回给定索引处字符的 UTF-16 代码单元值的数字；如果索引超出范围,则返回 NaN.
+`charCodeAt` 方法返回给定索引处字符的 UTF-16 代码单元值的数字；如果索引超出范围,则返回 NaN.
 
 ```javascript
 var str = new String('something');
@@ -41,7 +41,7 @@ str.charCodeAt(9); // NaN
 
 - #### concat(...strings: string[]): string;
 
-concat 方法将一个或多个字符串与原字符串连接合并，并返回一个新的字符串。concat 方法并不影响原字符串。
+`concat` 方法将一个或多个字符串与原字符串连接合并，并返回一个新的字符串。concat 方法并不影响原字符串。
 
 ```javascript
 var str = new String('something');
@@ -52,7 +52,7 @@ str; // 'something'
 
 - #### indexOf(searchString: string, position?: number): number;
 
-indexOf 方法返回调用 String 对象中第一次出现的指定值的索引，从 position 开始**从左向右**进行搜索。
+`indexOf` 方法返回调用 String 对象中第一次出现的指定值的索引，从 position 开始**从左向右**进行搜索。
 
 如果未找到该值，则返回-1。
 
@@ -69,11 +69,11 @@ str.indexOf('', 10); // 9
 ```
 - #### lastIndexOf(searchString: string, position?: number): number;
 
-lastIndexOf 方法返回调用 String 对象中最后一次出现的指定值的索引，从 position 开始**从右向左**进行搜索。行为和 indexOf 方法一致.
+`lastIndexOf` 方法返回调用 String 对象中最后一次出现的指定值的索引，从 position 开始**从右向左**进行搜索。行为和 indexOf 方法一致.
 
 - #### localeCompare(that: string): number;
 
-localeCompare 方法返回一个数字表示是否 引用字符串 在排序中位于 比较字符串 的前面，后面，或者二者相同。
+`localeCompare` 方法返回一个数字表示是否 引用字符串 在排序中位于 比较字符串 的前面，后面，或者二者相同。
 
 - 当 引用字符串 在 比较字符串 前面时返回 -1
 
@@ -90,7 +90,7 @@ str.localeCompare('something'); // 0
 
 - #### match(regexp: string | RegExp): RegExpMatchArray | null;
 
-match 方法检索匹配 regexp 的项,如果 regexp 是一个非正则表达式对象,则会隐式地使用 new RegExp(regexp) 将其转换为一个 RegExp .如果没有匹配项,返回 null .
+`match` 方法检索匹配 regexp 的项,如果 regexp 是一个非正则表达式对象,则会隐式地使用 new RegExp(regexp) 将其转换为一个 RegExp .如果没有匹配项,返回 null .
 
 ```javascript
 var str = new String('hello world');
@@ -104,7 +104,7 @@ str.match(); // [""]
 - #### replace(searchValue: string | RegExp, replaceValue: string): string;
 - #### replace(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string;
 
-replace 方法返回一个由 replaceValue 替换匹配 searchValue 的一些值后的新字符串.
+`replace` 方法返回一个由 replaceValue 替换匹配 searchValue 的一些值后的新字符串.
 
 ```javascript
 var str = new String('Hello World');
@@ -118,7 +118,7 @@ str.replace(/world/,"$'"); // "hello ", $',特殊变量,插入当前匹配的子
 str.replace(/(\w+)\s(\w+)/,"$2 $1"); // "world hello", $n,特殊变量,假如第一个参数是 RegExp对象，并且 n 是个小于100的非负整数，那么插入第 n 个括号匹配的字符串
 ```
 
-replace 方法还可以指定一个函数作为第二个参数.当匹配执行后,该函数就会执行.(特殊变量不能在函数里使用),如果第一个参数是正则表达式,且为全局匹配(g)模式,那这个方法将多次被调用,每次匹配都会被调用.
+`replace` 方法还可以指定一个函数作为第二个参数.当匹配执行后,该函数就会执行.(特殊变量不能在函数里使用),如果第一个参数是正则表达式,且为全局匹配(g)模式,那这个方法将多次被调用,每次匹配都会被调用.
 
 ```javascript
 var str = new String('hello world');
@@ -151,7 +151,7 @@ str.replace(/(lo)|(ld)/g, function(match, p1, p2) {
 
 - #### split(separator: string | RegExp, limit?: number): string[];
 
-split 方法将一个String对象分割成字符串数组，将字符串分成子串.
+`split` 方法将一个String对象分割成字符串数组，将字符串分成子串.
 
 ```javascript
 var str = new String('hello world');
@@ -167,7 +167,7 @@ str; // 'hello world'
 
 - #### slice(start?: number, end?: number): string;
 
-slice 方法从一个字符串中**从左向右**提取字符串并返回新的字符串,不会改变原字符串.
+`slice` 方法从一个字符串中**从左向右**提取字符串并返回新的字符串,不会改变原字符串.
 
 ```javascript
 var str = new String('hello world');
@@ -185,7 +185,7 @@ str.slice('5'); // " world"
 
 - #### substring(start: number, end?: number): string;
 
-substring 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集.类似 slice 方法,略有不同.
+`substring` 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集.类似 slice 方法,略有不同.
 
 ```javascript
 var str = new String('hello world');
@@ -201,7 +201,7 @@ str; // "hello world"
 
 - #### substr(from: number, length?: number): string;
 
-substr 方法和 slice 方法类似,区别是 substr 第二个参数是指截取的长度.此方法不兼容上古 IE .
+`substr` 方法和 slice 方法类似,区别是 substr 第二个参数是指截取的长度.此方法不兼容上古 IE .
 
 ```javascript
 var str = new String('hello world');
@@ -218,17 +218,17 @@ str; // "hello world"
 - #### toLowerCase(): string;
 - #### toUpperCase(): string;
 
-toLowerCase 方法转小写, toUpperCase 转大写.
+`toLowerCase` 方法转小写, toUpperCase 转大写.
 
 - #### trim(): string;
 
-trim 方法删除一个字符串的两端空白符,返回一个新的字符串,不会影响原字符串.
+`trim` 方法删除一个字符串的两端空白符,返回一个新的字符串,不会影响原字符串.
 
 ### ES6
 
 - #### includes(searchString: string, position?: number): boolean;
 
-includes 方法判断 searchString 是否存在于原字符串中.区分大小写.
+`includes` 方法判断 searchString 是否存在于原字符串中.区分大小写.
 
 ```javascript
 var str = new String('hello world');
@@ -239,7 +239,7 @@ str.includes('he', 1); // false, 从第二个位置开始找
 
 - #### startsWith(searchString: string, position?: number): boolean;
 
-startsWith 方法判断 searchString 是否是给定字符串为开头的.
+`startsWith` 方法判断 searchString 是否是给定字符串为开头的.
 
 ```javascript
 var str = new String('hello world');
@@ -250,11 +250,11 @@ str.startsWith('world', 6); // true
 
 - #### repeat(count: number): string;
 
-repeat 方法返回一个被连接在一起的指定数量(count)的字符串的副本.
+`repeat` 方法返回一个被连接在一起的指定数量(count)的字符串的副本.
 
 ```javascript
 var str = new String('hello world');
-str.repeat(0); // false, 区分大小写
+str.repeat(0); // ""
 str.repeat(2); // "hello worldhello world"
 str.repeat(-1); // RangeError: Invalid count value, count 不能为负数,且必须小于 Infinity,且长度不会大于最长的字符串
 str.repeat(3.6); // "hello worldhello worldhello world", count 自动转换成整数

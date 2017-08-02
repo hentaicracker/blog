@@ -130,7 +130,6 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 `(?!p)` 匹配 p 后面的位置.
 
 ```javascript
-
 'JavaScript'.replace(/(?=a)/g, '*');
 // "J*av*aScript"
 'JavaScript'.replace(/(?!a)/g, '*');
@@ -138,3 +137,99 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ```
 
 ### 括号分组
+
+- #### 分组
+```javascript
+let re = /(ab)+/g;
+let str = 'ac abc abbc ababc abbbbc';
+str.match(re); // ["ab", "ab", "abab", "ab"]
+
+re = /(\d{4})-(\d{2})-(\d{2})/;
+str = '2017-07-25';
+str.match(re); // ["2017-07-25", "2017", "07", "25", index: 0, input: "2017-07-25"]
+RegExp.$1; // "2017"
+RegExp.$2; // "07"
+RegExp.$3; // "25"
+RegExp.$4; // ""
+str.replace(re, '$2/$3/$1'); // "07/25/2017"
+
+re = /^((\d)(\d(\d)))\1\2\3\4$/; // \n 代表 $n
+str = '1231231233';
+str.match(re); // ["1231231233", "123", "1", "23", "3", index: 0, input: "1231231233"]
+```
+**$n**代表当前匹配分组第 n 个分组.
+
+- #### 分支结构
+(p1|p2)
+```javascript
+let re = /(ab|bc)+/g;
+let str = 'ac abc abbc ababc abbcbc';
+str.match(re); // ["ab", "abbc", "abab", "abbcbc"]
+```
+
+- #### 非捕获分组
+`(?:p)`, 非捕获分组不会引用分组, 也不会在正则表达式里反向引用.
+```javascript
+let re = /(?:ab)+/g;
+let str = 'ac abc abbc ababc abbbbc';
+str.match(re); // ["ab", "ab", "abab", "ab"]
+RegExp.$1; // ""
+```
+
+### Flags
+flag|说明
+---|---
+i|不区分大小写
+g|全局匹配
+m|多行匹配
+
+### 运算优先级
+1. `\` 转义运算符
+2. `()`, `(?:)`, `(?=)`, `(?!)`, `[]`
+3. `*`, `+`, `?`, `{n}`, `{n,}`, `{n,m}` 限定符
+4. `^`, `$` 位置
+5. `|` 多选分支
+
+### 反斜杠匹配速查
+转义字符|说明
+---|---
+\t|横向制表符(tab)
+\n|换行符
+\v|垂直制表符
+\f|换页符
+\r|回车符
+\0|null
+\\.|.
+\\+|+
+\\*|*
+\\?|?
+\\^|^
+\\$|$
+\\[|[
+\\]|]
+\\(|(
+\\)|)
+\\\||\|
+\\/|/
+\\|\
+
+### RegExp
+
+```javascript
+new RegExp(partern: RegExp | string, flags?: string)
+```
+
+- #### exec(string: string): RegExpExecArray | null;
+`exec()` 方法进行搜索匹配, 返回一个结果数组或 null .
+```javascript
+let re = /(\d{4})-(\d{2})-(\d{2})/;
+let str = '2017-07-25';
+re.exec(str); // ["2017-07-25", "2017", "07", "25", index: 0, input: "2017-07-25"]
+```
+
+- #### test(string: string): boolean;
+```javascript
+let re = /(\d{4})-(\d{2})-(\d{2})/;
+let str = '2017-07-25';
+re.test(str); // true
+```

@@ -14,6 +14,7 @@ tags:
 ### 匹配字符
 
 #### 字符组
+
 只匹配一个字符.
 
 - #### [ - ]
@@ -25,6 +26,7 @@ tags:
 ```
 
 - #### [^ ]
+
 排除字符组
 ```javascript
 let re = /[^abc]/g;
@@ -33,6 +35,7 @@ str.match(re); // [" ", " ", " "]
 ```
 
 #### 元字符
+
 元字符 | 描述
 ---|---|---
 . | 匹配除换行符、回车符、行分隔符和段分隔符除外以外的任意字符, 等价于 `[^\n\r\u2028\u2029]`
@@ -47,6 +50,7 @@ str.match(re); // [" ", " ", " "]
 #### 量词
 
 - #### {m, n}
+
 横向模糊匹配,表示连续出现最少 m 次,最多 n 次. 属于贪婪匹配, 尽可能多地匹配.
 
 ```javascript
@@ -60,6 +64,7 @@ str.match(re2); // ["abbc"]
 ```
 
 - #### ?
+
 表示出现或者不出现, 等价于 `{0, 1}`, 惰性匹配.
 ```javascript
 let re = /ab{2,3}?c/g;
@@ -68,6 +73,7 @@ str.match(re); // ["ab", "ab", "bc", "ab", "bb", "ab", "bb", "bc"]
 ```
 
 - #### +
+
 表示至少出现一次, 等价于 `{1,}`.
 ```javascript
 let re = /ab+/g;
@@ -76,6 +82,7 @@ str.match(re); // ["ab", "abb", "abbb", "abbbb"]
 ```
 
 - #### *
+
 表示出现任意次, 有可能会不出现, 等价于 `{0,}`.
 ```javascript
 let re = /ab*c/g;
@@ -85,6 +92,7 @@ str.match(re); // ["ac", "abc", "abbc", "abbbc", "abbbbc"]
 
 #### 多选分支
 - #### | (管道符)
+
 可以理解为"或", 具体形式为 `(p1|p2|p3)` , 表示其中任何之一. 也是惰性匹配, 即前面匹配上了后面就不匹配了.
 ```javascript
 let re = /ab|abc/g;
@@ -100,6 +108,7 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ```
 
 - #### ^
+
 匹配开头, 在多行匹配中匹配行开头.
 ```javascript
 'JavaScript'.match(/^/g); // [""]
@@ -107,6 +116,7 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ```
 
 - #### $
+
 匹配结尾, 在多行匹配中匹配行结尾.
 ```javascript
 'JavaScript'.match(/$/g); // [""]
@@ -114,6 +124,7 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ```
 
 - #### \b 和 \B
+
 `\b` 匹配单词边界, `\w` 和 `\W` 之间的位置, `\w` 和 `^` (开头位置)之间的位置, 以及 `\w` 和 `$` (结尾位置)之间的位置.
 `\B` 匹配非 `\b` 的位置.
 
@@ -126,6 +137,7 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ```
 
 - #### (?=p) 和 (?!p)
+
 `(?=p)` 匹配 p 前面的位置.
 `(?!p)` 匹配 p 后面的位置.
 
@@ -139,6 +151,7 @@ str.match(re); // ["ab", "ab", "ab", "ab"]
 ### 括号分组
 
 - #### 分组
+
 ```javascript
 let re = /(ab)+/g;
 let str = 'ac abc abbc ababc abbbbc';
@@ -160,6 +173,7 @@ str.match(re); // ["1231231233", "123", "1", "23", "3", index: 0, input: "123123
 **$n**代表当前匹配分组第 n 个分组.
 
 - #### 分支结构
+
 (p1|p2)
 ```javascript
 let re = /(ab|bc)+/g;
@@ -168,6 +182,7 @@ str.match(re); // ["ab", "abbc", "abab", "abbcbc"]
 ```
 
 - #### 非捕获分组
+
 `(?:p)`, 非捕获分组不会引用分组, 也不会在正则表达式里反向引用.
 ```javascript
 let re = /(?:ab)+/g;
@@ -177,6 +192,7 @@ RegExp.$1; // ""
 ```
 
 ### Flags
+
 flag|说明
 ---|---
 i|不区分大小写
@@ -184,6 +200,7 @@ g|全局匹配
 m|多行匹配
 
 ### 运算优先级
+
 1. `\` 转义运算符
 2. `()`, `(?:)`, `(?=)`, `(?!)`, `[]`
 3. `*`, `+`, `?`, `{n}`, `{n,}`, `{n,m}` 限定符
@@ -191,6 +208,7 @@ m|多行匹配
 5. `|` 多选分支
 
 ### 反斜杠匹配速查
+
 转义字符|说明
 ---|---
 \t|横向制表符(tab)
@@ -220,6 +238,7 @@ new RegExp(partern: RegExp | string, flags?: string)
 ```
 
 - #### exec(string: string): RegExpExecArray | null;
+
 `exec()` 方法进行搜索匹配, 返回一个结果数组或 `null` .
 ```javascript
 let re = /\d+/g;
@@ -236,6 +255,7 @@ re.lastIndex; // 0
 每次 `exec` 方法都从 `lastIndex` 的下一个索引 `(index)` 开始, 在全局匹配模式 `(g)` 下, `lastIndex` 值都会改变, 非全局匹配模式下不变 ( `test` 方法同样适用).
 
 - #### test(string: string): boolean;
+
 ```javascript
 let re = /(\d{4})-(\d{2})-(\d{2})/;
 let str = '2017-07-25';

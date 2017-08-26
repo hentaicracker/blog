@@ -5,7 +5,11 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hentaicracker.com/"/>
+<<<<<<< HEAD
   <updated>2017-08-13T05:34:42.000Z</updated>
+=======
+  <updated>2017-08-02T07:47:29.141Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
   <id>http://hentaicracker.com/</id>
   
   <author>
@@ -16,6 +20,7 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+<<<<<<< HEAD
     <title>《硅谷钢铁侠——马斯克的冒险人生》读书笔记</title>
     <link href="http://hentaicracker.com/2017/08/06/2017-08-06/"/>
     <id>http://hentaicracker.com/2017/08/06/2017-08-06/</id>
@@ -67,11 +72,17 @@
   </entry>
   
   <entry>
+=======
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     <title>正则表达式 cheatsheet &amp; 实例</title>
     <link href="http://hentaicracker.com/2017/07/17/regexp/"/>
     <id>http://hentaicracker.com/2017/07/17/regexp/</id>
     <published>2017-07-17T07:53:57.000Z</published>
+<<<<<<< HEAD
     <updated>2017-08-06T05:28:23.000Z</updated>
+=======
+    <updated>2017-08-02T07:47:29.141Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     
     <content type="html"><![CDATA[<p><strong>正则总结 &amp; 速查</strong>.</p>
 <p>与其遇到复杂的正则表达式跑去直接搜结果还不如彻彻底底把正则表达式搞明白,搞透.要不然需求稍微一改就 GG 了.</p>
@@ -326,7 +337,11 @@
     <link href="http://hentaicracker.com/2017/07/10/string/"/>
     <id>http://hentaicracker.com/2017/07/10/string/</id>
     <published>2017-07-10T02:30:15.000Z</published>
+<<<<<<< HEAD
     <updated>2017-08-06T05:28:23.000Z</updated>
+=======
+    <updated>2017-07-17T08:23:37.841Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     
     <content type="html"><![CDATA[<p>整理 <code>String</code> 实例方法以及一些需要注意的点.</p>
 <a id="more"></a>
@@ -454,7 +469,11 @@
     <link href="http://hentaicracker.com/2017/03/17/jsTips/"/>
     <id>http://hentaicracker.com/2017/03/17/jsTips/</id>
     <published>2017-03-17T03:14:39.000Z</published>
+<<<<<<< HEAD
     <updated>2017-07-10T11:42:43.000Z</updated>
+=======
+    <updated>2017-07-04T03:57:57.492Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     
     <content type="html"><![CDATA[<p>总结一下在工作中经常遇到的一些js处理方法。</p>
 <a id="more"></a>
@@ -495,7 +514,11 @@
     <link href="http://hentaicracker.com/2017/03/12/2017-03-12/"/>
     <id>http://hentaicracker.com/2017/03/12/2017-03-12/</id>
     <published>2017-03-12T07:31:59.000Z</published>
+<<<<<<< HEAD
     <updated>2017-07-10T12:57:17.000Z</updated>
+=======
+    <updated>2017-07-17T07:23:09.422Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     
     <content type="html"><![CDATA[<ul>
 <li><p>对智人来说，大脑只占身体总重约 2% ~ 3% ，但在身体休息而不活动时，大脑的能量消耗却占了25%。</p>
@@ -583,7 +606,11 @@
     <link href="http://hentaicracker.com/2017/01/08/ydkjs-1/"/>
     <id>http://hentaicracker.com/2017/01/08/ydkjs-1/</id>
     <published>2017-01-08T05:18:16.000Z</published>
+<<<<<<< HEAD
     <updated>2017-01-12T12:03:16.000Z</updated>
+=======
+    <updated>2017-07-17T07:23:09.422Z</updated>
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
     
     <content type="html"><![CDATA[<h1 id="Up-amp-Going"><a href="#Up-amp-Going" class="headerlink" title="Up &amp; Going"></a>Up &amp; Going</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你最近学的一个新东西是什么？</p>
 <p>也许是一门像意大利语或德语这样的外语，也许是一款图形编辑器，比如 Photoshop ，或者是一项烹饪技巧、木工以及日常训练。我想要你记住学习时刻的那种愉快的感觉。当事情从模糊变得清晰的时候，当你掌握了锯子或你明白了法语中男性的名词与女性的差别。那感觉咋样？很爽是吧？</p>
@@ -609,7 +636,7 @@
     <link href="http://hentaicracker.com/2016/12/31/2016-12-31/"/>
     <id>http://hentaicracker.com/2016/12/31/2016-12-31/</id>
     <published>2016-12-31T09:18:54.000Z</published>
-    <updated>2016-12-31T09:48:45.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<p>（语无伦次，慎重欣赏好文。）</p>
 <a id="more"></a>
@@ -641,7 +668,7 @@
     <link href="http://hentaicracker.com/2016/11/16/2016-11-16/"/>
     <id>http://hentaicracker.com/2016/11/16/2016-11-16/</id>
     <published>2016-11-16T12:13:30.000Z</published>
-    <updated>2016-12-05T12:28:31.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><p>有几个教师皱着眉头，那记录的女生涨红脸停笔不写，仿佛听了渐鸿最后的一句，处女的耳朵已经当众丧失贞操。</p>
@@ -709,7 +736,7 @@
     <link href="http://hentaicracker.com/2016/10/29/2016-10-29/"/>
     <id>http://hentaicracker.com/2016/10/29/2016-10-29/</id>
     <published>2016-10-29T02:19:21.000Z</published>
-    <updated>2016-11-16T12:51:59.000Z</updated>
+    <updated>2017-01-09T11:11:09.044Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li><p>谁的裤裆开了，露出这么个东西来？</p>
@@ -769,7 +796,7 @@
     <link href="http://hentaicracker.com/2016/10/13/liqi/"/>
     <id>http://hentaicracker.com/2016/10/13/liqi/</id>
     <published>2016-10-13T01:34:13.000Z</published>
-    <updated>2016-11-16T12:59:11.000Z</updated>
+    <updated>2017-01-09T11:11:09.048Z</updated>
     
     <content type="html"><![CDATA[<h2 id="介绍一下你自己和所做的工作"><a href="#介绍一下你自己和所做的工作" class="headerlink" title="介绍一下你自己和所做的工作"></a>介绍一下你自己和所做的工作</h2><p>我是<strong>陈俊生</strong>，是一名刚刚毕业努力为祖国社会主义而奋斗的前端工程师，坐标深圳。</p>
 <a id="more"></a>
@@ -851,4 +878,38 @@
     
   </entry>
   
+<<<<<<< HEAD
+=======
+  <entry>
+    <title>这段时间的感受与见闻</title>
+    <link href="http://hentaicracker.com/2016/09/21/2016-09-21/"/>
+    <id>http://hentaicracker.com/2016/09/21/2016-09-21/</id>
+    <published>2016-09-21T12:16:55.000Z</published>
+    <updated>2016-09-22T13:03:09.098Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作快三个月了，今天进行了转正答辩。不出意外我应该会留在<code>爱吃吧</code>继续工作。这段时间最大的收获就是学到了很多技术上的东西。特别是理解了<code>NodeJS</code>做为一个中间层服务器的作用…</p>
+<p>今天不聊技术Orz。</p>
+<p>我在大四的时候曾经有一段时间特别想读研，因为我发现实验室的学长们都是去的一些有名的互联网公司实习或工作，感觉研究生确实要比本科生优势大一点。</p>
+<a id="more"></a>
+<p>然而这段时间刚好发生在考研结束后的那些日子。真怀念那些日子啊，每天还能和学妹们一起写代码。</p>
+<p>工作这段时间很开心，是真的从心底上升出一种愉悦感，这中愉悦感来自每天充实的生活。在工作中每天都能学到了很多东西，每天都有一种充实感，这种感觉从内心深处逐渐扩散至全身，以至于每天都是飘飘然的～Gone with the wind，想想都赤激。</p>
+<p>我深深地感到自己很幸运，因为感到自己选择了一条很适合自己的路在前行。现在已经完全打消了读研的想法。至少现在没有。再深造是为了继续学习，但是身份依旧是学生，学生的压力除了考试真的没有多少。在这种低压的情况下我想我很难保持每天认真学习的态度。在工作中有工作的压力，像我们公司敏捷开发，每两周一个迭代，每天都能忙成狗。在这种高压之下，很容易使人进步。</p>
+<p>在大学里最大的收获，对于我个人来说，学到的不是有多少专业知识，而是一种学习态度，一种活到老学到老的人生态度，这在我开始写前端后更是深刻。</p>
+<p>另外，每天和一群程序猿呆在一起真的很开心，因为周围都是优秀的人，不管是和他们干什么都！开！心！我其实很少说话，但是和他们一起就好♂兴♂奋。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作快三个月了，今天进行了转正答辩。不出意外我应该会留在&lt;code&gt;爱吃吧&lt;/code&gt;继续工作。这段时间最大的收获就是学到了很多技术上的东西。特别是理解了&lt;code&gt;NodeJS&lt;/code&gt;做为一个中间层服务器的作用…&lt;/p&gt;
+&lt;p&gt;今天不聊技术Orz。&lt;/p&gt;
+&lt;p&gt;我在大四的时候曾经有一段时间特别想读研，因为我发现实验室的学长们都是去的一些有名的互联网公司实习或工作，感觉研究生确实要比本科生优势大一点。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="日常" scheme="http://hentaicracker.com/tag/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
 </feed>

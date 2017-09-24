@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 正则表达式 cheatsheet & 实例 · 陈俊生的正经博客</title><meta name="description" content="正则表达式 cheatsheet &amp; 实例 - Jason Chen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://hentaicracker.com/atom.xml" title="陈俊生的正经博客"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/blog.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">博客</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/tag/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="http://weibo.com/shenggegege" target="_blank" class="nav-list-link">微博</a></li><li class="nav-list-item"><a href="https://github.com/hentaicracker" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS订阅</a></li><li class="nav-list-item"><a href="http://hentaicracker.github.io/share/aboutme.html" target="_blank" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">正则表达式 cheatsheet & 实例</h1><div class="post-info">2017年7月17日</div><div class="post-content"><p><strong>正则总结 &amp; 速查</strong>.</p>
+<p>与其遇到复杂的正则表达式跑去直接搜结果还不如彻彻底底把正则表达式搞明白,搞透.要不然需求稍微一改就 GG 了.</p>
+<a id="more"></a>
+<h3 id="匹配字符"><a href="#匹配字符" class="headerlink" title="匹配字符"></a>匹配字符</h3><h4 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h4><p>只匹配一个字符.</p>
+<ul>
+<li><h4 id=""><a href="#" class="headerlink" title="[ - ]"></a>[ - ]</h4></li>
+</ul>
+<p>范围表示法, 使用连字符 “-“ 来省略和简写.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="number">123456</span>abcdefABCD] 可简写成 [<span class="number">1</span><span class="number">-6</span>a-fA-D]</div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="-1"><a href="#-1" class="headerlink" title="[^ ]"></a>[^ ]</h4></li>
+</ul>
+<p>排除字符组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/[^abc]/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// [" ", " ", " "]</span></div></pre></td></tr></table></figure></p>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>匹配除换行符、回车符、行分隔符和段分隔符除外以外的任意字符, 等价于 <code>[^\n\r\u2028\u2029]</code></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配一位数字, 等价于 <code>[0-9]</code></td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配一位除数字外的任意字符, 等价于 <code>[^0-9]</code></td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母, 数字, 下划线, 等价于 <code>[0-9a-zA-Z_]</code></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非(字母, 数字, 下划线)的字符, 等价于 <code>[^0-9a-zA-Z_]</code></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配空白符, 包括空格、水平制表符、垂直制表符、换行符、回车符、换页符, 等价于 <code>[\t\v\n\r\f]</code></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配非空白符, 等价于 <code>[^\t\v\n\r\f]</code></td>
+</tr>
+<tr>
+<td><code>[\d\D]</code>、<code>[\w\W]</code>、<code>[\s\S]</code>、<code>[^]</code></td>
+<td>匹配任意字符</td>
+</tr>
+</tbody>
+</table>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><ul>
+<li><h4 id="m-n"><a href="#m-n" class="headerlink" title="{m, n}"></a>{m, n}</h4></li>
+</ul>
+<p>横向模糊匹配,表示连续出现最少 m 次,最多 n 次. 属于贪婪匹配, 尽可能多地匹配.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/ab&#123;1,3&#125;c/g</span>;</div><div class="line"><span class="keyword">let</span> re1 = <span class="regexp">/ab&#123;2,&#125;c/g</span>; <span class="comment">// 表示至少出现 2 次</span></div><div class="line"><span class="keyword">let</span> re2 = <span class="regexp">/ab&#123;2&#125;c/g</span>; <span class="comment">// 等价于 &#123;2, 2&#125; , 表示出现 2 次</span></div><div class="line"><span class="keyword">let</span> str = <span class="string">'abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["abc", "abbc", "abbbc"]</span></div><div class="line">str.match(re1); <span class="comment">// ["abc", "abbc", "abbbc"]</span></div><div class="line">str.match(re2); <span class="comment">// ["abbc"]</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="-2"><a href="#-2" class="headerlink" title="?"></a>?</h4></li>
+</ul>
+<p>表示出现或者不出现, 等价于 <code>{0, 1}</code>, 惰性匹配.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/ab&#123;2,3&#125;?c/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "ab", "bc", "ab", "bb", "ab", "bb", "bc"]</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="-3"><a href="#-3" class="headerlink" title="+"></a>+</h4></li>
+</ul>
+<p>表示至少出现一次, 等价于 <code>{1,}</code>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/ab+/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "abb", "abbb", "abbbb"]</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="-4"><a href="#-4" class="headerlink" title="*"></a>*</h4></li>
+</ul>
+<p>表示出现任意次, 有可能会不出现, 等价于 <code>{0,}</code>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/ab*c/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'ac abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ac", "abc", "abbc", "abbbc", "abbbbc"]</span></div></pre></td></tr></table></figure></p>
+<h4 id="多选分支"><a href="#多选分支" class="headerlink" title="多选分支"></a>多选分支</h4><ul>
+<li><h4 id="管道符"><a href="#管道符" class="headerlink" title="| (管道符)"></a>| (管道符)</h4></li>
+</ul>
+<p>可以理解为”或”, 具体形式为 <code>(p1|p2|p3)</code> , 表示其中任何之一. 也是惰性匹配, 即前面匹配上了后面就不匹配了.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/ab|abc/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'ac abc abbc abbbc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "ab", "ab", "ab"]</span></div></pre></td></tr></table></figure></p>
+<h3 id="匹配位置"><a href="#匹配位置" class="headerlink" title="匹配位置"></a>匹配位置</h3><p>位置是相邻字符之间的位置. 可以理解成 ‘’ 空字符, 如 <code>java</code> 等价于如下形式:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">'java'</span> == <span class="string">''</span> + <span class="string">'j'</span> + <span class="string">''</span> + <span class="string">'a'</span> + <span class="string">''</span> + <span class="string">'v'</span> + <span class="string">''</span> + <span class="string">'a'</span>  + <span class="string">''</span>;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="-5"><a href="#-5" class="headerlink" title="^"></a>^</h4></li>
+</ul>
+<p>匹配开头, 在多行匹配中匹配行开头.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'JavaScript'</span>.match(<span class="regexp">/^/g</span>); <span class="comment">// [""]</span></div><div class="line"><span class="string">'JavaScript'</span>.replace(<span class="regexp">/^/g</span>, <span class="string">'I love '</span>); <span class="comment">// "I love JavaScript"</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="-6"><a href="#-6" class="headerlink" title="$"></a>$</h4></li>
+</ul>
+<p>匹配结尾, 在多行匹配中匹配行结尾.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'JavaScript'</span>.match(<span class="regexp">/$/g</span>); <span class="comment">// [""]</span></div><div class="line"><span class="string">'JavaScript'</span>.replace(<span class="regexp">/$/g</span>, <span class="string">' is cool!'</span>); <span class="comment">// "JavaScript is cool!"</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="b-和-B"><a href="#b-和-B" class="headerlink" title="\b 和 \B"></a>\b 和 \B</h4></li>
+</ul>
+<p><code>\b</code> 匹配单词边界, <code>\w</code> 和 <code>\W</code> 之间的位置, <code>\w</code> 和 <code>^</code> (开头位置)之间的位置, 以及 <code>\w</code> 和 <code>$</code> (结尾位置)之间的位置.<br><code>\B</code> 匹配非 <code>\b</code> 的位置.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">'JavaScript(ES6) TypeScript2.1.4'</span>.replace(<span class="regexp">/\b/g</span>, <span class="string">'*'</span>); </div><div class="line"><span class="comment">// "*JavaScript*(*ES6*) *TypeScript2*.*1*.*4*"</span></div><div class="line"></div><div class="line"><span class="string">'JavaScript(ES6) TypeScript2.1.4'</span>.replace(<span class="regexp">/\B/g</span>, <span class="string">'*'</span>)</div><div class="line"><span class="comment">// "J*a*v*a*S*c*r*i*p*t(E*S*6)* T*y*p*e*S*c*r*i*p*t*2.1.4"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="p-和-p"><a href="#p-和-p" class="headerlink" title="(?=p) 和 (?!p)"></a>(?=p) 和 (?!p)</h4></li>
+</ul>
+<p><code>(?=p)</code> 匹配 p 前面的位置.<br><code>(?!p)</code> 匹配 p 后面的位置.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'JavaScript'</span>.replace(<span class="regexp">/(?=a)/g</span>, <span class="string">'*'</span>);</div><div class="line"><span class="comment">// "J*av*aScript"</span></div><div class="line"><span class="string">'JavaScript'</span>.replace(<span class="regexp">/(?!a)/g</span>, <span class="string">'*'</span>);</div><div class="line"><span class="comment">// "*Ja*va*S*c*r*i*p*t*"</span></div></pre></td></tr></table></figure>
+<h3 id="括号分组"><a href="#括号分组" class="headerlink" title="括号分组"></a>括号分组</h3><ul>
+<li><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/(ab)+/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'ac abc abbc ababc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "ab", "abab", "ab"]</span></div><div class="line"></div><div class="line">re = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/</span>;</div><div class="line">str = <span class="string">'2017-07-25'</span>;</div><div class="line">str.match(re); <span class="comment">// ["2017-07-25", "2017", "07", "25", index: 0, input: "2017-07-25"]</span></div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">1</span>; <span class="comment">// "2017"</span></div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">2</span>; <span class="comment">// "07"</span></div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">3</span>; <span class="comment">// "25"</span></div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">4</span>; <span class="comment">// ""</span></div><div class="line">str.replace(re, <span class="string">'$2/$3/$1'</span>); <span class="comment">// "07/25/2017"</span></div><div class="line"></div><div class="line">re = <span class="regexp">/^((\d)(\d(\d)))\1\2\3\4$/</span>; <span class="comment">// \n 代表 $n</span></div><div class="line">str = <span class="string">'1231231233'</span>;</div><div class="line">str.match(re); <span class="comment">// ["1231231233", "123", "1", "23", "3", index: 0, input: "1231231233"]</span></div></pre></td></tr></table></figure>
+<p><strong>$n</strong>代表当前匹配分组第 n 个分组.</p>
+<ul>
+<li><h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4></li>
+</ul>
+<p>(p1|p2)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/(ab|bc)+/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'ac abc abbc ababc abbcbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "abbc", "abab", "abbcbc"]</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><h4 id="非捕获分组"><a href="#非捕获分组" class="headerlink" title="非捕获分组"></a>非捕获分组</h4></li>
+</ul>
+<p><code>(?:p)</code>, 非捕获分组不会引用分组, 也不会在正则表达式里反向引用.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/(?:ab)+/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'ac abc abbc ababc abbbbc'</span>;</div><div class="line">str.match(re); <span class="comment">// ["ab", "ab", "abab", "ab"]</span></div><div class="line"><span class="built_in">RegExp</span>.$<span class="number">1</span>; <span class="comment">// ""</span></div></pre></td></tr></table></figure></p>
+<h3 id="Flags"><a href="#Flags" class="headerlink" title="Flags"></a>Flags</h3><table>
+<thead>
+<tr>
+<th>flag</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>不区分大小写</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局匹配</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="运算优先级"><a href="#运算优先级" class="headerlink" title="运算优先级"></a>运算优先级</h3><ol>
+<li><code>\</code> 转义运算符</li>
+<li><code>()</code>, <code>(?:)</code>, <code>(?=)</code>, <code>(?!)</code>, <code>[]</code></li>
+<li><code>*</code>, <code>+</code>, <code>?</code>, <code>{n}</code>, <code>{n,}</code>, <code>{n,m}</code> 限定符</li>
+<li><code>^</code>, <code>$</code> 位置</li>
+<li><code>|</code> 多选分支</li>
+</ol>
+<h3 id="反斜杠匹配速查"><a href="#反斜杠匹配速查" class="headerlink" title="反斜杠匹配速查"></a>反斜杠匹配速查</h3><table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\t</td>
+<td>横向制表符(tab)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>null</td>
+</tr>
+<tr>
+<td>\.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>\+</td>
+<td>+</td>
+</tr>
+<tr>
+<td>\*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>\?</td>
+<td>?</td>
+</tr>
+<tr>
+<td>\^</td>
+<td>^</td>
+</tr>
+<tr>
+<td>\$</td>
+<td>$</td>
+</tr>
+<tr>
+<td>\[</td>
+<td>[</td>
+</tr>
+<tr>
+<td>\]</td>
+<td>]</td>
+</tr>
+<tr>
+<td>\(</td>
+<td>(</td>
+</tr>
+<tr>
+<td>\)</td>
+<td>)</td>
+</tr>
+<tr>
+<td>\\</td>
+<td></td>
+<td>\</td>
+<td></td>
+</tr>
+<tr>
+<td>\/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>\</td>
+<td>\</td>
+</tr>
+</tbody>
+</table>
+<h3 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(partern: <span class="built_in">RegExp</span> | string, flags?: string)</div></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="exec-string-string-RegExpExecArray-null"><a href="#exec-string-string-RegExpExecArray-null" class="headerlink" title="exec(string: string): RegExpExecArray | null;"></a>exec(string: string): RegExpExecArray | null;</h4></li>
+</ul>
+<p><code>exec()</code> 方法进行搜索匹配, 返回一个结果数组或 <code>null</code> .<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/\d+/g</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'2017-07-25'</span>;</div><div class="line">re.exec(str); <span class="comment">// ["2017", index: 0, input: "2017-07-25"]</span></div><div class="line">re.lastIndex; <span class="comment">// 4</span></div><div class="line">re.exec(str); <span class="comment">// ["07", index: 5, input: "2017-07-25"]</span></div><div class="line">re.lastIndex; <span class="comment">// 7</span></div><div class="line">re.exec(str); <span class="comment">// ["25", index: 8, input: "2017-07-25"]</span></div><div class="line">re.lastIndex; <span class="comment">// 10</span></div><div class="line">re.exec(str); <span class="comment">// null</span></div><div class="line">re.lastIndex; <span class="comment">// 0</span></div></pre></td></tr></table></figure></p>
+<p>每次 <code>exec</code> 方法都从 <code>lastIndex</code> 的下一个索引 <code>(index)</code> 开始, 在全局匹配模式 <code>(g)</code> 下, <code>lastIndex</code> 值都会改变, 非全局匹配模式下不变 ( <code>test</code> 方法同样适用).</p>
+<ul>
+<li><h4 id="test-string-string-boolean"><a href="#test-string-string-boolean" class="headerlink" title="test(string: string): boolean;"></a>test(string: string): boolean;</h4></li>
+</ul>
+<<<<<<< HEAD
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'2017-07-25'</span>;</div><div class="line">re.test(str); <span class="comment">// true</span></div></pre></td></tr></table></figure></div></article></div></section><footer><div class="paginator"><a href="/2017/08/06/2017-08-06/" class="prev">上一篇</a><a href="/2017/07/10/string/" class="next">下一篇</a></div><div data-thread-key="2017/07/17/regexp/" data-title="正则表达式 cheatsheet &amp; 实例" data-url="http://hentaicracker.com/2017/07/17/regexp/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"hentaicracker"};
+=======
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> re = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'2017-07-25'</span>;</div><div class="line">re.test(str); <span class="comment">// true</span></div></pre></td></tr></table></figure></div></article></div></section><footer><div class="paginator"><a href="/2017/07/10/string/" class="next">下一篇</a></div><div data-thread-key="2017/07/17/regexp/" data-title="正则表达式 cheatsheet &amp; 实例" data-url="http://hentaicracker.com/2017/07/17/regexp/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"hentaicracker"};
+>>>>>>> 2788d1fb1bbc67dd725012b9679187992ece75b8
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2016 - 2017 <a href="http://hentaicracker.com">Jason Chen</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-84370929-1",'auto');ga('send','pageview');</script></body></html>

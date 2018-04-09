@@ -84,6 +84,16 @@ for (var i = 0; i < myArray.length; ++i) {
 var newArray = [].concat(...myArray);
 ```
 
+#### 扁平多维数组
+
+```javascript
+function flattern(arr) {
+  return arr.reduce((prev, next) => {
+    return prev.concat(Array.isArray(next) ? next : flattern(next)); 
+  }, [])
+}
+```
+
 ### 数组平均值&&中位数
 #### 平均值
 ```javascript
@@ -150,6 +160,18 @@ function randombetween(min, max) {
 }());
 ```
 
+```javascript
+function deepCopy(obj) {
+  if(typeof obj !== 'object') return;
+  let newObj = obj instanceof Array ? [] : {};
+  for(let k in obj) {
+    if(obj.hasOwnProperty(k)) {
+      newObj[k] = typeof obj[k] === 'object' ? deepCopy(obj[k]) : obj[k];
+    }
+  }
+}
+```
+
 ### 判断变量是否为数组
 ```javascript
 // es5方法 Array.prototype.isArray();
@@ -161,14 +183,134 @@ function isArray(arr) {
 }
 ```
 
-### 生成随机数
+### 打乱数租
+
+#### 方法一
 ```javascript
 function isArray(a) {
   return Object.prototype.toString.call(a) === '[object Array]';
 }
-function rank(arr) {
+/**
+ * sort方法在 arr.length < 10 的情况下是采用插入排序，超过10的情况下使用快速排序和插入排序的混合排序。所以并不是真正所有概率相同的乱序。
+ */
+function shuffle(arr) {
   if(!isArray(arr)) return;
   return arr.sort(() => 0.5 - Math.random());
 }
-rank([1,2,3,4,5]);
+shuffle([1,2,3,4,5]);
+```
+
+#### 方法二
+
+```javascript
+function shuffle(arr) {
+  for(let i = arr.length;i;i--) {
+    let j = Math.floor(Math.random() * i);
+    [arr[i - 1], arr[j]] = [arr[j], arr[i - 1]];
+  }
+  return arr;
+}
+```
+
+### 判断 NaN 和 NaN 为相等
+```javascript
+function eq(a, b) {
+  if(a !== a) return b !== b;
+}
+eq(NaN, NaN); // true
+```
+
+### 判断 0 和 -0 不等
+```javascript
+0 === -0; // true
+
+function eq(a, b) {
+  if(a === b) return a !== 0 || 1 / a === 1 / b;
+  return false;
+}
+eq(0, 0); // true
+eq(0, -0); // false
+```
+
+## polyfill
+
+
+#### call
+
+```javascript
+Function.prototype.call2 = (context) {
+  var context = context || window;
+  context.fn = this;
+
+  var args = [];
+  for(var i = 1, len = arguments.length; i < len; i++) {
+    args.push('arguments[' + i + ']');
+  }
+  var result = eval('context.fn(' + args + ')');
+  delete context.fn;
+  return result;
+}
+```
+
+#### apply
+
+```javascript
+Function.prototype.apply2 = (context, arr) {
+  var context = context || window;
+  context.fn = this;
+  var result;
+  if(!arr) {
+    result = context.fn();
+  } else {
+    var args = [];
+    for(var i = 1, len = arr.length; i < len; i++) {
+      args.push('arr[' + i + ']');
+    }
+    result = eval('context.fn(' + args + ')');
+  }
+  delete context.fn;
+  return result;
+}
+```
+
+#### bind
+
+```javascript
+Function.prototype.bind2 = (context) {
+  if(typeof this !== 'function') {
+    throw new Error('what is trying to be bound is not callable');
+  }
+  var self = this;
+  var args = Array.prototype.slice.call(arguments, 1);
+  var fNOP = function () {};
+  var fBound = function () {
+    var bindArgs = Array.prototype.slice.call(arguments);
+    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+  }
+
+  fNOP.prototype = this.prototype;
+  fBound.prototype = new fNOP();
+  return fBound;
+}
+```
+
+#### new
+
+```javascript
+function new2() {
+  var obj = new Object();
+  Constructor = [].shift.call(arguments);
+  obj.__proto__ = Constructor.prototype;
+  Constructor.apply(obj, arguments);
+  return obj;
+}
+```
+
+#### Object.create()
+```javascript
+function create(obj) {
+  function F() {};
+  F.prototype = obj;
+  return new F();
+}
 ```

@@ -256,7 +256,7 @@ Pragma 属于通用首部字段。当该字段值为 `no-cache` 时，客户端�
 
 该字段于 HTTP 1.0 提出。
 
-**Cache-Control: max-age=<seconds>**
+**Cache-Control: max-age=seconds**
 
 `max-age=<seconds>` 表示资源能够被缓存（保持新鲜）的最大时间。也就相当于：
 ```
@@ -344,7 +344,7 @@ Cookie 主要用于三个方面：
 
 **Set-Cookie**
 
-> Set-Cookie: <cookie名>=<cookie值>
+> Set-Cookie: cookie名=cookie值
 
 服务器通过该头部告知客户端保存 Cookie 信息。
 
@@ -469,6 +469,43 @@ url = 'http://www.d.com?foo=' + encodeURIComponent(param);
 两个方法不能用混，一一对应。
 
 # HTTP 异步请求
+
+#### XMLHttpRequest
+
+```javascript
+function request(type, url, async, data) {
+    async = async || true; // 默认为异步
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest(); // 新建 XMLHttpRequest 对象
+        xhr.onreadystatechange = function() { // 状态发生变化的回调
+            if(xhr.readystate === 4) { // 请求完成
+                if(xhr.status === 200) {
+                    resolve(xhr.responseText); // 成功，拿到响应文本
+                } else {
+                    reject(xhr.status); // 失败，根据响应状态码判读失败原因
+                }
+            }
+        };
+        xhr.open(type, url, async);
+
+        if(type.toUpperCase() === 'POST') {
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 设置请求头
+        }
+        
+        xhr.send(data); // 发送请求
+    })
+}
+```
+
+`XMLHttpRequest.readyState` 属性返回一个 XMLHttpRequest 实例当前所处的状态。
+
+值|状态|描述
+---|---|---
+0|UNSENT|实例被创建，但还未调用 open() 方法。
+1|OPENED|open() 方法已经被调用。
+2|HEADERS_RECEIVED|send() 方法已经被调用，并且头部和状态已经可获得。
+3|LOADING|下载中；responseText 属性已经包含部分数据。
+4|DONE|下载操作已经完成。这意味着数据传输已经彻底完成或失败。
 
 
 # HTTP 跨域

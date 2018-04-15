@@ -104,8 +104,10 @@ TCP 数据包长度理论上没有限制。前面我们说 IP 数据包过大会
 
 终于到这里了，应用层直接面向用户。你看直播，发邮件，聊微信。各种数据五花八门，应用层就负责规定这些数据格式。
 
-常见的应用层协议有 `HTTP`、`FTP`、`SMTP`、`SSH`、`DNS`、`DHCP`、`RPC`等。
+常见的应用层协议有 [HTTP](http://hentaicracker.github.io/2018/02/26/http/)、`FTP`、`SMTP`、`SSH`、`DNS`、`DHCP`、`RPC`等。
 
 # 参考资料
+
 [OSI模型 - wikipedia](https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B)
+
 [互联网协议入门](http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html)

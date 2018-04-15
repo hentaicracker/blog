@@ -110,11 +110,11 @@ HTTP 头字段分为 4 种类型：
 `Content-Type`|请求体的 多媒体类型 (`MIME type`) （用于POST和PUT请求中）|Content-Type: application/x-www-form-urlencoded
 `Date`|发送该消息的日期和时间|Date: Tue, 15 Nov 1994 08:12:31 GMT
 `Host`|服务器的域名(用于虚拟主机 )，以及服务器所监听的传输控制协议端口号。如果所请求的端口是对应的服务的标准端口，则端口号可被省略。|Host: hentaicracker.github.io
-`If-Match`|仅当客户端提供的实体与服务器上对应的实体相匹配时，才进行对应的操作。主要作用时，用作像 PUT 这样的方法中，仅当从用户上次更新某个资源以来，该资源未被修改的情`况下，才更新该资源。|If-Match: "737060cd8c284d8af7ad3082f209582d"
+`If-Match`|仅当客户端提供的实体与服务器上对应的实体相匹配时，才进行对应的操作。主要作用是，用作像 PUT 这样的方法中，仅当从用户上次更新某个资源以来，该资源未被修改的情`况下，才更新该资源。|If-Match: "737060cd8c284d8af7ad3082f209582d"
 `If-Modified-Since`|允许在对应的内容未被修改的情况下返回304未修改（ 304 Not Modified ）|If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
 `If-None-Match`|允许在对应的内容未被修改的情况下返回304未修改（ 304 Not Modified ）|If-None-Match: "737060cd8c284d8af7ad3082f209582d"
-`If-Range`|如果该实体未被修改过，则向我发送我所缺少的那一个或多个部分；否则，发送整个新的实体|If-Range: "737060cd8c284d8af7ad3082f209582d"
 `If-Unmodified-Since`|仅当该实体自某个特定时间已来未被修改的情况下，才发送回应。|If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+`If-Range`|如果该实体未被修改过，则向我发送我所缺少的那一个或多个部分；否则，发送整个新的实体|If-Range: "737060cd8c284d8af7ad3082f209582d"
 `Origin`|发起一个针对 跨来源资源共享 的请求（要求服务器在回应中加入一个‘访问控制-允许来源’（'Access-Control-Allow-Origin'）字段）。|Origin: http://www.example.com
 `Pragma`|与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果。|Pragma: no-cache
 `Proxy-Authorization`|用来向代理进行认证的认证信息。|Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
@@ -164,7 +164,7 @@ HTTP 状态码主要分为 5 类。
 状态码|状态描述|说明
 ---|---|---
 `200`|`OK`|请求成功，请求所希望的请求头和响应体将返回。
-`200`|`from cache`|**表示该资源已经被缓存过，并且在有效期内，所以不再向浏览器发出请求，直接使用本地缓存。**
+`200`|`from cache`|**表示该资源已经被缓存过，并且在有效期内，所以浏览器不再向服务器发出请求，直接使用本地缓存。**
 201|created|请求已经被实现，而且有一个新的资源已经依据请求的需要而创建，且其 URI 已经随 Location 头信息返回。
 202|Accepted|服务器已接受请求，但尚未处理。正如它可能被拒绝一样，最终该请求可能会也可能不会被执行。
 203|Non-Authoritative Information|服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。
@@ -194,6 +194,7 @@ HTTP 状态码主要分为 5 类。
 405|Method Not Allowed|字面意思。该响应必须返回一个 Allow 头信息用以表示出当前资源能够接受的请求方法的列表。
 406|Not Acceptable|请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体，该请求不可接受。
 408|Request Timeout|请求超时。
+412|Precondition Failed|服务器没能满足客户端在获取资源时在请求头字段中设置的先决条件。
 413|Request Entity Too Large|表示服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。
 414|Request-URI Too Long|URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。比如本应使用 POST 方法的表单提交变成了 GET 方法，导致查询字符串过长。
 418|I'm a teapot|愚人节笑话。
@@ -235,9 +236,256 @@ HTTP/1.1定义的 `Cache-Control` 头用来区分对缓存机制的支持情况�
 
 此策略**决定客户端是否可以直接从本地缓存数据中加载数据并展示（否则发请求到服务端获取）**。
 
+**Pragma**
+
+Pragma 属于通用首部字段。当该字段值为 `no-cache` 时，客户端则不能缓存，需每次向服务器发一次请求。
+
+在客户端上使用时，常规要求我们需要在 HTML 上加上一段 meta 元标签。
+
+```html
+<meta http-equiv="Pragma" content="no-cache">
+```
+
+不过这种做法只有 IE 才能识别这段 meta 标签含义，其它主流浏览器仅能识别 `Cache-Control: no-store` 的 meta 标签。
+
+该字段于 HTTP 1.0 提出。
+
+**Expires**
+
+`Expires` 指明了缓存数据有效的绝对时间，告诉客户端到了这个时间点后本地缓存就作废了，在这个时间点内客户端可以认为缓存数据有效，可直接从缓存中加载展示。
+
+该字段于 HTTP 1.0 提出。
+
+**Cache-Control: max-age=<seconds>**
+
+`max-age=<seconds>` 表示资源能够被缓存（保持新鲜）的最大时间。也就相当于：
+```
+Cache-Control: public/private
+Expires: 当前客户端时间 + maxAge
+```
+
+Cache-Control 优先级高于 Expires，它们同时存在的时候，后者会被忽略掉。
+
+该字段于 HTTP 1.1 提出。
+
+**注意**：
+
+**在没有提供任何浏览器缓存过期策略的情况下，客户端计算响应头中 2 个时间字段（`Date` 和 `Last-Modified`）之间的时间差值（秒），取该值的 10% 作为缓存过期周期。**
+
+#### 缓存对比策略
+
+缓存对比是将缓存在客户端的数据标识发往服务端，服务端通过标识来判断客户端缓存的数据是否有效，进而决定是否要重发数据。
+
+客户端检测到数据过期或浏览器刷新后，往往会重新发起一个 HTTP 请求到服务器，服务器此时先判断请求头有没有带标识（ `If-Modified-Since`、`If-None-Match` ）过来，如果判断了标识仍有效，则返回 `304` 告诉客户端直接拿缓存来用即可（这里须在首次响应的时候输出相应的头信息（ `Last-Modified`、`ETag` ）到客户端）。
+
+**Last-Modified**
+
+像之前说的，服务器将资源传递给客户端时，会将资源最后更改的时间以 `Last-Modified: GMT` 的形式加在响应首部一起返回给客户端。
+
+客户端会在资源标记上该信息，下次再请求时会把该信息附带在请求报文中一并带给服务器去做检查，若传递的时间值与服务器上该资源最终修改的时间是一致的则说明该资源没被修改过，直接返回`304`状态码，内容为空，这样就节省了传输数据量。不一致则返回该资源(`200`)。
+
+浏览器标记最终修改时间的请求报文首部有两个字段：
+
+ 1. `If-Modified-Since: Last-Modified-value(GMT)`
+
+该首部告诉服务器如果客户端传来的最后修改时间与服务器一致，则返回 304 和响应头即可。
+
+ 2. `If-Unmodified-Since: Last-Modified-value(GMT)`
+
+该首部告诉服务器若 `Last-Modified` 没匹配上（资源更改了），则返回 `412` 给客户端。
+
+Last-Modified 存在一定问题：
+
+如果服务器某个资源被修改了，但其实际内容根本没发生改变，会因为 Last-Modified 时间匹配不上而返回整个实体给客户端。
+
+**ETag**
+
+为了解决 Last-Modified 可能存在的不准确的问题，HTTP 1.1 推出了 ETag 实体首部字段。服务器通过某种算法给资源算出一个唯一标识符（如 md5 ），将该“ `Etag: 标识符` ”放在响应头中返回客户端。
+
+客户端会保留该 ETag 字段，在下一次请求的时候将其一并带过去。服务器只需比较传来的 ETag 跟自己服务器上该资源的 Etag 是否一致就能判断资源相对客户端是否被修改过了。
+
+客户端通过两个请求头字段标记 ETag 传给服务器：
+
+ 1. `If-None-Match: ETag-value`
+
+这个字段告诉服务器如果 ETag 没匹配上需重发资源数据，否则返回 `304` 。
+
+ 2. `If-Match: ETag-value`
+
+这个字段告诉服务器如果没有匹配到 ETag ，或者收到了 “*” 值而当前并没有该资源实体则返回 `412` 。否则服务器直接忽略该字段（直接 `200 OK` 返回资源）。
+
+#### 制定缓存策略
+
+一般我们为了提高网站性能都会做客户端缓存，但是如果我们想更新或废弃缓存的响应需要怎么做呢？
+
+![缓存策略](/img/http-cache-hierarchy.png)
+
+我们来解读一下上面的示例：
+- HTML 被标记为 `no-cache` ，这说明浏览器每次请求时都始终会重新验证文档，并在内容变化时获取最新版本。
+
+- 将静态资源文件如 CSS、JS 文件设置 1 年后到期，当文件名的版本 ( md5 ) 的值变化时则重新下载 CSS 或 JS。JS 标记为 private，可能是因为它包含的某些用户私人数据是 CDN 不应缓存的。
+
+- 图像缓存时不包含版本号，并设置为 1 天后到期。
+
+ 
+# HTTP Cookies
+
+> HTTP Cookie（也叫Web Cookie或浏览器Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。
+
+每个 Cookie 所存放的数据不能超过 `4kb` 。如果 Cookie 字符串的长度超过 4kb ，则该属性将返回空字符串。
+
+Cookie 主要用于三个方面：
+
+- 回话状态管理（如用户登录状态、购物车或其他需要记录的信息）
+- 个性化设置（如用户自定义设置、主题等）
+- 浏览器行为跟踪（如跟踪分析用户行为等）
+
+#### 创建 Cookie
+
+**Set-Cookie**
+
+> Set-Cookie: <cookie名>=<cookie值>
+
+服务器通过该头部告知客户端保存 Cookie 信息。
+
+通过指定过期时间（Expires）或有效期（Max-Age）来设置`持久性 Cookie`。不设置则为`会话期 Cookie`，关闭浏览器便失效。
+
+**Secure 和 HttpOnly**
+
+标记为 `Secure` 的 Cookie 只能通过被 HTTPS 协议加密过的请求发送给服务端。不过敏感信息不应该通过 Cookie 传输。
+
+通过 JavaScript 的 `Document.cookie` API 无法访问带有 `HttpOnly` 标记的 Cookie，它们只应该发送给服务端。 如果包含服务端 Session 信息的 Cookie 不想被客户端 JavaScript 脚本调用，那么就应该为其设置 `HttpOnly` 标记。**这样可以避免跨域脚本（XSS）攻击**。
+
+示例：
+
+```
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+```
+
+**Domain 和 Path**
+
+`Domain`和`Path`标识定义了 Cookie 的作用域：既 Cookie 应该发送给哪些 URL。
+Domain 标识指定了哪些主机可以接受 Cookie。如果不指定，默认为当前文档的主机（不包含子域名）。如果指定了 Domain ，则一般包含子域名。
+
+例如，如果设置 Domain=mozilla.org，则 Cookie 也包含在子域名中（如 developer.mozilla.org）。
+
+Path 标识指定了主机下的哪些路径可以接受 Cookie（该URL路径必须存在于请求URL中）。以字符 %x2F ("/") 作为路径分隔符，子路径也会被匹配。
+
+**SameSite**
+
+`SameSite` Cookie允许服务器要求某个cookie在跨站请求时不会被发送，从而可以阻止跨站请求伪造攻击（CSRF）。但目前 SameSite Cookie 还处于实验阶段，并不是所有浏览器都支持。
+
+#### 客户端 JavaScript 操作 Cookie
+
+通过`Document.cookie`属性可创建新的 Cookie ，也可通过该属性访问非`HttpOnly`标记的 Cookie 。
+
+```javascript
+document.cookie = "name=chen";
+document.cookie = "age=24";
+console.log(document.cookie);
+// logs "name=chen; age=24" 中间通过“;”和一个空格分开
+```
+
+**写 Cookie**
+
+```javascript
+function setCookie(name, value, expDays) {
+    var exp = new Date();
+    exp.setDate(exp.getDate() + expDays);
+    document.cookie = `${name}=${encodeURIComponent(value)}; Expires=${exp.toGMTString()}`
+}
+```
+
+**读取 Cookie**
+
+```javascript
+function getCookie(name){
+    var arr, re = new RegExp(`(^|)${name}=([^;]*)(;|$)`);
+    if(arr = document.cookie.match(re)) {
+        return decodeURIComponent(arr[2]);
+    } else {
+        return null;
+    }
+}
+```
+
+**删除 Cookie**
+```javascript
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var val = getCookie(name);
+    if(val !== null) {
+        document.cookie = `${name}=${val}; Expires=${exp.toGMTString()}`
+    }
+}
+```
+
+# URI
+
+`URI`，Uniform Resource Identifier，统一资源标识符。URI 分为 `统一资源定位符 URL` 和 `统一资源名称 URN`。
+
+#### URL
+
+scheme 协议|host 主机名|port 端口|path 路径|search 查询参数|hash 片段
+---|---|---|---|---|---
+http://|hentaicracker.github.io|:8080|/index.html|?name=chen&age=24|#URL
+
+**URL 编码**
+
+URL 编码一般是为了处理请求参数中容易引起解析错误的情况。比如 querystring 中某个字段的值里包含了 ‘&’ 或 ‘=’ 字符。在这种情况下需要对其进行编码。
+
+**encodeURI()**
+
+encodeURI() 是对整个 URL 进行编码。不会对 **ASCII字母、数字、~ ! @ # $ & * ( ) = : , ; ? + '** 进行编码。
+
+```javascript
+encodeURI("http://hentaicracker.github.io/HTTP 协议");
+
+// "http://hentaicracker.github.io/HTTP%20%E5%8D%8F%E8%AE%AE"
+
+encodeURI("~!@#$&*()=:/,;?+'");
+// "~!@#$&*()=:/,;?+'"
+```
+
+**encodeURIComponent()**
+
+如果请求参数中带了另一个 URL，就不能使用 encodeURI 来为其编码了，因为 encodeURI 不会对 **: 和 /** 进行编码，就会出现服务器解析有歧义的情况。这个时候就需要使用 encodeURIComponent()。
+
+它的作用是对 URL 中的**参数**进行编码，它仅仅不会对 **ASCII字母、数字、~ ! * ( ) '** 进行编码。
+
+```javascript
+var param = 'http://www.abc.com?t=123&a=456';
+url = 'http://www.d.com?foo=' + encodeURIComponent(param);
+// "http://www.d.com?foo=http%3A%2F%2Fwww.abc.com%3Ft%3D123%26a%3D456"
+```
+
+**解码**
+
+`decodeURI()` 对应 `encodeURI()`；
+
+`decodeURIComponent()` 对应 `encodeURIComponent()`。
+
+两个方法不能用混，一一对应。
+
+# HTTP 异步请求
+
+
+# HTTP 跨域
+
+
+# HTTP 小知识
+
+- 使用 TCP 时，HTTP 服务器默认端口号是 `80` 。
+
+- HTTP 每次连接只处理一个请求。
+
+- HTTP 是无状态的协议。
 
 # 参考资料
 [超文本传输协议 - wikipedia](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE)
+
+[HTTP缓存 - Google Web Fundamentals](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn)
 
 [HTTP缓存 - MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ)
 

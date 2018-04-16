@@ -1,6 +1,7 @@
 module.exports = {
     title: 'jason chen blogs',
-
+    description: '陈俊生的正经博客',
+    dest: 'dist',
     themeConfig: {
         editLinks: true,
         docsDir: 'source',

@@ -225,7 +225,7 @@ HTTP/1.1定义的 `Cache-Control` 头用来区分对缓存机制的支持情况�
 
 缓存策略|描述|缓存控制
 ---|---|---
-**禁止进行缓存**|缓存中不得存储任何关于客户端请求和服务端响应的内容。每次由客户端发起的请求都会下载完整的响应内容。|Cache-Control: no-store  \r Cache-Control: no-store, no-store, must-revalidate
+**禁止进行缓存**|缓存中不得存储任何关于客户端请求和服务端响应的内容。每次由客户端发起的请求都会下载完整的响应内容。|Cache-Control: no-store  \r Cache-Control: no-cache, no-store, must-revalidate
 **强制确认缓存**|每次有请求发出时，缓存会将此请求发到服务器，服务器端会验证请求中所描述的缓存是否过期，若未过期返回 `304` 状态码，则缓存才使用本地缓存副本。|Cache-Control: no-cache（类似 Cache-Control: max-age=0 ）
 **公共缓存**|表示该响应可以被任何中间人（译者注：比如`中间代理`、`CDN` 等）缓存|Cache-Control: public
 **私有缓存**|表示该响应是专用于某单个用户的，中间人不能缓存此响应，该响应只能应用于浏览器私有缓存中。|Cache-Control: private

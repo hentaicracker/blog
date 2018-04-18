@@ -109,8 +109,12 @@ function getTop(el) {
 }
 ```
 
-```javascript
-```
+第二种方法则是用 `element.getBoundingClientRect()` 这个 API 来获取 top 值。
+
+这个方法返回如下图的值：
+
+![rect](../img/rect.png)
+
 
 ```javascript
 ```

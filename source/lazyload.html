@@ -47,30 +47,26 @@
             <img data-src="./img/steve-jobs.jpg" alt="">
         </div>
     </div>
-    <script>
+    <!-- <script>
         //方法一
-        
+
         function getTop(el, initVal) {
             let top = el.offsetTop + initVal;
             if (el.offsetParent !== null) {
-                const border = window.getComputedStyle(el.offsetParent).getPropertyValue('border');
-                if (border !== '') {
-                    top += parseInt(border.slice(0, 1));
-                }
+                top += el.offsetParent.clientTop;
                 return getTop(el.offsetParent, top);
             } else {
                 return top;
             }
         }
-        
-        function inSight(el, ca) {
+
+        function inSight(el) {
             const clientHeight = document.documentElement.clientHeight;
             const scrollHeight = document.documentElement.scrollTop + clientHeight;
-            if (ca == 1) {
-                return el.getBoundingClientRect().top < scrollHeight;
-            } else {
-                return getTop(el, 0) < scrollHeight;
-            }
+            // 方法一
+            return getTop(el, 0) < scrollHeight;
+            // 方法二
+            // return el.getBoundingClientRect().top < scrollHeight;
         }
 
         function loadImg(el) {
@@ -80,6 +76,7 @@
         }
 
         var count = 0;
+
         function checkImgs() {
             const imgs = document.getElementsByTagName('img');
             Array.from(imgs).forEach(el => {
@@ -111,8 +108,8 @@
 
         window.addEventListener('scroll', throttle(checkImgs, 200, 1000), false);
         window.onload = checkImgs;
-    </script>
-    <!-- <script>
+    </script> -->
+    <script>
         // 方法二
         function query(tag) {
             return Array.from(document.getElementsByTagName(tag));
@@ -131,7 +128,7 @@
         query('img').forEach((item) => {
             observer.observe(item);
         })
-    </script> -->
+    </script>
 </body>
 
 </html>

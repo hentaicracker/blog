@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 20px auto;
+            padding: 5px 0;
+            width: 800px;
+            border: 5px solid #000;
+        }
+
+        .img-area {
+            margin: 100px 0;
+            height: 500px;
+        }
+
+        #first {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-area">
+            <img id="first" data-src="./img/ceng.png" alt="">
+        </div>
+        <div class="img-area">
+            <img data-src="./img/data.png" alt="">
+        </div>
+        <div class="img-area">
+            <img data-src="./img/huaji.png" alt="">
+        </div>
+        <div class="img-area">
+            <img data-src="./img/liqi1.png" alt="">
+        </div>
+        <div class="img-area">
+            <img data-src="./img/liqi2.png" alt="">
+        </div>
+        <div class="img-area">
+            <img data-src="./img/steve-jobs.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        //方法一
+        
+        function getTop(el, initVal) {
+            let top = el.offsetTop + initVal;
+            if (el.offsetParent !== null) {
+                const border = window.getComputedStyle(el.offsetParent).getPropertyValue('border');
+                if (border !== '') {
+                    top += parseInt(border.slice(0, 1));
+                }
+                return getTop(el.offsetParent, top);
+            } else {
+                return top;
+            }
+        }
+        
+        function inSight(el, ca) {
+            const clientHeight = document.documentElement.clientHeight;
+            const scrollHeight = document.documentElement.scrollTop + clientHeight;
+            if (ca == 1) {
+                return el.getBoundingClientRect().top < scrollHeight;
+            } else {
+                return getTop(el, 0) < scrollHeight;
+            }
+        }
+
+        function loadImg(el) {
+            if (!el.src) {
+                el.src = el.dataset.src;
+            }
+        }
+
+        var count = 0;
+        function checkImgs() {
+            const imgs = document.getElementsByTagName('img');
+            Array.from(imgs).forEach(el => {
+                if (inSight(el)) {
+                    loadImg(el);
+                }
+            })
+            console.log(count++);
+        }
+
+        function throttle(fun, delay, time) {
+            var timeout;
+            var previous = +new Date();
+            return function () {
+                var now = +new Date();
+                var context = this;
+                var args = arguments;
+                clearTimeout(timeout);
+                if (now - previous >= time) {
+                    fun.apply(context, args);
+                    previous = now;
+                } else {
+                    timeout = setTimeout(function () {
+                        fun.apply(context, args);
+                    }, delay);
+                }
+            }
+        }
+
+        window.addEventListener('scroll', throttle(checkImgs, 200, 1000), false);
+        window.onload = checkImgs;
+    </script>
+    <!-- <script>
+        // 方法二
+        function query(tag) {
+            return Array.from(document.getElementsByTagName(tag));
+        }
+        var observer = new IntersectionObserver(
+            (changes) => {
+                changes.forEach((change) => {
+                    if (change.intersectionRatio > 0) {
+                        var img = change.target;
+                        img.src = img.dataset.src;
+                        observer.unobserve(img);
+                    }
+                })
+            }
+        )
+        query('img').forEach((item) => {
+            observer.observe(item);
+        })
+    </script> -->
+</body>
+
+</html>

@@ -233,6 +233,55 @@ eq(0, 0); // true
 eq(0, -0); // false
 ```
 
+## 防抖
+
+```javascript
+/**
+ * 持续触发事件，在事件触发 delay ms 后才执行，如果在一个事件触发的 delay ms 内又触发了这个事件，那就以新的事件的时间为准， delay ms 后才执行。
+ * @param fun 要执行的函数
+ * @param delay 延迟时间
+ */
+function debounce(fun, delay) {
+  var timeout, context, args;
+  return function() {
+    var context = this;
+    var args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      fun.apply(context, args);
+    }, delay);
+  }
+}
+```
+
+## 节流
+
+```javascript
+/**
+ * 持续触发事件，每隔一段时间，只执行一次事件。
+ * @param fun 要执行的函数
+ * @param delay 延迟时间
+ * @param time 在 time 时间内必须执行一次
+ */
+function throttle(fun, delay, time) {
+  var context, args;
+  var timeout;
+  var previous = +new Date();
+  return function() {
+    var now = +new Date();
+    context = this;
+    args = arguments;
+    clearTimeout(timeout);
+    if(now - previous >= time) {
+      fun.apply(context, args);
+      previous = now;
+    } else {
+      timeout = setTimeout(fun, delay);
+    }
+  }
+}
+```
+
 ## polyfill
 
 

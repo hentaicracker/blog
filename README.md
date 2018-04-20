@@ -1,5 +1,7 @@
 # THANKS FOR READING MY BLOG!
 
+博客地址： [hentaicracker.github.io](hentaicracker.github.io)
+
 ## 分类导航
 
 ### JavaScript

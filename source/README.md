@@ -1,4 +1,4 @@
-# THANKS FOR READING MY BLOG!
+# 欢迎观光我的博客！
 
 ## 分类导航
 
@@ -9,7 +9,7 @@
  - [正则表达式 cheatsheet & 实例](./2017/regexp.html)
  - [String 踩坑](./2017/string.html)
 
-### 计算机网络
+### 理解计算机
 
  - [互联网协议梳理](./2018/protocol.html)
  - [用户认证流程梳理](./2018/authenticate.html)

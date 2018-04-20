@@ -1,9 +1,12 @@
 module.exports = {
-    title: 'jason chen blogs',
+    title: '陈俊生的正经博客',
     description: '陈俊生的正经博客',
     dest: 'dist',
+    head: [
+        ['link', { rel: 'icon', href: `/favicon.ico` }],
+    ],
+    serviceWorker: true,
     themeConfig: {
-        editLinks: true,
         docsDir: 'source',
         repo: 'https://github.com/hentaicracker/new-blog/tree/vuepress',
         nav: [

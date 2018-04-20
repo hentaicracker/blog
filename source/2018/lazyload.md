@@ -15,7 +15,7 @@ tags:
 
 ## 实现
 
-::: 注意
+::: tip
 此文所涉及的懒加载皆是在垂直方向上的滚动加载，横向滚动暂不考虑。
 :::
 
@@ -106,7 +106,7 @@ function getTop(el) {
 
 getBoundingClientRect 的返回值如下图：
 
-![rect](../rect.jpg)
+![rect](../img/rect.jpg)
 
 ```javascript
 var first  = document.getElementById('first');
@@ -233,13 +233,13 @@ function callback(changes: IntersectionObserverEntry[]) {
 
 详细释义：
 
-- time：可见性发生变化的时间，是一个高精度时间戳，单位为毫秒
-- intersectionRatio：目标元素的可见比例，即intersectionRect占boundingClientRect的比例，完全可见时为1，完全不可见时小于等于0
-- boundingClientRect：目标元素的矩形区域的信息
-- intersectionRect：目标元素与视口（或根元素）的交叉区域的信息
-- rootBounds：根元素的矩形区域的信息，getBoundingClientRect()方法的返回值，如果没有根元素（即直接相对于视口滚动），则返回null
-- isIntersecting：是否进入了视口，boolean 值
-- target：被观察的目标元素，是一个 DOM 节点对象
+- time： 可见性发生变化的时间，是一个高精度时间戳，单位为毫秒
+- intersectionRatio： 目标元素的可见比例，即 intersectionRect 占 boundingClientRect 的比例，完全可见时为 1 ，完全不可见时小于等于 0
+- boundingClientRect： 目标元素的矩形区域的信息
+- intersectionRect： 目标元素与视口（或根元素）的交叉区域的信息
+- rootBounds： 根元素的矩形区域的信息，getBoundingClientRect() 方法的返回值，如果没有根元素（即直接相对于视口滚动），则返回 null
+- isIntersecting： 是否进入了视口，boolean 值
+- target： 被观察的目标元素，是一个 DOM 节点对象
 
 使用 IntersectionObserver 实现图片懒加载：
 

@@ -5,8 +5,10 @@ module.exports = {
     themeConfig: {
         editLinks: true,
         docsDir: 'source',
+        repo: 'https://github.com/hentaicracker/new-blog/tree/vuepress',
         nav: [
-            { text: 'Home', link: '/' }
+            { text: 'Home', link: '/' },
+            { text: 'About Me', link: '/aboutme' },
         ],
         sidebar: {
             '/': [
@@ -14,6 +16,7 @@ module.exports = {
                     title: '2018',
                     collapsable: false,
                     children: [
+                        '/2018/lazyload',
                         '/2018/protocol',
                         '/2018/authenticate',
                         '/2018/http',
@@ -23,7 +26,6 @@ module.exports = {
                     title: '2017',
                     collapsable: false,
                     children: [
-                        '/2017/async',
                         '/2017/2017-08-06',
                         '/2017/jsTips',
                         '/2017/regexp',
@@ -51,6 +53,7 @@ module.exports = {
                     title: '2018',
                     collapsable: false,
                     children: [
+                        'lazyload',
                         'protocol',
                         'authenticate',
                         'http',
@@ -62,7 +65,6 @@ module.exports = {
                     title: '2017',
                     collapsable: false,
                     children: [
-                        'async',
                         '2017-08-06',
                         'jsTips',
                         'regexp',

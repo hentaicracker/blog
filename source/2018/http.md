@@ -457,7 +457,7 @@ encodeURI("~!@#$&*()=:/,;?+'");
 ```javascript
 var param = 'http://www.abc.com?t=123&a=456';
 url = 'http://www.d.com?foo=' + encodeURIComponent(param);
-// "http://www.d.com?foo=http%3A%2F%2Fwww.abc.com%3Ft%3D123%26a%3D456"
+// url => "http://www.d.com?foo=http%3A%2F%2Fwww.abc.com%3Ft%3D123%26a%3D456"
 ```
 
 **解码**
@@ -489,7 +489,7 @@ function request(type, url, async, data) {
         xhr.open(type, url, async);
 
         if(type.toUpperCase() === 'POST') {
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // 设置请求头
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"); // 设置请求头, Content-Type 默认为 text/plain 。常用的还有 application/json 、 multipart/form-data
         }
         
         xhr.send(data); // 发送请求

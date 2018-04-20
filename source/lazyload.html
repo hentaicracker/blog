@@ -47,7 +47,7 @@
             <img data-src="./img/steve-jobs.jpg" alt="">
         </div>
     </div>
-    <!-- <script>
+    <script>
         //方法一
 
         function getTop(el, initVal) {
@@ -108,8 +108,8 @@
 
         window.addEventListener('scroll', throttle(checkImgs, 200, 1000), false);
         window.onload = checkImgs;
-    </script> -->
-    <script>
+    </script>
+    <!-- <script>
         // 方法二
         function query(tag) {
             return Array.from(document.getElementsByTagName(tag));
@@ -128,7 +128,7 @@
         query('img').forEach((item) => {
             observer.observe(item);
         })
-    </script>
+    </script> -->
 </body>
 
 </html>

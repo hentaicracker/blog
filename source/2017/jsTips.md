@@ -33,7 +33,7 @@ var deduped = [ 1, 1, 'a','a' ].filter( (el, i, arr) => arr.indexOf(el) ===i );
 ```javascript
 function dedup(arr) {
      var hashTable = {};
-     return arr. filter(function(el) {
+     return arr.filter(function(el) {
           var key = JSON.stringify(el);
           var match = Boolean(hashTable[key]);
           return (match ? false : hashTable[key] = true);
@@ -242,7 +242,7 @@ eq(0, -0); // false
  * @param delay 延迟时间
  */
 function debounce(fun, delay) {
-  var timeout, context, args;
+  var timeout;
   return function() {
     var context = this;
     var args = arguments;

@@ -5,7 +5,7 @@
 ### JavaScript
 
  - [图片懒加载踩坑](./2018/lazyload.html)
- - [Javascript Tips](./2017/jsTips.html)
+ - [JavaScript Tips](./2017/jsTips.html)
  - [正则表达式 cheatsheet & 实例](./2017/regexp.html)
  - [String 踩坑](./2017/string.html)
 

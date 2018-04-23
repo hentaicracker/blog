@@ -76,7 +76,7 @@ const scrollHeight = document.documentElement.scrollTop + clientHeight; // 滚�
 
 由此我们得到元素距离文档顶部的高度的计算方法：
 
-```javascript
+```javascript{5}
 function getTop(el, initVal) {
     let top = el.offsetTop + initVal;
     if (el.offsetParent !== null) {

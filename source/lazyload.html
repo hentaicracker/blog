@@ -64,9 +64,9 @@
             const clientHeight = document.documentElement.clientHeight;
             const scrollHeight = document.documentElement.scrollTop + clientHeight;
             // 方法一
-            return getTop(el, 0) < scrollHeight;
+            // return getTop(el, 0) < scrollHeight;
             // 方法二
-            // return el.getBoundingClientRect().top < scrollHeight;
+            return el.getBoundingClientRect().top < clientHeight;
         }
 
         function loadImg(el) {

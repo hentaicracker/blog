@@ -16,6 +16,13 @@ module.exports = {
         sidebar: {
             '/': [
                 {
+                    title: '2019',
+                    collapsable: false,
+                    children: [
+                        '/2019/hooks',
+                    ]
+                },
+                {
                     title: '2018',
                     collapsable: false,
                     children: [
@@ -48,6 +55,15 @@ module.exports = {
                         '/2016/hello-world',
                         '/2016/liqi',
                         '/2016/2016-04-23',
+                    ]
+                }
+            ],
+            '/2019/': [
+                {
+                    title: '2019',
+                    collapsable: false,
+                    children: [
+                        'hooks',
                     ]
                 }
             ],

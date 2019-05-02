@@ -4,6 +4,7 @@
 
 ### JavaScript
 
+ - [使用 React Hooks + Context 打造简版 Redux](./2019/hooks.html)
  - [图片懒加载踩坑](./2018/lazyload.html)
  - [JavaScript Tips](./2017/jsTips.html)
  - [正则表达式 cheatsheet & 实例](./2017/regexp.html)

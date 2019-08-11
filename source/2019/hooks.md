@@ -239,6 +239,112 @@ function Parent (props) {
 
 ```
 
+## 深入
+
+我们可以更进一步，让我们的状态管理机制更加精简。
+
+首先，在某个组件层级定义我们需要的 **Context** 。假如，我们这里是在顶层（也就是全局的状态管理）。
+
+```javascript
+import React from 'react'
+
+// 创建我们需要的 Context
+export const AppContext = React.createContext(null)
+```
+
+然后我们将 `useReducer` 的返回值直接传给 **AppContext.Provider**。
+
+```javascript
+import React, { useReducer } from 'react'
+
+// 全局 Provider
+export function AppProvider ({reducer, initValue, children}) {
+  return (
+    <AppContext.Provider value={useReducer(reducer, initValue)}>
+      {children}
+    </AppContext.Provider>
+  )
+}
+```
+
+最后，添加一个自定义 `hooks` 来获取 **AppContext** 里的状态和方法。
+
+```javascript
+import React, { useReducer, useContext } from 'react'
+
+export const useAppState = () => useContext(AppContext)
+```
+
+最后我们的 `state.js` 完整代码如下：
+
+```javascript
+import React, { useContext, useReducer } from 'react'
+
+export const AppContext = React.createContext(null)
+
+export function AppProvider ({reducer, initValue, children}) {
+  return (
+    <AppContext.Provider value={useReducer(reducer, initValue)}>
+      {children}
+    </AppContext.Provider>
+  )
+}
+
+export const useAppState = () => useContext(AppContext)
+```
+
+组件里使用：
+
+```javascript
+import { AppProvider, useAppState } from "./state"
+
+function App() {
+  const initState = {
+    colors: ["red", "blue"]
+  }
+
+  function reducer(state, action) {
+    const { colors } = action;
+    if (action.type === "CHANGE_COLOR") {
+      return { colors: colors };
+    } else {
+      throw new Error();
+    }
+  }
+
+  return (
+    <AppProvider initValue={initState} reducer={reducer}>
+      <div>
+        {/* 假装这些地方有着不同的层级 */}
+        <Child1 />
+        <Child2 />
+      </div>
+    </AppProvider>
+  )
+}
+
+function Child1(props) {
+  const [state, dispatch] = useAppState()
+
+  return (
+    <div
+      style={{ background: state.colors[0] }}
+      onClick={() =>
+        dispatch({
+          type: "CHANGE_COLOR",
+          colors: ["yellow", "blue"]
+        })
+      }
+    >
+      I am {state.colors[0]}
+    </div>
+  )
+}
+
+```
+
+完整的代码及例子见 [tiny redux](https://codesandbox.io/s/6v9qnylm7n)。
+
 ## 结语
 
 这样小型的状态管理机制你甚至可以放在某个组件里，而不用放到如 `Redux` 全局的环境中去。这样使得我们写的应用更加灵活，而不是一味的往 `store` 里丢状态。当然你也可以写一个 **AppProvider** 来管理全局的状态，`React Hooks` + `Context` 给了我们这样的便利。

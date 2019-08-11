@@ -282,6 +282,20 @@ function throttle(fun, delay, time) {
 }
 ```
 
+## 继承
+```javascript
+function create (obj) {
+  function F() {}
+  F.prototype = obj
+  return new F()
+}
+function inherit (child, parent) {
+  const prototype = create(parent.prototype)
+  prototype.constructor = child
+  child.prototype = prototype
+}
+```
+
 ## polyfill
 
 
@@ -364,3 +378,4 @@ function create(obj) {
   return new F();
 }
 ```
+

@@ -5,10 +5,7 @@ tags:
     - JavaScript
     - React
 ---
-
 `React Hooks` 在 React@16.8 版本正式发布。我最近在一两个公司的内部项目中也开始用起来尝尝鲜。
-
-初看文档的时候觉得这东西也就一个新的 API 嘛，为了写 Functional Component 造轮子嘛，我写 HOC / Render Props 照样起飞好嘛？不过在用了接近快三周之后，我表示真香。
 
 不了解 `Hooks` 的同学先撸一遍[文档](https://reactjs.org/docs/hooks-intro.html)。本文不对 `Hooks` 做详细介绍，只阐述一种使用 `Hooks` 的思路。
 
@@ -18,7 +15,7 @@ tags:
 
 秉承着这种思路，我在开发应用的时候是没有一开始就引入 `Redux` ，因为一开始我觉得就是个小项目。随着深入项目的开发，其实并没有这么简单。
 
-但是也没有太复杂，这时我把眼光放到了 `Context` 身上。`Context` 本意是上下文，它提供一个 `Provider` 和一个 `Consumer`，这里和 `Angular` 里的 `Provider` 有点类似，也就是生产者/消费者模式，在某个顶层提供一个 `Provider` ，下面的子元素通过 `Consumer` 来消费 `Provider` 里的数据和方法。
+但是也没有太复杂，这时我把眼光放到了 `Context` 身上。`Context` 本意是上下文，它提供一个 `Provider` 和一个 `Consumer`，也就是生产者/消费者模式，在某个顶层提供一个 `Provider` ，下面的子元素通过 `Consumer` 来消费 `Provider` 里的数据和方法。
 
 通过这个概念，我们把不同层级里的组件共享同一个顶层 `Provider`，并且组件内部使用 `Consumer` 来消费共享数据。
 
@@ -267,7 +264,7 @@ export function AppProvider ({reducer, initValue, children}) {
 }
 ```
 
-最后，添加一个自定义 `hooks` 来获取 **AppContext** 里的状态和方法。
+最后，添加一个自定义 `hooks` 来获取 **AppContext** 里的状态和方法。Write Once, Run Anywhere :)
 
 ```javascript
 import React, { useReducer, useContext } from 'react'
@@ -340,10 +337,10 @@ function Child1(props) {
     </div>
   )
 }
-
 ```
 
 完整的代码及例子见 [tiny redux](https://codesandbox.io/s/6v9qnylm7n)。
+
 
 ## 结语
 

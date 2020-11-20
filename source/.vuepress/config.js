@@ -16,6 +16,13 @@ module.exports = {
         sidebar: {
             '/': [
                 {
+                  title: '2020',
+                  collapsable: false,
+                  children: [
+                      '/2020/aopioc',
+                  ]
+                },
+                {
                     title: '2019',
                     collapsable: false,
                     children: [

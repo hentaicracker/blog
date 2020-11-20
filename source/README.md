@@ -2,6 +2,10 @@
 
 ## 分类导航
 
+### Nodejs
+
+- [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/aopioc.md)
+
 ### JavaScript
 
  - [使用 React Hooks + Context 打造简版 Redux](./2019/hooks.html)

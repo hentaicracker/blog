@@ -4,7 +4,7 @@
 
 ### Nodejs
 
-- [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/aopioc.md)
+- [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
 
 ### JavaScript
 

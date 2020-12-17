@@ -4,10 +4,11 @@
 
 ### Nodejs
 
-- [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
+ - [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
 
 ### JavaScript
 
+ - [requestAnimationFrame 执行机制探索](./2020/rAF.html)
  - [使用 React Hooks + Context 打造简版 Redux](./2019/hooks.html)
  - [图片懒加载踩坑](./2018/lazyload.html)
  - [JavaScript Tips](./2017/jsTips.html)

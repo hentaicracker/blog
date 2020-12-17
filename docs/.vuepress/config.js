@@ -19,6 +19,7 @@ module.exports = {
                   title: '2020',
                   collapsable: false,
                   children: [
+                      '/2020/rAF',
                       '/2020/aopioc',
                   ]
                 },
@@ -70,6 +71,7 @@ module.exports = {
                   title: '2020',
                   collapsable: false,
                   children: [
+                      'rAF',
                       'aopioc',
                   ]
               }

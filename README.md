@@ -1,4 +1,4 @@
-# THANKS FOR READING MY BLOG!
+# 欢迎观光
 
 博客地址： [hentaicracker.github.io](hentaicracker.github.io)
 
@@ -23,6 +23,10 @@
  - [互联网协议梳理](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/protocol.md)
  - [用户认证流程梳理](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/authenticate.md)
  - [HTTP 详细](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/http.md)
+
+### 工作思考
+
+- [Deco 图层处理层简明介绍](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/deco.md)
 
 ### 读书笔记
 

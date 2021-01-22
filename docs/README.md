@@ -2,10 +2,6 @@
 
 ## 分类导航
 
-### Nodejs
-
- - [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
-
 ### JavaScript
 
  - [requestAnimationFrame 执行机制探索](./2020/rAF.html)
@@ -14,6 +10,14 @@
  - [JavaScript Tips](./2017/jsTips.html)
  - [正则表达式 cheatsheet & 实例](./2017/regexp.html)
  - [String 踩坑](./2017/string.html)
+
+### TypeScript
+
+ - [TypeScript 类型编程](./2021/ts.html)
+
+### Nodejs
+
+- [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
 
 ### 理解计算机
 

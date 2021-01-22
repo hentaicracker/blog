@@ -4,11 +4,6 @@
 
 ## 分类导航
 
-### Nodejs
-
-- [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/aopioc.md)
-
-
 ### JavaScript
 
  - [requestAnimationFrame 执行机制探索](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/rAF.md)
@@ -17,6 +12,14 @@
  - [Javascript Tips](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2017/jsTips.md)
  - [正则表达式 cheatsheet & 实例](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2017/regexp.md)
  - [String 踩坑](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2017/string.md)
+
+### TypeScript
+
+- [TypeScript 类型编程](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2021/ts.md)
+
+### Nodejs
+
+- [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/aopioc.md)
 
 ### 计算机网络
 

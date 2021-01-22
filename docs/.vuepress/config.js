@@ -16,6 +16,13 @@ module.exports = {
         sidebar: {
             '/': [
                 {
+                  title: '2021',
+                  collapsable: false,
+                  children: [
+                      '/2021/ts',
+                  ]
+                },
+                {
                   title: '2020',
                   collapsable: false,
                   children: [
@@ -66,6 +73,15 @@ module.exports = {
                         '/2016/2016-04-23',
                     ]
                 }
+            ],
+            '/2021/': [
+              {
+                  title: '2021',
+                  collapsable: false,
+                  children: [
+                      'ts',
+                  ]
+              }
             ],
             '/2020/': [
               {

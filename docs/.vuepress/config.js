@@ -19,6 +19,7 @@ module.exports = {
                   title: '2021',
                   collapsable: false,
                   children: [
+                      '/2021/py',
                       '/2021/ts',
                   ]
                 },
@@ -79,6 +80,7 @@ module.exports = {
                   title: '2021',
                   collapsable: false,
                   children: [
+                      'py',
                       'ts',
                   ]
               }

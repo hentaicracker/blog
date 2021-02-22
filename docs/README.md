@@ -19,6 +19,10 @@
 
 - [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
 
+### Python
+
+- [面向前端开发者的 Python 快速入门（30min）](./2021/py.html)
+
 ### 理解计算机
 
  - [互联网协议梳理](./2018/protocol.html)

@@ -21,6 +21,10 @@
 
 - [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2020/aopioc.md)
 
+### Python
+
+- [面向前端工程师的 Python 快速入门（30min）](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2021/py.md)
+
 ### 计算机网络
 
  - [互联网协议梳理](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/protocol.md)

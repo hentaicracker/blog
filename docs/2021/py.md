@@ -1,13 +1,13 @@
 ---
 title: 面向前端工程师的 Python 快速入门（30min）
-date: 2020-01-23 10:13:12
+date: 2020-02-23 10:13:12
 tags:
     - Python
 ---
 
 > Python is an easy to learn, powerful programming language. (Python 是一门非常简单且强大的编程语言) —— The Python Tutorial
 
-这是一份面向前端工程师的一份 `Python(3)` 快速入门介绍，帮助你快速开始 `Python` 开发。
+这是一份面向前端工程师的 `Python(3)` 快速入门介绍，帮助你快速开始 `Python` 开发。
 
 `Python` 是一门非常实用并且简单的编程语言，它也是目前最流行的编程语言之一。`Python` 由于拥有大量的开源库，可用于载入数据、数据可视化、统计、图像处理和自然语言处理等，所以它既可以用来编写 web 程序，也成为了数据科学、机器学习常用的语言，可以说是一门性价比极高的语言。据说目前已经有地区的中小学开始将 `Python` 作为编程学习的首要语言。
 
@@ -127,7 +127,7 @@ None is None   # True
 
 ### 2.2 List (列表)
 
-`List` (列表) 是 `Python` 内置的一种数据类型。它是一种有序的集合，可以随时添加和删除其中的元素。它类似于 `JavaScript` 里的基础数据类型**数组**。
+`List` (列表) 是 `Python` 内置的一种数据类型。它是一种有序的集合，可以随时添加和删除其中的元素。它类似于 `JavaScript` 里的**数组**。
 
 ```Python
 name = ['aotu', 'lab', 'hello', 'kitty']
@@ -284,7 +284,7 @@ some_var = 5
 
 if some_var > 5:
     print("some_var 大于 5")
-elif < 5:
+elif some_var < 5:
     print("some_var 小于 5")
 else:
     print("some_var 等于 5")

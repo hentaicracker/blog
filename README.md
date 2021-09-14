@@ -46,6 +46,7 @@
 
 ### 日常
 
+ - [工作5年总结](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2021/zongjie.md)
  - [2016 & 2017](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2016/2016-12-31.md)
  - [这段时间的感受与见闻](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2016/2016-09-21.md)
  - [我是荒野大镖客，这是我的利器](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2016/liqi.md)

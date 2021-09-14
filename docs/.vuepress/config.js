@@ -19,6 +19,8 @@ module.exports = {
                   title: '2021',
                   collapsable: false,
                   children: [
+                    '/2021/zongjie',
+                    '/2021/deco',
                       '/2021/py',
                       '/2021/ts',
                   ]
@@ -82,6 +84,8 @@ module.exports = {
                   children: [
                       'py',
                       'ts',
+                      'deco',
+                      'zongjie'
                   ]
               }
             ],

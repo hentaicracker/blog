@@ -19,6 +19,7 @@ module.exports = {
                   title: '2021',
                   collapsable: false,
                   children: [
+                    '/2021/docker-osx',
                     '/2021/zongjie',
                     '/2021/deco',
                       '/2021/py',
@@ -85,7 +86,8 @@ module.exports = {
                       'py',
                       'ts',
                       'deco',
-                      'zongjie'
+                      'zongjie',
+                      'docker-osx'
                   ]
               }
             ],

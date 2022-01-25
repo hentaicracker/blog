@@ -326,8 +326,18 @@ export interface AtomComponent {
 
 目前，这份配置表是打包在代码里面的，在编辑器未来的版本中，将会把这份配置表和 Deco 开放平台相融合，开放给用户编辑，编辑器在进行初始化加载时会以第三方配置的方式加载进来。
 
+## 6 最后
 
-## 6 参考资料
+目前 Deco 已经支持了 618 、11.11 等背景下的大促会场开发，并且打通了内部低代码平台一键进行代码构建和页面预览，通过 Deco 搭建的数十个楼层成功上线，效率提升达到 48%。
 
-https://inversify.io/
+Deco 智能代码项目是凹凸实验室在「前端智能化」方向上的探索，我们尝试从设计稿生成代码（DesignToCode）这个切入点入手，对现有的设计到研发这一环节进行能力补全，进而提升产研效率。其中使用到不少算法能力和AI能力来实现设计稿的解析与识别，感兴趣的童鞋欢迎关注我们的账号「凹凸实验室」（[知乎](https://www.zhihu.com/people/o2team)、[掘金](https://juejin.cn/user/1134351699149854)）。
+
+
+## 7 更多文章
+
+[设计稿一键生成代码，研发智能化探索与实践](https://jelly.jd.com/article/61a6eb9f2a070818620bac2e)
+
+[助力双 11 个性化会场高效交付：Deco 智能代码技术揭秘](https://mp.weixin.qq.com/s/oMMvLWz6u5aMSKCsCGg0Hg)
+
+[超基础的机器学习入门-原理篇](https://mp.weixin.qq.com/s/XgcH9opcZ639urJt_NRsvQ)
 

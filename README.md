@@ -30,6 +30,7 @@
  - [互联网协议梳理](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/protocol.md)
  - [用户认证流程梳理](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/authenticate.md)
  - [HTTP 详细](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2018/http.md)
+ - [使用 docker-osx 搭建 macos 构建环境](https://github.com/hentaicracker/new-blog/blob/vuepress/source/2021/docker-osx.md)
 
 ### 工作思考
 

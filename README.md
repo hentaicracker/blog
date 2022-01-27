@@ -47,6 +47,7 @@
 
 ### 日常
 
+ - [2021年终总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2022/zongjie.md)
  - [工作5年总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2021/zongjie.md)
  - [2016 & 2017](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2016/2016-12-31.md)
  - [这段时间的感受与见闻](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2016/2016-09-21.md)

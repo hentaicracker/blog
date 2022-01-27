@@ -15,6 +15,13 @@ module.exports = {
         ],
         sidebar: {
             '/': [
+              {
+                title: '2022',
+                collapsable: false,
+                children: [
+                  '/2022/zongjie',
+                ]
+              },
                 {
                   title: '2021',
                   collapsable: false,
@@ -77,6 +84,15 @@ module.exports = {
                         '/2016/2016-04-23',
                     ]
                 }
+            ],
+            '/2022/': [
+              {
+                  title: '2022',
+                  collapsable: false,
+                  children: [
+                      'zongjie',
+                  ]
+              }
             ],
             '/2021/': [
               {

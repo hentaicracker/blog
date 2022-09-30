@@ -13,7 +13,7 @@ module.exports = {
         {
           title: "2022",
           collapsable: false,
-          children: ["/2022/zongjie", "/2022/mf"]
+          children: ["/2022/mf", "/2022/zongjie"]
         },
         {
           title: "2021",
@@ -76,7 +76,7 @@ module.exports = {
         {
           title: "2022",
           collapsable: false,
-          children: ["zongjie", "mf"]
+          children: ["mf", "zongjie"]
         }
       ],
       "/2021/": [

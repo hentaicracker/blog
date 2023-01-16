@@ -4,6 +4,7 @@
 
 ### JavaScript
 
+ - [使用 Skia 绘制 2D 图形](./2022/skia.html)
  - [基于 MF 的组件化共享工作流 - Qcon 广州演讲整理](./2022/mf.html)
  - [requestAnimationFrame 执行机制探索](./2020/rAF.html)
  - [使用 React Hooks + Context 打造简版 Redux](./2019/hooks.html)

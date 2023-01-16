@@ -6,6 +6,7 @@
 
 ### JavaScript
 
+ - [使用 Skia 绘制 2D 图形](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2022/skia.md)
  - [基于 MF 的组件化共享工作流 - Qcon 广州演讲整理](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2022/mf.md)
  - [requestAnimationFrame 执行机制探索](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2020/rAF.md)
  - [使用 React Hooks + Context 打造简版 Redux](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2019/hooks.md)

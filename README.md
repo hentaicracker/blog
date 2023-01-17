@@ -11,7 +11,7 @@
  - [requestAnimationFrame 执行机制探索](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2020/rAF.md)
  - [使用 React Hooks + Context 打造简版 Redux](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2019/hooks.md)
  - [图片懒加载踩坑](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2018/lazyload.md)
- - [Javascript Tips](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/jsTips.md)
+ - [JavaScript Tips](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/jsTips.md)
  - [正则表达式 cheatsheet & 实例](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/regexp.md)
  - [String 踩坑](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/string.md)
 
@@ -21,7 +21,7 @@
 
 ### Nodejs
 
-- [Nodejs AOP 与 IOC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2020/aopioc.md)
+- [Nodejs AOP 与 IoC 实践](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2020/aopioc.md)
 
 ### Python
 
@@ -49,6 +49,7 @@
 
 ### 日常
 
+ - [Do not be afraid - 2022 总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/zongjie.md)
  - [2021年终总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2022/zongjie.md)
  - [工作5年总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2021/zongjie.md)
  - [2016 & 2017](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2016/2016-12-31.md)

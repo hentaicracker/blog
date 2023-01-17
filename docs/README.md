@@ -19,7 +19,7 @@
 
 ### Nodejs
 
-- [Nodejs AOP 与 IOC 实践](./2020/aopioc.html)
+- [Nodejs AOP 与 IoC 实践](./2020/aopioc.html)
 
 ### Python
 
@@ -47,6 +47,7 @@
 
 ### 日常
 
+ - [Do not be afraid - 2022 总结](./2023/zongjie.html)
  - [2021年终总结](./2022/zongjie.html)
  - [工作 5 年](./2021/zongjie.html)
  - [2016 & 2017](./2016/2016-12-31.html)

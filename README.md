@@ -41,6 +41,7 @@
 
 ### 读书笔记
 
+ - [《Rust 程序设计语言》读书笔记](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/rust-1.md)
  - [《硅谷钢铁侠——马斯克的冒险人生》读书笔记](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/2017-08-06.md)
  - [《人类简史》读书笔记](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/2017-03-12.md)
  - [《You don't know JavaScirpt》](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2017/ydkjs-1.md)
@@ -50,6 +51,7 @@
 
 ### 日常
 
+ - [路遥远，我们一起走](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/suibi.md)
  - [Do not be afraid - 2022 总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/zongjie.md)
  - [2021年终总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2022/zongjie.md)
  - [工作5年总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2021/zongjie.md)

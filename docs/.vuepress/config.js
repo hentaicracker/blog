@@ -1,5 +1,5 @@
 module.exports = {
-  title: "陈俊生的正经博客",
+  title: "正经博客",
   description: "陈俊生的正经博客",
   dest: "dist",
   head: [["link", { rel: "icon", href: `/favicon.ico` }]],
@@ -7,18 +7,21 @@ module.exports = {
   themeConfig: {
     docsDir: "source",
     repo: "https://github.com/hentaicracker/new-blog/tree/vuepress",
-    nav: [{ text: "Home", link: "/" }, { text: "About Me", link: "/aboutme" }],
+    nav: [
+      { text: "Home", link: "/" },
+      { text: "About Me", link: "/aboutme" },
+    ],
     sidebar: {
       "/": [
         {
           title: "2023",
           collapsable: false,
-          children: ["/2023/docker", "/2023/zongjie"]
+          children: ["/2023/suibi1", "/2023/rust-1", "/2023/docker", "/2023/zongjie"],
         },
         {
           title: "2022",
           collapsable: false,
-          children: ["/2022/skia", "/2022/mf", "/2022/zongjie"]
+          children: ["/2022/skia", "/2022/mf", "/2022/zongjie"],
         },
         {
           title: "2021",
@@ -28,18 +31,18 @@ module.exports = {
             "/2021/zongjie",
             "/2021/deco",
             "/2021/py",
-            "/2021/ts"
-          ]
+            "/2021/ts",
+          ],
         },
         {
           title: "2020",
           collapsable: false,
-          children: ["/2020/deco", "/2020/rAF", "/2020/aopioc"]
+          children: ["/2020/deco", "/2020/rAF", "/2020/aopioc"],
         },
         {
           title: "2019",
           collapsable: false,
-          children: ["/2019/hooks"]
+          children: ["/2019/hooks"],
         },
         {
           title: "2018",
@@ -48,8 +51,8 @@ module.exports = {
             "/2018/lazyload",
             "/2018/protocol",
             "/2018/authenticate",
-            "/2018/http"
-          ]
+            "/2018/http",
+          ],
         },
         {
           title: "2017",
@@ -60,8 +63,8 @@ module.exports = {
             "/2017/regexp",
             "/2017/string",
             "/2017/ydkjs-1",
-            "/2017/2017-03-12"
-          ]
+            "/2017/2017-03-12",
+          ],
         },
         {
           title: "2016",
@@ -73,51 +76,51 @@ module.exports = {
             "/2016/2016-09-21",
             "/2016/hello-world",
             "/2016/liqi",
-            "/2016/2016-04-23"
-          ]
-        }
+            "/2016/2016-04-23",
+          ],
+        },
       ],
       "/2023/": [
         {
           title: "2023",
           collapsable: false,
-          children: ["docker", "zongjie"]
-        }
+          children: ["/2023/suibi1", "/2023/rust-1", "docker", "zongjie"],
+        },
       ],
       "/2022/": [
         {
           title: "2022",
           collapsable: false,
-          children: ["skia", "mf", "zongjie"]
-        }
+          children: ["skia", "mf", "zongjie"],
+        },
       ],
       "/2021/": [
         {
           title: "2021",
           collapsable: false,
-          children: ["py", "ts", "deco", "zongjie", "docker-osx"]
-        }
+          children: ["py", "ts", "deco", "zongjie", "docker-osx"],
+        },
       ],
       "/2020/": [
         {
           title: "2020",
           collapsable: false,
-          children: ["deco", "rAF", "aopioc"]
-        }
+          children: ["deco", "rAF", "aopioc"],
+        },
       ],
       "/2019/": [
         {
           title: "2019",
           collapsable: false,
-          children: ["hooks"]
-        }
+          children: ["hooks"],
+        },
       ],
       "/2018/": [
         {
           title: "2018",
           collapsable: false,
-          children: ["lazyload", "protocol", "authenticate", "http"]
-        }
+          children: ["lazyload", "protocol", "authenticate", "http"],
+        },
       ],
       "/2017/": [
         {
@@ -129,9 +132,9 @@ module.exports = {
             "regexp",
             "string",
             "ydkjs-1",
-            "2017-03-12"
-          ]
-        }
+            "2017-03-12",
+          ],
+        },
       ],
       "/2016/": [
         {
@@ -144,11 +147,11 @@ module.exports = {
             "2016-09-21",
             "hello-world",
             "liqi",
-            "2016-04-23"
-          ]
-        }
-      ]
-    }
+            "2016-04-23",
+          ],
+        },
+      ],
+    },
   },
-  plugins: ["@vuepress/back-to-top"]
+  plugins: ["@vuepress/back-to-top"],
 };

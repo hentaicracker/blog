@@ -16,7 +16,12 @@ module.exports = {
         {
           title: "2023",
           collapsable: false,
-          children: ["/2023/suibi1", "/2023/rust-1", "/2023/docker", "/2023/zongjie"],
+          children: [
+            "/2023/suibi",
+            "/2023/rust-1",
+            "/2023/docker",
+            "/2023/zongjie",
+          ],
         },
         {
           title: "2022",
@@ -84,7 +89,7 @@ module.exports = {
         {
           title: "2023",
           collapsable: false,
-          children: ["/2023/suibi1", "/2023/rust-1", "docker", "zongjie"],
+          children: ["/2023/suibi", "/2023/rust-1", "docker", "zongjie"],
         },
       ],
       "/2022/": [

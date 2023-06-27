@@ -22,12 +22,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Checkout
+        uses: actions/checkout@vuepress
+        
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     - name: vuepress-deploy
-       uses: jenkey2011/vuepress-deploy@master
-       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        TARGET_REPO: hentaicracker/hentaicracker.github.io
-        TARGET_BRANCH: master
-        BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: dist/
+      - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
+        env:
+           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+           TARGET_REPO: hentaicracker/hentaicracker.github.io
+           TARGET_BRANCH: master
+           BUILD_SCRIPT: yarn && yarn build
+           BUILD_DIR: dist/

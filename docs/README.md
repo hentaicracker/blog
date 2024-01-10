@@ -49,6 +49,7 @@
 
 ### 日常
 
+ - [2023 & 2024](./2024/zongjie.html)
  - [路遥远，我们一起走](./2023/suibi.html)
  - [Do not be afraid - 2022 总结](./2023/zongjie.html)
  - [2021年终总结](./2022/zongjie.html)

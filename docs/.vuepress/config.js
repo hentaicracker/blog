@@ -2,7 +2,21 @@ module.exports = {
   title: "正经博客",
   description: "陈俊生的正经博客",
   dest: "dist",
-  head: [["link", { rel: "icon", href: `/favicon.ico` }]],
+  head: [
+    ["link", { rel: "icon", href: `/favicon.ico` }],
+    [
+      "script",
+      {
+        rel: "stylesheet",
+        src: "https://utteranc.es/client.js",
+        repo: "https://github.com/hentaicracker/blog",
+        "issue-item": "pathname",
+        theme: "github-light",
+        crossorigin: "anonymous",
+        async,
+      },
+    ],
+  ],
   serviceWorker: true,
   themeConfig: {
     docsDir: "source",
@@ -13,6 +27,11 @@ module.exports = {
     ],
     sidebar: {
       "/": [
+        {
+          title: "2024",
+          collapsable: false,
+          children: ["/2024/zongjie"],
+        },
         {
           title: "2023",
           collapsable: false,
@@ -85,11 +104,18 @@ module.exports = {
           ],
         },
       ],
+      "/2024/": [
+        {
+          title: "2024",
+          collapsable: false,
+          children: ["zongjie"],
+        },
+      ],
       "/2023/": [
         {
           title: "2023",
           collapsable: false,
-          children: ["/2023/suibi", "/2023/rust-1", "docker", "zongjie"],
+          children: ["suibi", "rust-1", "docker", "zongjie"],
         },
       ],
       "/2022/": [

@@ -13,7 +13,7 @@ module.exports = {
         "issue-item": "pathname",
         theme: "github-light",
         crossorigin: "anonymous",
-        async,
+        async: true,
       },
     ],
   ],

@@ -2,21 +2,7 @@ module.exports = {
   title: "正经博客",
   description: "陈俊生的正经博客",
   dest: "dist",
-  head: [
-    ["link", { rel: "icon", href: `/favicon.ico` }],
-    [
-      "script",
-      {
-        rel: "stylesheet",
-        src: "https://utteranc.es/client.js",
-        repo: "https://github.com/hentaicracker/blog",
-        "issue-item": "pathname",
-        theme: "github-light",
-        crossorigin: "anonymous",
-        async: true,
-      },
-    ],
-  ],
+  head: [["link", { rel: "icon", href: `/favicon.ico` }]],
   serviceWorker: true,
   themeConfig: {
     docsDir: "source",

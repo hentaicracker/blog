@@ -49,6 +49,7 @@
 
 ### 日常
 
+ - [工程师的自我修养](./2024/chengzhang.html)
  - [2023 & 2024](./2024/zongjie.html)
  - [路遥远，我们一起走](./2023/suibi.html)
  - [Do not be afraid - 2022 总结](./2023/zongjie.html)

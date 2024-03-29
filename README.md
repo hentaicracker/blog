@@ -51,6 +51,7 @@
 
 ### 日常
 
+ - [工程师的自我修养](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2024/chengzhang.md)
  - [2023 & 2024](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2024/zongjie.md)
  - [路遥远，我们一起走](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/suibi.md)
  - [Do not be afraid - 2022 总结](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2023/zongjie.md)

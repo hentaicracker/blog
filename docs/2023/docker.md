@@ -219,6 +219,10 @@ services:
 
 至此，opencv4nodejs 安装不成功的问题便解决了，唯一不足的是，不能实时 debug 代码，只能在服务中打日志来测试。（开个脑洞：能否通过开个 debug 端口映射到本地编辑器呢，猜测可以。
 
+
+> 20240130 更新
+> 可以用 dev containers 实现
+
 ## docker 常用操作
 
 拉取镜像：
@@ -300,4 +304,3 @@ docker-compose up -d
 ```
 docker-compose down
 ```
-

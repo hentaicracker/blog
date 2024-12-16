@@ -16,7 +16,7 @@ module.exports = {
         {
           title: "2024",
           collapsable: false,
-          children: ["/2024/zongjie", "/2024/chengzhang"],
+          children: ["/2024/jietu", "/2024/zongjie", "/2024/chengzhang"],
         },
         {
           title: "2023",
@@ -94,7 +94,7 @@ module.exports = {
         {
           title: "2024",
           collapsable: false,
-          children: ["zongjie", "chengzhang"],
+          children: ["jietu", "zongjie", "chengzhang"],
         },
       ],
       "/2023/": [

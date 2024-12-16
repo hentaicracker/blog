@@ -26,6 +26,7 @@
 ### Python
 
 - [面向前端工程师的 Python 快速入门（30min）](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2021/py.md)
+- [长截图生成实践](https://github.com/hentaicracker/new-blog/blob/vuepress/docs/2024/jietu.md)
 
 ### 理解计算机
 

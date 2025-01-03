@@ -14,6 +14,11 @@ module.exports = {
     sidebar: {
       "/": [
         {
+          title: "2025",
+          collapsable: false,
+          children: ["/2025/zongjie"],
+        },
+        {
           title: "2024",
           collapsable: false,
           children: ["/2024/jietu", "/2024/zongjie", "/2024/chengzhang"],
@@ -88,6 +93,13 @@ module.exports = {
             "/2016/liqi",
             "/2016/2016-04-23",
           ],
+        },
+      ],
+      "/2025/": [
+        {
+          title: "2025",
+          collapsable: false,
+          children: ["zongjie"],
         },
       ],
       "/2024/": [
